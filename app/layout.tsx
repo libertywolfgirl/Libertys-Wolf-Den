@@ -9,8 +9,8 @@ import { theme } from "../theme/theme";
 import AppShellContainer from "./_components/AppShellContainer";
 
 export const metadata = {
-  title: "Mantine Next.js template",
-  description: "I am using Mantine with Next.js!",
+  title: "Liberty's Wolf Den",
+  description: "Fanfiction website",
 };
 
 export default function RootLayout({ children }: { children: any }) {
