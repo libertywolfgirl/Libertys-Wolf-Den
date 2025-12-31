@@ -5,7 +5,7 @@ import {
   ColorSchemeScript,
   mantineHtmlProps,
 } from "@mantine/core";
-import { theme } from "../theme";
+import { theme } from "../theme/theme";
 import AppShellContainer from "./_components/AppShellContainer";
 
 export const metadata = {
