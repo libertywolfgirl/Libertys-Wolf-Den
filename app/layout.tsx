@@ -6,6 +6,7 @@ import {
   mantineHtmlProps,
 } from "@mantine/core";
 import { theme } from "../theme";
+import AppShellContainer from "./_components/AppShellContainer";
 
 export const metadata = {
   title: "Mantine Next.js template",
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <AppShellContainer>{children}</AppShellContainer>
+        </MantineProvider>
       </body>
     </html>
   );
