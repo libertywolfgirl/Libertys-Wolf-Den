@@ -11,10 +11,15 @@
   "dependencies": {
     "@mantine/core": "8.3.10",
     "@mantine/hooks": "8.3.10",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.22.0",
     "@tabler/icons-react": "^3.36.0",
     "next": "15.5.3",
+    "next-sanity": "^11.6.12",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@types/node": "24.3.3",
