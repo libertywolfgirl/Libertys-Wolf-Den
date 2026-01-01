@@ -17,6 +17,11 @@ export const chapterType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "chapter_number",
+      type: "number",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "master_title",
       type: "string",
     }),

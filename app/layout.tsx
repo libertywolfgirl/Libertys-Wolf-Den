@@ -7,6 +7,7 @@ import {
 } from "@mantine/core";
 import { theme } from "../theme/theme";
 import AppShellContainer from "./_components/AppShellContainer";
+import { SanityLive } from "../sanity/lib/live";
 
 export const metadata = {
   title: "Liberty's Wolf Den",
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <AppShellContainer>{children}</AppShellContainer>
+          <AppShellContainer>
+            {children}
+            <SanityLive />
+          </AppShellContainer>
         </MantineProvider>
       </body>
     </html>
