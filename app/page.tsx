@@ -1,11 +1,14 @@
-import { Stack, Text, Title } from "@mantine/core";
+import { Flex, Stack, Text, Title } from "@mantine/core";
+import { sanityFetch } from "../sanity/lib/live";
+import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
+import StoryCard from "./_components/StoryCard";
 
 const options = { next: { revalidate: 30 } };
 
 export default async function HomePage() {
-  // const { data: chapters } = await sanityFetch({
-  //   query: CHAPTERS_QUERY,
-  // });
+  const { data: featuredStories } = await sanityFetch({
+    query: FEATURED_STORIES_QUERY,
+  });
 
   return (
     <Stack
@@ -23,11 +26,13 @@ export default async function HomePage() {
         Welcome to my den of stories. Feel free to browse fanfiction of all
         types written by me. Enjoy your stay.
       </Text>
-      {/* 
-        Show three features fanfic cards.
-          1. Fetch stories that are flagged as featured.
-          2. Fetch first chapter of each story.
-       */}
+      {featuredStories && featuredStories.length > 0 && (
+        <Flex direction={{ base: "column", sm: "row" }} gap="2rem">
+          {featuredStories.map((story) => (
+            <StoryCard key={story._id} story={story as any} />
+          ))}
+        </Flex>
+      )}
     </Stack>
   );
 }
