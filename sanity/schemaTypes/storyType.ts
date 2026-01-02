@@ -1,30 +1,35 @@
 import { defineField, defineType } from "sanity";
 
-export const chapterType = defineType({
-  name: "chapter",
-  title: "chapter",
+export const storyType = defineType({
+  name: "story",
+  title: "Story",
   type: "document",
   fields: [
     defineField({
-      name: "chapter_title",
+      name: "title",
+      title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "slug",
+      title: "Slug",
       type: "slug",
-      options: { source: "title" },
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: "chapter_number",
-      type: "number",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "master_title",
-      type: "string",
-    }),
+    {
+      name: "keywords",
+      title: "Keywords",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+    },
     defineField({
       name: "genre",
       type: "string",
@@ -36,7 +41,12 @@ export const chapterType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "body",
+      name: "featured",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
+      name: "summary",
       type: "array",
       of: [{ type: "block" }],
     }),
