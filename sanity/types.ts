@@ -231,6 +231,11 @@ export type GENRES_QUERYResult = Array<{
   title: string;
   slug: Slug;
 }>;
+// Variable: GENRE_SLUG_QUERY
+// Query: *[_type == "genre" && title == $title][0]{  slug}
+export type GENRE_SLUG_QUERYResult = {
+  slug: Slug;
+} | null;
 // Variable: FANDOMS_QUERY
 // Query: *[_type == "fandom" && genre == $genre]{  _id, title, slug}
 export type FANDOMS_QUERYResult = Array<{
@@ -238,6 +243,11 @@ export type FANDOMS_QUERYResult = Array<{
   title: string;
   slug: Slug;
 }>;
+// Variable: FANDOM_SLUG_QUERY
+// Query: *[_type == "fandom" && title == $title][0]{  slug}
+export type FANDOM_SLUG_QUERYResult = {
+  slug: Slug;
+} | null;
 // Variable: STORIES_FOR_FANDOM_QUERY
 // Query: *[_type == "story" && fandom == $fandom]{  _id, title, slug, summary}
 export type STORIES_FOR_FANDOM_QUERYResult = Array<{
@@ -362,7 +372,9 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"genre\"]{\n  _id, title, slug\n}": GENRES_QUERYResult;
+    "*[_type == \"genre\" && title == $title][0]{\n  slug\n}": GENRE_SLUG_QUERYResult;
     "*[_type == \"fandom\" && genre == $genre]{\n  _id, title, slug\n}": FANDOMS_QUERYResult;
+    "*[_type == \"fandom\" && title == $title][0]{\n  slug\n}": FANDOM_SLUG_QUERYResult;
     "*[_type == \"story\" && fandom == $fandom]{\n  _id, title, slug, summary\n}": STORIES_FOR_FANDOM_QUERYResult;
     "*[_type == \"story\" && fandom == $fandom][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_FANDOM_QUERYResult;
     "*[_type == \"story\" && genre == $genre][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_GENRE_QUERYResult;
