@@ -11,7 +11,7 @@ const GenrePage = () => {
       </Text>
       {/* 
         Show list of fandoms with three fanfic cards for each fandom 
-          1. Fetch all fandoms.
+          1. Fetch all fandoms for the genre.
           2. For each fandom, fetch three stories.
           3. Fetch first chapter of each story.
       */}

@@ -1,14 +1,11 @@
 import { Stack, Text, Title } from "@mantine/core";
-import Link from "next/link";
-import { CHAPTERS_QUERY } from "../sanity/lib/queries";
-import { sanityFetch } from "../sanity/lib/live";
 
 const options = { next: { revalidate: 30 } };
 
 export default async function HomePage() {
-  const { data: chapters } = await sanityFetch({
-    query: CHAPTERS_QUERY,
-  });
+  // const { data: chapters } = await sanityFetch({
+  //   query: CHAPTERS_QUERY,
+  // });
 
   return (
     <Stack
