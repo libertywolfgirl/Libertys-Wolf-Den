@@ -46,9 +46,17 @@ export const storyType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "summary",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "text",
+      rows: 5,
     }),
   ],
 });

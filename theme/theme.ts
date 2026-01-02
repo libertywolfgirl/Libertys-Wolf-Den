@@ -57,5 +57,14 @@ export const theme = createTheme({
         }),
       },
     }),
+    Card: Title.extend({
+      defaultProps: {
+        styles: (theme) => ({
+          root: {
+            backgroundColor: `light-dark(${theme.colors.gray[0]}, ${theme.colors.gray[8]})`,
+          },
+        }),
+      },
+    }),
   },
 });

@@ -25,24 +25,35 @@ export type Story = {
   genre: string;
   fandom: string;
   featured?: boolean;
-  summary?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  summary?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type Slug = {
@@ -60,6 +71,18 @@ export type Fandom = {
   title: string;
   slug: Slug;
   genre: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type Genre = {
@@ -139,22 +162,6 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
 export type SanityFileAsset = {
   _id: string;
   _type: "sanity.fileAsset";
@@ -214,7 +221,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Story | Slug | Fandom | Genre | Chapter | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Story | SanityImageCrop | SanityImageHotspot | Slug | Fandom | Genre | Chapter | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: GENRES_QUERY
@@ -224,6 +231,11 @@ export type GENRES_QUERYResult = Array<{
   title: string;
   slug: Slug;
 }>;
+// Variable: GENRE_SLUG_QUERY
+// Query: *[_type == "genre" && title == $title][0]{  slug}
+export type GENRE_SLUG_QUERYResult = {
+  slug: Slug;
+} | null;
 // Variable: FANDOMS_QUERY
 // Query: *[_type == "fandom" && genre == $genre]{  _id, title, slug}
 export type FANDOMS_QUERYResult = Array<{
@@ -231,30 +243,18 @@ export type FANDOMS_QUERYResult = Array<{
   title: string;
   slug: Slug;
 }>;
+// Variable: FANDOM_SLUG_QUERY
+// Query: *[_type == "fandom" && title == $title][0]{  slug}
+export type FANDOM_SLUG_QUERYResult = {
+  slug: Slug;
+} | null;
 // Variable: STORIES_FOR_FANDOM_QUERY
 // Query: *[_type == "story" && fandom == $fandom]{  _id, title, slug, summary}
 export type STORIES_FOR_FANDOM_QUERYResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  summary: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
+  summary: string | null;
 }>;
 // Variable: THREE_STORIES_FOR_FANDOM_QUERY
 // Query: *[_type == "story" && fandom == $fandom][0...3]{  _id, title, slug, summary}
@@ -262,24 +262,7 @@ export type THREE_STORIES_FOR_FANDOM_QUERYResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  summary: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
+  summary: string | null;
 }>;
 // Variable: THREE_STORIES_FOR_GENRE_QUERY
 // Query: *[_type == "story" && genre == $genre][0...3]{  _id, title, slug, summary}
@@ -287,74 +270,49 @@ export type THREE_STORIES_FOR_GENRE_QUERYResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  summary: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
+  summary: string | null;
 }>;
 // Variable: FEATURED_STORIES_QUERY
-// Query: *[_type == "story" && featured == true]{  _id, title, slug, summary}
+// Query: *[_type == "story" && featured == true]{  _id, title, slug, summary, genre, fandom, image}
 export type FEATURED_STORIES_QUERYResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  summary: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
+  summary: string | null;
+  genre: string;
+  fandom: string;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 }>;
 // Variable: STORY_QUERY
-// Query: *[_type == "story" && slug.current == $slug][0]{  _id, title, slug, summary}
+// Query: *[_type == "story" && slug.current == $slug][0]{  _id, title, slug, summary, image}
 export type STORY_QUERYResult = {
   _id: string;
   title: string;
   slug: Slug;
-  summary: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
+  summary: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 } | null;
 // Variable: CHAPTERS_FOR_STORY_QUERY
 // Query: *[_type == "chapter" && story_title == $title]{  _id, chapter_title, slug, chapter_number, body}
@@ -414,12 +372,14 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"genre\"]{\n  _id, title, slug\n}": GENRES_QUERYResult;
+    "*[_type == \"genre\" && title == $title][0]{\n  slug\n}": GENRE_SLUG_QUERYResult;
     "*[_type == \"fandom\" && genre == $genre]{\n  _id, title, slug\n}": FANDOMS_QUERYResult;
+    "*[_type == \"fandom\" && title == $title][0]{\n  slug\n}": FANDOM_SLUG_QUERYResult;
     "*[_type == \"story\" && fandom == $fandom]{\n  _id, title, slug, summary\n}": STORIES_FOR_FANDOM_QUERYResult;
     "*[_type == \"story\" && fandom == $fandom][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_FANDOM_QUERYResult;
     "*[_type == \"story\" && genre == $genre][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_GENRE_QUERYResult;
-    "*[_type == \"story\" && featured == true]{\n  _id, title, slug, summary\n}": FEATURED_STORIES_QUERYResult;
-    "*[_type == \"story\" && slug.current == $slug][0]{\n  _id, title, slug, summary\n}": STORY_QUERYResult;
+    "*[_type == \"story\" && featured == true]{\n  _id, title, slug, summary, genre, fandom, image\n}": FEATURED_STORIES_QUERYResult;
+    "*[_type == \"story\" && slug.current == $slug][0]{\n  _id, title, slug, summary, image\n}": STORY_QUERYResult;
     "*[_type == \"chapter\" && story_title == $title]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTERS_FOR_STORY_QUERYResult;
     "*[_type == \"chapter\" && story_title == $title][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": FIRST_CHAPTER_QUERYResult;
   }

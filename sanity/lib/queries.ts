@@ -5,10 +5,22 @@ export const GENRES_QUERY = defineQuery(`*[_type == "genre"]{
   _id, title, slug
 }`);
 
+// Fetch genre slug based on title
+export const GENRE_SLUG_QUERY =
+  defineQuery(`*[_type == "genre" && title == $title][0]{
+  slug
+}`);
+
 // Fetch all fandoms for a genre
 export const FANDOMS_QUERY =
   defineQuery(`*[_type == "fandom" && genre == $genre]{
   _id, title, slug
+}`);
+
+// Fetch fandom slug from title
+export const FANDOM_SLUG_QUERY =
+  defineQuery(`*[_type == "fandom" && title == $title][0]{
+  slug
 }`);
 
 // Fetch all stories for a fandom
@@ -32,13 +44,13 @@ export const THREE_STORIES_FOR_GENRE_QUERY =
 // Fetch stories that are flagged as featured
 export const FEATURED_STORIES_QUERY =
   defineQuery(`*[_type == "story" && featured == true]{
-  _id, title, slug, summary
+  _id, title, slug, summary, genre, fandom, image
 }`);
 
 // Fetch one story by its slug
 export const STORY_QUERY =
   defineQuery(`*[_type == "story" && slug.current == $slug][0]{
-  _id, title, slug, summary
+  _id, title, slug, summary, image
 }`);
 
 // Fetch all chapters for a story
