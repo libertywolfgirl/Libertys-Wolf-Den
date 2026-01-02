@@ -26,21 +26,11 @@ export default async function HomePage() {
         Welcome to my den of stories. Feel free to browse fanfiction of all
         types written by me. Enjoy your stay.
       </Text>
-      <main className="container mx-auto min-h-screen max-w-3xl p-8">
-        <h1 className="text-4xl font-bold mb-8">Chapters</h1>
-        <ul className="flex flex-col gap-y-4">
-          {chapters.map((chapter) => (
-            <li className="hover:underline" key={chapter._id}>
-              <Link href={`/${chapter.slug.current}`}>
-                <h2 className="text-xl font-semibold">
-                  {chapter.chapter_title}
-                </h2>
-                <p>{new Date(chapter.publishedAt).toLocaleDateString()}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </main>
+      {/* 
+        Show three features fanfic cards.
+          1. Fetch stories that are flagged as featured.
+          2. Fetch first chapter of each story.
+       */}
     </Stack>
   );
 }
