@@ -13,33 +13,19 @@
  */
 
 // Source: schema.json
-export type Chapter = {
+export type Story = {
   _id: string;
-  _type: "chapter";
+  _type: "story";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  chapter_title: string;
+  title: string;
   slug: Slug;
-  chapter_number: number;
-  master_title?: string;
+  keywords?: Array<string>;
   genre: string;
   fandom: string;
-  keywords?: Array<string>;
-  publishedAt: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  body?: Array<{
+  featured?: boolean;
+  summary?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -59,26 +45,61 @@ export type Chapter = {
   }>;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
 export type Slug = {
   _type: "slug";
   current: string;
   source?: string;
+};
+
+export type Fandom = {
+  _id: string;
+  _type: "fandom";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  genre: string;
+};
+
+export type Genre = {
+  _id: string;
+  _type: "genre";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+};
+
+export type Chapter = {
+  _id: string;
+  _type: "chapter";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  chapter_title: string;
+  slug: Slug;
+  chapter_number: number;
+  story_title?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -116,6 +137,22 @@ export type SanityImageMetadata = {
   blurHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityFileAsset = {
@@ -177,21 +214,155 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Chapter | SanityImageCrop | SanityImageHotspot | Slug | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Story | Slug | Fandom | Genre | Chapter | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
-// Variable: CHAPTERS_QUERY
-// Query: *[_type == "chapter" && defined(slug.current)][0...12]{  _id, chapter_title, slug, publishedAt}
-export type CHAPTERS_QUERYResult = Array<{
+// Variable: GENRES_QUERY
+// Query: *[_type == "genre"]{  _id, title, slug}
+export type GENRES_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+}>;
+// Variable: FANDOMS_QUERY
+// Query: *[_type == "fandom" && genre == $genre]{  _id, title, slug}
+export type FANDOMS_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+}>;
+// Variable: STORIES_FOR_FANDOM_QUERY
+// Query: *[_type == "story" && fandom == $fandom]{  _id, title, slug, summary}
+export type STORIES_FOR_FANDOM_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+}>;
+// Variable: THREE_STORIES_FOR_FANDOM_QUERY
+// Query: *[_type == "story" && fandom == $fandom][0...3]{  _id, title, slug, summary}
+export type THREE_STORIES_FOR_FANDOM_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+}>;
+// Variable: THREE_STORIES_FOR_GENRE_QUERY
+// Query: *[_type == "story" && genre == $genre][0...3]{  _id, title, slug, summary}
+export type THREE_STORIES_FOR_GENRE_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+}>;
+// Variable: FEATURED_STORIES_QUERY
+// Query: *[_type == "story" && featured == true]{  _id, title, slug, summary}
+export type FEATURED_STORIES_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+}>;
+// Variable: STORY_QUERY
+// Query: *[_type == "story" && slug.current == $slug][0]{  _id, title, slug, summary}
+export type STORY_QUERYResult = {
+  _id: string;
+  title: string;
+  slug: Slug;
+  summary: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+} | null;
+// Variable: CHAPTERS_FOR_STORY_QUERY
+// Query: *[_type == "chapter" && story_title == $title]{  _id, chapter_title, slug, chapter_number, body}
+export type CHAPTERS_FOR_STORY_QUERYResult = Array<{
   _id: string;
   chapter_title: string;
   slug: Slug;
-  publishedAt: string;
-}>;
-// Variable: CHAPTER_QUERY
-// Query: *[_type == "chapter" && slug.current == $slug][0]{  chapter_title, body, mainImage}
-export type CHAPTER_QUERYResult = {
-  chapter_title: string;
+  chapter_number: number;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -210,14 +381,46 @@ export type CHAPTER_QUERYResult = {
     _type: "block";
     _key: string;
   }> | null;
-  mainImage: null;
+}>;
+// Variable: FIRST_CHAPTER_QUERY
+// Query: *[_type == "chapter" && story_title == $title][0]{  _id, chapter_title, slug, chapter_number, body}
+export type FIRST_CHAPTER_QUERYResult = {
+  _id: string;
+  chapter_title: string;
+  slug: Slug;
+  chapter_number: number;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"chapter\" && defined(slug.current)][0...12]{\n  _id, chapter_title, slug, publishedAt\n}": CHAPTERS_QUERYResult;
-    "*[_type == \"chapter\" && slug.current == $slug][0]{\n  chapter_title, body, mainImage\n}": CHAPTER_QUERYResult;
+    "*[_type == \"genre\"]{\n  _id, title, slug\n}": GENRES_QUERYResult;
+    "*[_type == \"fandom\" && genre == $genre]{\n  _id, title, slug\n}": FANDOMS_QUERYResult;
+    "*[_type == \"story\" && fandom == $fandom]{\n  _id, title, slug, summary\n}": STORIES_FOR_FANDOM_QUERYResult;
+    "*[_type == \"story\" && fandom == $fandom][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_FANDOM_QUERYResult;
+    "*[_type == \"story\" && genre == $genre][0...3]{\n  _id, title, slug, summary\n}": THREE_STORIES_FOR_GENRE_QUERYResult;
+    "*[_type == \"story\" && featured == true]{\n  _id, title, slug, summary\n}": FEATURED_STORIES_QUERYResult;
+    "*[_type == \"story\" && slug.current == $slug][0]{\n  _id, title, slug, summary\n}": STORY_QUERYResult;
+    "*[_type == \"chapter\" && story_title == $title]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTERS_FOR_STORY_QUERYResult;
+    "*[_type == \"chapter\" && story_title == $title][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": FIRST_CHAPTER_QUERYResult;
   }
 }

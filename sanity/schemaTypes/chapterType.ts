@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const chapterType = defineType({
   name: "chapter",
-  title: "chapter",
+  title: "Chapter",
   type: "document",
   fields: [
     defineField({
@@ -22,37 +22,8 @@ export const chapterType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "master_title",
+      name: "story_title",
       type: "string",
-    }),
-    defineField({
-      name: "genre",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "fandom",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    {
-      name: "keywords",
-      title: "Keywords",
-      type: "array",
-      of: [{ type: "string" }],
-      options: {
-        layout: "tags",
-      },
-    },
-    defineField({
-      name: "publishedAt",
-      type: "datetime",
-      initialValue: () => new Date().toISOString(),
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "image",
-      type: "image",
     }),
     defineField({
       name: "body",
