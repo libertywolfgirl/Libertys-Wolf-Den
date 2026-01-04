@@ -1,4 +1,4 @@
-import { Button, Card, Group, Stack, Text, Title } from "@mantine/core";
+import { Button, Card, Flex, Group, Stack, Text, Title } from "@mantine/core";
 import { Story } from "../../sanity/types";
 import Image from "next/image";
 import { urlFor } from "../_utils/imageUrl";
@@ -20,22 +20,22 @@ const StoryCard = async ({ story }: { story: Story }) => {
   });
 
   return (
-    <Card h={400} shadow="sm" padding="lg" radius="md" withBorder>
+    <Card h={500} maw={300} shadow="sm" p="lg" radius="md" withBorder>
       {image && (
-        <Card.Section>
+        <Flex align="center" justify="center">
           <Image
             src={urlFor(image).url()}
             alt={title}
             width={300}
-            height={150}
-            style={{ objectFit: "cover" }}
+            height={600}
+            style={{ width: "auto", height: "100%", maxHeight: 300 }}
           />
-        </Card.Section>
+        </Flex>
       )}
       <Stack h="100%" justify="space-evenly">
-        <Group justify="space-between" mt="md" mb="xs">
+        <Group justify="space-between" mt="md">
           <Link
-            href={`/fanfiction/${genreSlug.slug.current}`}
+            href={`/fanfiction/${genreSlug?.slug.current}`}
             style={{ textDecoration: "none" }}
           >
             <Text size="sm" c="dimmed">
@@ -43,7 +43,7 @@ const StoryCard = async ({ story }: { story: Story }) => {
             </Text>
           </Link>
           <Link
-            href={`/fanfiction/${genreSlug.slug.current}/${fandomSlug.slug.current}`}
+            href={`/fanfiction/${genreSlug?.slug.current}/${fandomSlug?.slug.current}`}
             style={{ textDecoration: "none" }}
           >
             <Text size="sm" c="dimmed">
@@ -53,16 +53,16 @@ const StoryCard = async ({ story }: { story: Story }) => {
         </Group>
         <Title order={4}>{title}</Title>
         {summary && (
-          <Text size="sm" lineClamp={5}>
+          <Text size="sm" lineClamp={6}>
             {summary}
           </Text>
         )}
       </Stack>
       <Link
-        href={`/fanfiction/${genreSlug.slug.current}/${fandomSlug.slug.current}/${slug.current}`}
+        href={`/fanfiction/${genreSlug?.slug.current}/${fandomSlug?.slug.current}/${slug.current}`}
         style={{ textDecoration: "none" }}
       >
-        <Button color="teal.6" fullWidth mt="md" radius="md">
+        <Button color="teal.6" fullWidth mt="sm" radius="md">
           Read Now
         </Button>
       </Link>

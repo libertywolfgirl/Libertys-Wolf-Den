@@ -1,7 +1,8 @@
-import { Flex, Stack, Text, Title } from "@mantine/core";
+import { Stack, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../sanity/lib/live";
 import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
-import StoryCard from "./_components/StoryCard";
+import StoryGrid from "./_components/StoryGrid";
+import { Story } from "../sanity/types";
 
 const options = { next: { revalidate: 30 } };
 
@@ -27,11 +28,7 @@ export default async function HomePage() {
         types written by me. Enjoy your stay.
       </Text>
       {featuredStories && featuredStories.length > 0 && (
-        <Flex direction={{ base: "column", sm: "row" }} gap="2rem">
-          {featuredStories.map((story) => (
-            <StoryCard key={story._id} story={story as any} />
-          ))}
-        </Flex>
+        <StoryGrid stories={featuredStories as Story[]} />
       )}
     </Stack>
   );
