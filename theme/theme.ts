@@ -2,11 +2,14 @@
 
 import {
   AppShell,
-  AppShellHeader,
-  AppShellNavbar,
+  Card,
   createTheme,
+  MantineTheme,
+  MantineThemeOverride,
   Title,
 } from "@mantine/core";
+import titleClasses from "./Title.module.css";
+import textClasses from "./Text.module.css";
 
 export const theme = createTheme({
   fontFamily: "Open Sans, sans-serif",
@@ -46,18 +49,18 @@ export const theme = createTheme({
             color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[2]})`,
           },
         }),
+        classNames: titleClasses,
       },
     }),
-    Text: Title.extend({
-      defaultProps: {
-        styles: (theme) => ({
-          root: {
-            color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[1]})`,
-          },
-        }),
-      },
-    }),
-    Card: Title.extend({
+    Text: {
+      styles: (theme: MantineTheme) => ({
+        root: {
+          color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[1]})`,
+        },
+      }),
+      classNames: textClasses,
+    },
+    Card: Card.extend({
       defaultProps: {
         styles: (theme) => ({
           root: {
@@ -67,4 +70,4 @@ export const theme = createTheme({
       },
     }),
   },
-});
+} as MantineThemeOverride);

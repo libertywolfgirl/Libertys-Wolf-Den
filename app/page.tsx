@@ -19,7 +19,7 @@ export default async function HomePage() {
         Featured Stories
       </Title>
       {featuredStories && featuredStories.length > 0 && (
-        <StoryGrid stories={featuredStories as Story[]} />
+        <StoryGrid stories={featuredStories as Story[]} cols={3} />
       )}
     </Box>
   );
