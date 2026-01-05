@@ -29,7 +29,7 @@ const AppShellContainer = ({ children }: Props) => {
       <AppShell.Header>
         <Group h="100%" px="md" gap="xl">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Title order={5}>Liberty's Wolf Den</Title>
+          <Title order={5}>Liberty&apos;s Wolf Den</Title>
           <Avatar src="/wolf-logo.jpg" size={50} radius="xl" />
           <ColorSchemeToggle />
         </Group>
