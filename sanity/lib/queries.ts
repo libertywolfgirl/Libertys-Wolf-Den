@@ -15,6 +15,7 @@ export const GENRE_BY_SLUG_QUERY =
 export const GENRES_WITH_STORIES_QUERY = defineQuery(`
   *[_type == "genre"]{
     _id,
+    slug,
     title,
     "stories": *[
       _type == "story" &&
