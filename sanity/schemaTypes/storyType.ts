@@ -32,12 +32,16 @@ export const storyType = defineType({
     },
     defineField({
       name: "genre",
-      type: "string",
+      title: "Genre",
+      type: "reference",
+      to: [{ type: "genre" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "fandom",
-      type: "string",
+      title: "Fandom",
+      type: "reference",
+      to: [{ type: "fandom" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
