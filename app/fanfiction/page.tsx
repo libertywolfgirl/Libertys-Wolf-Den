@@ -1,7 +1,12 @@
+import HeroSection from "../_components/HeroSection";
+
 const FanfictionPage = () => {
   return (
     <div>
-      <h1>Fanfiction</h1>
+      <HeroSection
+        title="Fanfiction"
+        subtitle="Explore my collection of fanfiction stories"
+      />
       {/* 
         Show list of genres with three fanfic cards for each genre. 
           1. Fetch all genres.
