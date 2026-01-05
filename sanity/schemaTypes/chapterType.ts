@@ -22,8 +22,10 @@ export const chapterType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "story_title",
-      type: "string",
+      name: "story",
+      title: "Story",
+      type: "reference",
+      to: [{ type: "story" }],
     }),
     defineField({
       name: "body",

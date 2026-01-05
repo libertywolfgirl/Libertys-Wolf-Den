@@ -29,13 +29,13 @@ const AppShellContainer = ({ children }: Props) => {
       <AppShell.Header>
         <Group h="100%" px="md" gap="xl">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Title order={3}>Liberty's Wolf Den</Title>
+          <Title order={5}>Liberty&apos;s Wolf Den</Title>
           <Avatar src="/wolf-logo.jpg" size={50} radius="xl" />
           <ColorSchemeToggle />
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Title order={4}>Navigation</Title>
+        <Title order={6}>Navigation</Title>
         {Array(15)
           .fill(0)
           .map((_, index) => (

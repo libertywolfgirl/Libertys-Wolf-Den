@@ -13,7 +13,7 @@ const HomePageHero = () => {
         mih="22rem"
       >
         <Title order={1} ta="center" c="blue.1">
-          Liberty's Wolf Den
+          Liberty&apos;s Wolf Den
         </Title>
         <Text maw="30rem" ta="center" c="blue.0">
           Welcome to my den of stories. Feel free to browse fanfiction of all

@@ -1,0 +1,9 @@
+.root {
+  font-size: 1rem;
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .root {
+    font-size: 0.75rem;
+  }
+}
