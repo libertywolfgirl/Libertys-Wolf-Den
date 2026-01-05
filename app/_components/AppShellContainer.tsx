@@ -1,6 +1,13 @@
 "use client";
 
-import { AppShell, Burger, Group, Skeleton, Title } from "@mantine/core";
+import {
+  AppShell,
+  Avatar,
+  Burger,
+  Group,
+  Skeleton,
+  Title,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
 import ColorSchemeToggle from "../../theme/ColorSchemeToggle";
@@ -20,9 +27,10 @@ const AppShellContainer = ({ children }: Props) => {
       withBorder={false}
     >
       <AppShell.Header>
-        <Group h="100%" px="md">
+        <Group h="100%" px="md" gap="xl">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Title order={3}>Liberty's Wolf Den</Title>
+          <Avatar src="/wolf-logo.jpg" size={50} radius="xl" />
           <ColorSchemeToggle />
         </Group>
       </AppShell.Header>

@@ -1,8 +1,9 @@
-import { Stack, Text, Title } from "@mantine/core";
+import { Box, Title } from "@mantine/core";
 import { sanityFetch } from "../sanity/lib/live";
 import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
 import StoryGrid from "./_components/StoryGrid";
 import { Story } from "../sanity/types";
+import HomePageHero from "./_components/HomePageHero";
 
 const options = { next: { revalidate: 30 } };
 
@@ -12,24 +13,14 @@ export default async function HomePage() {
   });
 
   return (
-    <Stack
-      justify="center"
-      align="center"
-      pt="6rem"
-      pb="2rem"
-      px="1rem"
-      gap="5rem"
-    >
-      <Title order={1} ta="center">
-        Liberty's Wolf Den
+    <Box mx="auto" mb="2rem">
+      <HomePageHero />
+      <Title order={2} ta="center" mb="2rem">
+        Featured Stories
       </Title>
-      <Text>
-        Welcome to my den of stories. Feel free to browse fanfiction of all
-        types written by me. Enjoy your stay.
-      </Text>
       {featuredStories && featuredStories.length > 0 && (
         <StoryGrid stories={featuredStories as Story[]} />
       )}
-    </Stack>
+    </Box>
   );
 }
