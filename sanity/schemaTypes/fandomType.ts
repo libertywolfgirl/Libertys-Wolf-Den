@@ -23,7 +23,9 @@ export const fandomType = defineType({
     }),
     defineField({
       name: "genre",
-      type: "string",
+      title: "Genre",
+      type: "reference",
+      to: [{ type: "genre" }],
       validation: (rule) => rule.required(),
     }),
     defineField({

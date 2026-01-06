@@ -1,21 +1,68 @@
-import { Stack, Title, Text } from "@mantine/core";
+import { Box, Flex, Title } from "@mantine/core";
+import HeroSection from "../../_components/HeroSection";
+import { sanityFetch } from "../../../sanity/lib/live";
+import { FANDOMS_WITH_STORIES_QUERY } from "../../../sanity/lib/queries";
+import NotFound from "../../not-found";
+import { FANDOMS_WITH_STORIES_QUERYResult } from "../../../sanity/types";
+import StoryGrid from "../../_components/StoryGrid";
+import BrowseAllButton from "../../_components/BrowseAllButton";
 
-const GenrePage = () => {
+export const revalidate = 60;
+
+const GenrePage = async ({ params }: { params: { genre: string } }) => {
+  const { data: fandoms } = await sanityFetch({
+    query: FANDOMS_WITH_STORIES_QUERY,
+    params: { genreSlug: params.genre },
+  });
+
+  const typedFandoms = fandoms as FANDOMS_WITH_STORIES_QUERYResult;
+
+  const genreName = typedFandoms[0].stories[0].genre.title;
+
+  if (!typedFandoms || typedFandoms.length === 0) {
+    return <NotFound />;
+  }
+
   return (
-    <Stack justify="center" align="center" pt="10rem" px="1rem" gap="5rem">
-      <Title order={1} ta="center">
-        Genre
-      </Title>
-      <Text>
-        Explore stories from various genres. Choose a genre to dive into.
-      </Text>
-      {/* 
-        Show list of fandoms with three fanfic cards for each fandom 
-          1. Fetch all fandoms for the genre.
-          2. For each fandom, fetch three stories.
-          3. Fetch first chapter of each story.
-      */}
-    </Stack>
+    <Box>
+      <HeroSection
+        title={genreName}
+        subtitle={`Check out my ${genreName} fanfiction!`}
+      />
+      <Box mx="auto" my="4rem">
+        <Title order={2} ta="center" my="2rem">
+          Fandoms
+        </Title>
+        <Title order={6} fw={400} ta="center" mb="5rem">
+          Explore stories from all of your favorite fandoms from the {genreName}{" "}
+          genre.
+        </Title>
+        {typedFandoms &&
+          typedFandoms.length > 0 &&
+          typedFandoms.map((fandom) => (
+            <Flex
+              key={fandom._id}
+              direction="column"
+              mb="5rem"
+              gap="2rem"
+              align="center"
+              justify="center"
+            >
+              <Title order={3} ta="center">
+                {fandom.title}
+              </Title>
+              <StoryGrid
+                stories={fandom.stories}
+                cols={fandom.stories.length}
+              />
+              <BrowseAllButton
+                href={`/fanfiction/${params.genre}/${fandom.slug.current}`}
+                title={`${fandom.title} Stories`}
+              />
+            </Flex>
+          ))}
+      </Box>
+    </Box>
   );
 };
 

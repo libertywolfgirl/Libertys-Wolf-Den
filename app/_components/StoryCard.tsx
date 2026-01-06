@@ -1,10 +1,12 @@
 import { Button, Card, Flex, Group, Stack, Text, Title } from "@mantine/core";
-import { Story } from "../../sanity/types";
+import { Story, STORY_QUERYResult } from "../../sanity/types";
 import Image from "next/image";
 import { urlFor } from "../_utils/imageUrl";
 import Link from "next/link";
 
-const StoryCard = ({ story }: { story: Story }) => {
+type StoryCardStory = NonNullable<STORY_QUERYResult>;
+
+const StoryCard = ({ story }: { story: StoryCardStory }) => {
   const { title, slug, genre, fandom, image, summary } = story;
 
   return (
