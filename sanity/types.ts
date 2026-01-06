@@ -99,7 +99,12 @@ export type Fandom = {
   _rev: string;
   title: string;
   slug: Slug;
-  genre: string;
+  genre: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "genre";
+  };
   image?: {
     asset?: {
       _ref: string;
@@ -306,9 +311,10 @@ export type FANDOM_BY_SLUG_QUERYResult = {
   slug: Slug;
 } | null;
 // Variable: FANDOMS_WITH_STORIES_QUERY
-// Query: *[_type == "fandom"]{    _id,    title,    "stories": *[      _type == "story" &&      fandom._ref == ^._id    ][0...3]{      _id,      title,      slug,      summary,      image,      "genre": genre->{        title,        slug      },      "fandom": fandom->{        title,        slug      }    }  }
+// Query: *[_type == "fandom" && genre->slug.current == $genreSlug]{    _id,    slug,    title,    "stories": *[      _type == "story" &&      fandom._ref == ^._id    ][0...3]{      _id,      title,      slug,      summary,      image,      "genre": genre->{        title,        slug      },      "fandom": fandom->{        title,        slug      }    }  }
 export type FANDOMS_WITH_STORIES_QUERYResult = Array<{
   _id: string;
+  slug: Slug;
   title: string;
   stories: Array<{
     _id: string;
@@ -483,7 +489,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "genre"]{\n    _id,\n    slug,\n    title,\n    "stories": *[\n      _type == "story" &&\n      genre._ref == ^._id\n    ][0...3]{\n      _id,\n      title,\n      slug,\n      summary,\n      image,\n      "genre": genre->{\n        title,\n        slug\n      },\n      "fandom": fandom->{\n        title,\n        slug\n      }\n    }\n  }\n': GENRES_WITH_STORIES_QUERYResult;
     '*[_type == "fandom" && genre == $genre]{\n  _id, title, slug\n}': FANDOMS_QUERYResult;
     '*[_type == "fandom" && slug.current == $slug][0]{\n  _id, title, slug\n}': FANDOM_BY_SLUG_QUERYResult;
-    '\n  *[_type == "fandom"]{\n    _id,\n    title,\n    "stories": *[\n      _type == "story" &&\n      fandom._ref == ^._id\n    ][0...3]{\n      _id,\n      title,\n      slug,\n      summary,\n      image,\n      "genre": genre->{\n        title,\n        slug\n      },\n      "fandom": fandom->{\n        title,\n        slug\n      }\n    }\n  }\n': FANDOMS_WITH_STORIES_QUERYResult;
+    '\n  *[_type == "fandom" && genre->slug.current == $genreSlug]{\n    _id,\n    slug,\n    title,\n    "stories": *[\n      _type == "story" &&\n      fandom._ref == ^._id\n    ][0...3]{\n      _id,\n      title,\n      slug,\n      summary,\n      image,\n      "genre": genre->{\n        title,\n        slug\n      },\n      "fandom": fandom->{\n        title,\n        slug\n      }\n    }\n  }\n': FANDOMS_WITH_STORIES_QUERYResult;
     '*[_type == "story" && fandom == $fandom]{\n    _id,\n    title,\n    slug,\n    summary,\n    image,\n    "genre": genre->{\n      title,\n      slug\n    },\n    "fandom": fandom->{\n      title,\n      slug\n    }\n  }\n': STORIES_FOR_FANDOM_QUERYResult;
     '*[_type == "story" && featured == true]{\n    _id,\n    title,\n    slug,\n    summary,\n    image,\n    "genre": genre->{\n      title,\n      slug\n    },\n    "fandom": fandom->{\n      title,\n      slug\n    }\n  }\n': FEATURED_STORIES_QUERYResult;
     '*[_type == "story" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    summary,\n    image,\n    "genre": genre->{\n      title,\n      slug\n    },\n    "fandom": fandom->{\n      title,\n      slug\n    }\n  }\n': STORY_QUERYResult;

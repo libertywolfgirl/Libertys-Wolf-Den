@@ -41,10 +41,7 @@ const FanfictionPage = async () => {
               <Title order={3} ta="center">
                 {genre.title}
               </Title>
-              <StoryGrid
-                stories={genre.stories as Story[]}
-                cols={genre.stories.length}
-              />
+              <StoryGrid stories={genre.stories} cols={genre.stories.length} />
               <Link
                 href={`/fanfiction/${genre.slug.current}`}
                 style={{ textDecoration: "none" }}

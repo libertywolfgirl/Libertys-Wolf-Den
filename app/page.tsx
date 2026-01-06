@@ -26,7 +26,7 @@ export default async function HomePage() {
         Featured Stories
       </Title>
       {featuredStories && featuredStories.length > 0 && (
-        <StoryGrid stories={featuredStories as Story[]} cols={3} />
+        <StoryGrid stories={featuredStories} cols={3} />
       )}
       <Link href="/fanfiction" style={{ textDecoration: "none" }}>
         <Button color="teal.9" radius="xl" size="lg" mt="0.5rem">

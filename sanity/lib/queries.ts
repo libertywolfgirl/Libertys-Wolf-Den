@@ -52,8 +52,9 @@ export const FANDOM_BY_SLUG_QUERY =
 
 // Fetch fandoms and three stories for each fandom
 export const FANDOMS_WITH_STORIES_QUERY = defineQuery(`
-  *[_type == "fandom"]{
+  *[_type == "fandom" && genre->slug.current == $genreSlug]{
     _id,
+    slug,
     title,
     "stories": *[
       _type == "story" &&
