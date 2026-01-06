@@ -5,6 +5,7 @@ import StoryGrid from "./_components/StoryGrid";
 import { Story } from "../sanity/types";
 import HomePageHero from "./_components/HomePageHero";
 import Link from "next/link";
+import BrowseAllButton from "./_components/BrowseAllButton";
 
 const options = { next: { revalidate: 30 } };
 
@@ -28,11 +29,7 @@ export default async function HomePage() {
       {featuredStories && featuredStories.length > 0 && (
         <StoryGrid stories={featuredStories} cols={3} />
       )}
-      <Link href="/fanfiction" style={{ textDecoration: "none" }}>
-        <Button color="teal.9" radius="xl" size="lg" mt="0.5rem">
-          Browse All Fanfiction
-        </Button>
-      </Link>
+      <BrowseAllButton href="/fanfiction" title="Fanfiction" />
     </Flex>
   );
 }

@@ -2,7 +2,10 @@ import { BackgroundImage, Stack, Title, Text } from "@mantine/core";
 
 const HomePageHero = () => {
   return (
-    <BackgroundImage src="/wolf-pack.jpg">
+    <BackgroundImage
+      src="/wolf-pack.jpg"
+      style={{ backgroundPosition: "50% 40%" }}
+    >
       <Stack
         justify="center"
         align="center"

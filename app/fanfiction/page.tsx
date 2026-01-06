@@ -5,6 +5,7 @@ import { GENRES_WITH_STORIES_QUERYResult, Story } from "../../sanity/types";
 import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
 import Link from "next/link";
+import BrowseAllButton from "../_components/BrowseAllButton";
 
 const FanfictionPage = async () => {
   const { data: genres } = await sanityFetch({
@@ -42,14 +43,10 @@ const FanfictionPage = async () => {
                 {genre.title}
               </Title>
               <StoryGrid stories={genre.stories} cols={genre.stories.length} />
-              <Link
+              <BrowseAllButton
                 href={`/fanfiction/${genre.slug.current}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button color="teal.9" radius="xl" size="lg">
-                  Browse All {genre.title} Stories
-                </Button>
-              </Link>
+                title={`${genre.title} Stories`}
+              />
             </Flex>
           ))}
       </Box>
