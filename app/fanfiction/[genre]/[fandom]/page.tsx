@@ -6,7 +6,11 @@ import NotFound from "../../../not-found";
 import HeroSection from "../../../_components/HeroSection";
 import StoryGrid from "../../../_components/StoryGrid";
 
-const FandomPage = async ({ params }: { params: { fandom: string } }) => {
+const FandomPage = async ({
+  params,
+}: {
+  params: Promise<{ fandom: string }>;
+}) => {
   const { fandom } = await params;
 
   const { data: stories } = await sanityFetch({
@@ -30,7 +34,7 @@ const FandomPage = async ({ params }: { params: { fandom: string } }) => {
         title={fandomName}
         subtitle={`Browse all of my ${fandomName} fanfiction!`}
       />
-      <Box mx="auto" my="4rem">
+      <Box mx="auto" my="2rem">
         <Title order={2} ta="center" my="2rem">
           Stories
         </Title>

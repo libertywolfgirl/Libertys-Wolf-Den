@@ -19,11 +19,11 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" my="4rem">
+      <Box mx="auto" my="2rem">
         <Title order={2} ta="center" my="2rem">
           Genres
         </Title>
-        <Title order={6} fw={400} ta="center" mb="5rem">
+        <Title order={6} fw={400} ta="center" mb="4rem">
           Discover stories across various genres, each with its own unique
           flavor and style.
         </Title>

@@ -9,7 +9,11 @@ import BrowseAllButton from "../../_components/BrowseAllButton";
 
 export const revalidate = 60;
 
-const GenrePage = async ({ params }: { params: { genre: string } }) => {
+const GenrePage = async ({
+  params,
+}: {
+  params: Promise<{ genre: string }>;
+}) => {
   const { genre } = await params;
 
   const { data: fandoms } = await sanityFetch({
@@ -31,11 +35,11 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
         title={genreName}
         subtitle={`Check out my ${genreName} fanfiction!`}
       />
-      <Box mx="auto" my="4rem">
+      <Box mx="auto" my="2rem">
         <Title order={2} ta="center" my="2rem">
           Fandoms
         </Title>
-        <Title order={6} fw={400} ta="center" mb="5rem">
+        <Title order={6} fw={400} ta="center" mb="4rem">
           Explore stories from all of your favorite fandoms from the {genreName}{" "}
           genre.
         </Title>

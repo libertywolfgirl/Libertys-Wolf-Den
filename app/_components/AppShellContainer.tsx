@@ -11,6 +11,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
 import ColorSchemeToggle from "../../theme/ColorSchemeToggle";
+import Link from "next/link";
 
 type Props = {
   children?: ReactNode;
@@ -29,7 +30,9 @@ const AppShellContainer = ({ children }: Props) => {
       <AppShell.Header>
         <Group h="100%" px="md" gap="xl">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Title order={5}>Liberty&apos;s Wolf Den</Title>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <Title order={5}>Liberty&apos;s Wolf Den</Title>
+          </Link>
           <Avatar src="/wolf-logo.jpg" size={50} radius="xl" />
           <ColorSchemeToggle />
         </Group>

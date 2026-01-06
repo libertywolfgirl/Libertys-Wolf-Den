@@ -9,19 +9,18 @@ const HomePageHero = () => {
       <Stack
         justify="center"
         align="center"
-        py="3rem"
+        py="7rem"
         px="1rem"
-        gap="2rem"
-        mb="4rem"
+        gap="3rem"
         mih="22rem"
       >
-        <Title order={1} ta="center" c="blue.1">
+        <Title order={1} ta="center" fw={800} c="blue.1">
           Liberty&apos;s Wolf Den
         </Title>
-        <Text maw="30rem" ta="center" c="blue.0">
+        <Title order={6} maw="30rem" ta="center" fw={800} c="blue.0">
           Welcome to my den of stories. Feel free to browse fanfiction of all
           types written by me. Enjoy your stay.
-        </Text>
+        </Title>
       </Stack>
     </BackgroundImage>
   );
