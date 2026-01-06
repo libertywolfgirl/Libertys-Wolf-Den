@@ -78,8 +78,8 @@ export const FANDOMS_WITH_STORIES_QUERY = defineQuery(`
 `);
 
 // Fetch all stories for a fandom
-export const STORIES_FOR_FANDOM_QUERY =
-  defineQuery(`*[_type == "story" && fandom == $fandom]{
+export const STORIES_FOR_FANDOM_QUERY = defineQuery(`
+  *[_type == "story" && fandom->slug.current == $fandomSlug]{
     _id,
     title,
     slug,

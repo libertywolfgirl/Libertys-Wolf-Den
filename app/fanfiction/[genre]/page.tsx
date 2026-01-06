@@ -10,9 +10,11 @@ import BrowseAllButton from "../../_components/BrowseAllButton";
 export const revalidate = 60;
 
 const GenrePage = async ({ params }: { params: { genre: string } }) => {
+  const { genre } = await params;
+
   const { data: fandoms } = await sanityFetch({
     query: FANDOMS_WITH_STORIES_QUERY,
-    params: { genreSlug: params.genre },
+    params: { genreSlug: genre },
   });
 
   const typedFandoms = fandoms as FANDOMS_WITH_STORIES_QUERYResult;
@@ -56,7 +58,7 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
                 cols={fandom.stories.length}
               />
               <BrowseAllButton
-                href={`/fanfiction/${params.genre}/${fandom.slug.current}`}
+                href={`/fanfiction/${genre}/${fandom.slug.current}`}
                 title={`${fandom.title} Stories`}
               />
             </Flex>
