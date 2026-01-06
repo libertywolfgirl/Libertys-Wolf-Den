@@ -1,10 +1,8 @@
-import { Button, Flex, Title } from "@mantine/core";
+import { Flex, Title } from "@mantine/core";
 import { sanityFetch } from "../sanity/lib/live";
 import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
 import StoryGrid from "./_components/StoryGrid";
-import { Story } from "../sanity/types";
 import HomePageHero from "./_components/HomePageHero";
-import Link from "next/link";
 import BrowseAllButton from "./_components/BrowseAllButton";
 
 const options = { next: { revalidate: 30 } };

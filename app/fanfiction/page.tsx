@@ -1,10 +1,9 @@
-import { Box, Button, Flex, Title } from "@mantine/core";
+import { Box, Flex, Title } from "@mantine/core";
 import { sanityFetch } from "../../sanity/lib/live";
 import { GENRES_WITH_STORIES_QUERY } from "../../sanity/lib/queries";
-import { GENRES_WITH_STORIES_QUERYResult, Story } from "../../sanity/types";
+import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
-import Link from "next/link";
 import BrowseAllButton from "../_components/BrowseAllButton";
 
 const FanfictionPage = async () => {
@@ -20,7 +19,7 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" mt="4rem" mb="6rem">
+      <Box mx="auto" my="4rem">
         <Title order={2} ta="center" my="2rem">
           Genres
         </Title>
