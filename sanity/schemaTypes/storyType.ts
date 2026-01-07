@@ -62,5 +62,15 @@ export const storyType = defineType({
       type: "text",
       rows: 5,
     }),
+    defineField({
+      name: "pairings",
+      type: "text",
+      rows: 1,
+    }),
+    defineField({
+      name: "notes",
+      type: "text",
+      rows: 3,
+    }),
   ],
 });
