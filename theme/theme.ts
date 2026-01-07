@@ -19,7 +19,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            backgroundColor: `light-dark(${theme.colors.cyan[1]}, ${theme.colors.cyan[7]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[0]}, ${theme.colors.cyan[9]})`,
           },
         }),
       },
@@ -28,7 +28,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           header: {
-            backgroundColor: `light-dark(${theme.colors.cyan[5]}, ${theme.colors.cyan[9]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[4]}, ${theme.colors.cyan[8]})`,
           },
         }),
       },
@@ -37,7 +37,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           navbar: {
-            backgroundColor: `light-dark(${theme.colors.cyan[3]}, ${theme.colors.cyan[8]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[2]}, ${theme.colors.cyan[7]})`,
           },
         }),
       },
