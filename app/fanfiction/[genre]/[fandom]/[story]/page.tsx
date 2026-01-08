@@ -1,11 +1,15 @@
-import { Box, Stack } from "@mantine/core";
+import { Box, Button, Group, Stack, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../../sanity/lib/live";
-import { STORY_WITH_FIRST_CHAPTER_QUERY } from "../../../../../sanity/lib/queries";
+import { STORY_PAGE_QUERY } from "../../../../../sanity/lib/queries";
 import HeroSection from "../../../../_components/HeroSection";
-import { STORY_WITH_FIRST_CHAPTER_QUERYResult } from "../../../../../sanity/types";
+import { STORY_PAGE_QUERYResult } from "../../../../../sanity/types";
 import NotFound from "../../../../not-found";
 import ImageContainer from "../../../../_components/ImageContainer";
 import StoryInfo from "../../../../_components/StoryInfo";
+import Link from "next/link";
+import ChapterDropdown, {
+  ChapterOption,
+} from "../../../../_components/ChapterDropdown";
 
 const StoryPage = async ({
   params,
@@ -15,23 +19,22 @@ const StoryPage = async ({
   const { story } = await params;
 
   const { data: storyData } = await sanityFetch({
-    query: STORY_WITH_FIRST_CHAPTER_QUERY,
+    query: STORY_PAGE_QUERY,
     params: { storySlug: story },
   });
 
-  const typedStory = storyData as STORY_WITH_FIRST_CHAPTER_QUERYResult;
+  const typedStory = storyData as STORY_PAGE_QUERYResult;
 
-  const fandomName = typedStory?.fandom.title;
+  if (!typedStory) return <NotFound />;
 
-  if (!typedStory) {
-    return <NotFound />;
-  }
+  const firstChapter = typedStory.firstChapter;
+  const chapters: ChapterOption[] = typedStory.chapters || [];
 
   return (
     <Box pb="2rem">
       <HeroSection
         title={typedStory.title}
-        subtitle={`Read this story from the ${fandomName} fandom!`}
+        subtitle={`Read this story from the ${typedStory.fandom.title} fandom!`}
       />
       <Stack px="2rem">
         {typedStory.image && (
@@ -42,6 +45,22 @@ const StoryPage = async ({
           />
         )}
         <StoryInfo story={typedStory} />
+        {firstChapter && (
+          <Group pt="1rem">
+            <Title order={5}>Read the first part:</Title>
+            <Link
+              href={`./${firstChapter.slug.current}`}
+              style={{ textDecoration: "none" }}
+            >
+              <Button color="teal.7" radius="xl" size="lg">
+                {typedStory.title} - {firstChapter.chapter_title}
+              </Button>
+            </Link>
+          </Group>
+        )}
+        {chapters.length > 0 && (
+          <ChapterDropdown storySlug={story} chapters={chapters} />
+        )}
       </Stack>
     </Box>
   );

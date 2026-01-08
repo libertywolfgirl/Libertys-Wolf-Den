@@ -137,6 +137,41 @@ export const STORY_WITH_FIRST_CHAPTER_QUERY = defineQuery(`
   }
 `);
 
+// Fetch one story by its slug and then fetch its chapter where the chapter number is 0 and then fetch all chapters
+export const STORY_PAGE_QUERY = defineQuery(`
+  *[_type == "story" && slug.current == $storySlug][0]{
+    _id,
+    title,
+    slug,
+    "fandom": fandom->{
+      title,
+      slug
+    },
+    summary,
+    pairings,
+    notes,
+    image,
+    "firstChapter": *[
+      _type == "chapter" &&
+      story._ref == ^._id &&
+      chapter_number == 0
+    ][0]{
+      chapter_title,
+      slug,
+      chapter_number,
+    },
+    "chapters": *[
+      _type == "chapter" &&
+      story._ref == ^._id] | 
+      order(chapter_number asc
+      ){
+        chapter_title,
+        slug,
+        chapter_number
+    }
+  }
+`);
+
 // Fetch all chapters for a story
 export const CHAPTERS_FOR_STORY_QUERY =
   defineQuery(`*[_type == "chapter" && story_title == $title]{
