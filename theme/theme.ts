@@ -14,6 +14,7 @@ import textClasses from "./Text.module.css";
 export const theme = createTheme({
   fontFamily: "Open Sans, sans-serif",
   primaryColor: "cyan",
+  black: "#011a1fff",
   colors: {
     dark: [
       "#f1f8f9",

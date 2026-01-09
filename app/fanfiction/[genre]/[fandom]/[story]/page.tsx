@@ -36,31 +36,33 @@ const StoryPage = async ({
         title={typedStory.title}
         subtitle={`Read this story from the ${typedStory.fandom.title} fandom!`}
       />
-      <Stack px="2rem">
+      <Stack px="2rem" gap={0}>
         {typedStory.image && (
           <ImageContainer
             image={typedStory.image}
             title={typedStory.title}
-            padding="2rem"
+            padding="1.5rem"
           />
         )}
         <StoryInfo story={typedStory} />
-        {firstChapter && (
-          <Group pt="1rem">
-            <Title order={5}>Read the first part:</Title>
-            <Link
-              href={`./${firstChapter.slug.current}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Button color="teal.7" radius="xl" size="lg">
-                {typedStory.title} - {firstChapter.chapter_title}
-              </Button>
-            </Link>
-          </Group>
-        )}
-        {chapters.length > 0 && (
-          <ChapterDropdown storySlug={story} chapters={chapters} />
-        )}
+        <Group justify="space-evenly">
+          {firstChapter && (
+            <Group pt="1rem">
+              <Title order={5}>Read the first part:</Title>
+              <Link
+                href={`./${firstChapter.slug.current}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Button color="teal.7" radius="xl" size="lg">
+                  {typedStory.title} - {firstChapter.chapter_title}
+                </Button>
+              </Link>
+            </Group>
+          )}
+          {chapters.length > 0 && (
+            <ChapterDropdown storySlug={story} chapters={chapters} />
+          )}
+        </Group>
       </Stack>
     </Box>
   );
