@@ -14,6 +14,20 @@ import textClasses from "./Text.module.css";
 export const theme = createTheme({
   fontFamily: "Open Sans, sans-serif",
   primaryColor: "cyan",
+  colors: {
+    dark: [
+      "#f1f8f9",
+      "#e5eced",
+      "#c6d9db",
+      "#a3c4c9",
+      "#87b3ba",
+      "#74a8b0",
+      "#376e76",
+      "#3c6b71",
+      "#356e78",
+      "#31727c",
+    ],
+  },
   components: {
     AppShell: AppShell.extend({
       defaultProps: {
@@ -64,7 +78,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            backgroundColor: `light-dark(${theme.colors.gray[0]}, ${theme.colors.gray[8]})`,
+            backgroundColor: `light-dark(${theme.colors.teal[0]}, ${theme.colors.dark[9]})`,
           },
         }),
       },
