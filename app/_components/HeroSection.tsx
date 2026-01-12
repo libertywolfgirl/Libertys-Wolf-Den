@@ -17,7 +17,9 @@ const HeroSection = ({
       gap="xl"
       className={classes.container}
     >
-      <Title order={1}>{title}</Title>
+      <Title order={1} ta="center">
+        {title}
+      </Title>
       <Title order={5} ta="center">
         {subtitle}
       </Title>

@@ -6,6 +6,7 @@ import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
 import ChapterPagination from "../../../../../_components/ChapterPagination";
 import { PortableText } from "@portabletext/react";
+import classes from "./page.module.css";
 
 const ChapterPage = async ({
   params,
@@ -30,7 +31,7 @@ const ChapterPage = async ({
   return (
     <Box>
       <HeroSection title={storyTitle} subtitle={typedChapter.chapter_title} />
-      <Stack p="2rem">
+      <Stack className={classes.bodyContent} p="2rem">
         <PortableText value={typedChapter.body} />
         <ChapterPagination previous={prevSlug} next={nextSlug} />
       </Stack>
