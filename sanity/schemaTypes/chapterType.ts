@@ -31,6 +31,7 @@ export const chapterType = defineType({
       name: "body",
       type: "array",
       of: [{ type: "block" }],
+      validation: (rule) => rule.required(),
     }),
   ],
 });

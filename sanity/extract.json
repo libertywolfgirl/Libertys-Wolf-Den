@@ -263,7 +263,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       }
     }
   },

@@ -28,7 +28,7 @@ export type Chapter = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "story";
   };
-  body?: Array<{
+  body: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -487,7 +487,7 @@ export type CHAPTERS_FOR_STORY_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
 }>;
 // Variable: CHAPTER_BY_SLUG_QUERY
 // Query: *[_type == "chapter" && slug.current == $slug][0]{  _id, chapter_title, slug, chapter_number, body}
@@ -513,7 +513,7 @@ export type CHAPTER_BY_SLUG_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
 } | null;
 // Variable: CHAPTER_BY_NUMBER_QUERY
 // Query: *[_type == "chapter" && chapter_number == $chapterNumber && story_title == $storyTitle][0]{  _id, chapter_title, slug, chapter_number, body}
@@ -539,15 +539,19 @@ export type CHAPTER_BY_NUMBER_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
 } | null;
 // Variable: CHAPTER_PAGE_QUERY
-// Query: *[_type == "chapter" &&    story->slug.current == $storySlug &&    slug.current == $chapterSlug  ][0]{    _id,    chapter_title,    slug,    chapter_number,    body,    "prev": *[      _type == "chapter" &&      story._ref == ^.story._ref &&      chapter_number == ^.chapter_number - 1    ][0]{ slug },    "next": *[      _type == "chapter" &&      story._ref == ^.story._ref &&      chapter_number == ^.chapter_number + 1    ][0]{ slug }  }
+// Query: *[_type == "chapter" &&    story->slug.current == $storySlug &&    slug.current == $chapterSlug  ][0]{    _id,    chapter_title,    slug,    chapter_number,    "story": story->{      title,      slug    },    body,    "prev": *[      _type == "chapter" &&      story._ref == ^.story._ref &&      chapter_number == ^.chapter_number - 1    ][0]{ slug },    "next": *[      _type == "chapter" &&      story._ref == ^.story._ref &&      chapter_number == ^.chapter_number + 1    ][0]{ slug }  }
 export type CHAPTER_PAGE_QUERYResult = {
   _id: string;
   chapter_title: string;
   slug: Slug;
   chapter_number: number;
+  story: {
+    title: string;
+    slug: Slug;
+  } | null;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -565,7 +569,7 @@ export type CHAPTER_PAGE_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }>;
   prev: {
     slug: Slug;
   } | null;
@@ -588,6 +592,6 @@ declare module "@sanity/client" {
     "*[_type == \"chapter\" && story_title == $title]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTERS_FOR_STORY_QUERYResult;
     "*[_type == \"chapter\" && slug.current == $slug][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTER_BY_SLUG_QUERYResult;
     "*[_type == \"chapter\" && chapter_number == $chapterNumber && story_title == $storyTitle][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTER_BY_NUMBER_QUERYResult;
-    "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    body,\n\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug }\n  }\n": CHAPTER_PAGE_QUERYResult;
+    "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    \"story\": story->{\n      title,\n      slug\n    },\n    body,\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug }\n  }\n": CHAPTER_PAGE_QUERYResult;
   }
 }

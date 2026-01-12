@@ -200,8 +200,11 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
     chapter_title,
     slug,
     chapter_number,
+    "story": story->{
+      title,
+      slug
+    },
     body,
-
     "prev": *[
       _type == "chapter" &&
       story._ref == ^.story._ref &&

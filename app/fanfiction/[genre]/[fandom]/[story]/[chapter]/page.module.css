@@ -1,0 +1,22 @@
+.bodyContent {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.bodyContent * {
+  color: light-dark(var(--mantine-color-blue-8), var(--mantine-color-blue-1));
+}
+
+.bodyContent p {
+  font-size: 1.15rem;
+}
+
+.bodyContent span {
+  color: var(--mantine-color-blue-0);
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .bodyContent p {
+    font-size: 0.9rem;
+  }
+}
