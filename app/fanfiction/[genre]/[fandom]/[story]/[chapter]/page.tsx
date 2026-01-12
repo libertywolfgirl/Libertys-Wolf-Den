@@ -5,6 +5,7 @@ import { CHAPTER_PAGE_QUERYResult } from "../../../../../../sanity/types";
 import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
 import ChapterPagination from "../../../../../_components/ChapterPagination";
+import { PortableText } from "@portabletext/react";
 
 const ChapterPage = async ({
   params,
@@ -27,9 +28,10 @@ const ChapterPage = async ({
   const nextSlug = typedChapter.next?.slug.current || "";
 
   return (
-    <Box pb="2rem">
+    <Box>
       <HeroSection title={storyTitle} subtitle={typedChapter.chapter_title} />
-      <Stack px="2rem">
+      <Stack p="2rem">
+        <PortableText value={typedChapter.body} />
         <ChapterPagination previous={prevSlug} next={nextSlug} />
       </Stack>
     </Box>
