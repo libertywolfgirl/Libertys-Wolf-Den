@@ -50,7 +50,7 @@ const StoryPage = async ({
             <Group pt="1rem">
               <Title order={5}>Read the first part:</Title>
               <Link
-                href={`./${firstChapter.slug.current}`}
+                href={`./${story}/${firstChapter.slug.current}`}
                 style={{ textDecoration: "none" }}
               >
                 <Button color="teal.7" radius="xl" size="lg">
