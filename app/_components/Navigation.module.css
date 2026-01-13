@@ -1,0 +1,25 @@
+.root:hover {
+  background-color: light-dark(
+    var(--mantine-color-cyan-0),
+    var(--mantine-color-cyan-9)
+  );
+}
+
+.root[data-active] {
+  font-weight: 800;
+  background-color: light-dark(
+    var(--mantine-color-cyan-5),
+    var(--mantine-color-cyan-6)
+  );
+}
+
+.root:hover[data-active] {
+  background-color: light-dark(
+    var(--mantine-color-cyan-7),
+    var(--mantine-color-cyan-8)
+  );
+}
+
+.label {
+  color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
+}

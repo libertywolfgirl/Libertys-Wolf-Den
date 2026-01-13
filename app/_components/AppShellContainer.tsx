@@ -1,23 +1,18 @@
 "use client";
 
-import {
-  AppShell,
-  Avatar,
-  Burger,
-  Group,
-  Skeleton,
-  Title,
-} from "@mantine/core";
+import { AppShell, Avatar, Burger, Group, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
 import ColorSchemeToggle from "../../theme/ColorSchemeToggle";
 import Link from "next/link";
+import NavigationData from "./NavigationData";
 
 type Props = {
   children?: ReactNode;
+  navigationData?: ReactNode;
 };
 
-const AppShellContainer = ({ children }: Props) => {
+const AppShellContainer = ({ children, navigationData }: Props) => {
   const [opened, { toggle }] = useDisclosure();
 
   return (
@@ -38,12 +33,10 @@ const AppShellContainer = ({ children }: Props) => {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Title order={6}>Navigation</Title>
-        {Array(15)
-          .fill(0)
-          .map((_, index) => (
-            <Skeleton key={index} h={28} mt="sm" animate={false} />
-          ))}
+        <Title order={6} pb="1rem">
+          Navigation
+        </Title>
+        {navigationData}
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>

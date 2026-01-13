@@ -218,3 +218,30 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
     ][0]{ slug }
   }
 `);
+
+// Fetch navigation tree
+export const NAVIGATION_QUERY = defineQuery(`
+{
+  "genres": *[_type == "genre"] | order(title asc){
+    _id,
+    title,
+    slug,
+    "fandoms": *[
+      _type == "fandom" &&
+      genre._ref == ^._id
+    ] | order(title asc){
+      _id,
+      title,
+      slug,
+      "stories": *[
+        _type == "story" &&
+        fandom._ref == ^._id
+      ] | order(title asc){
+        _id,
+        title,
+        slug
+      }
+    }
+  }
+}
+`);

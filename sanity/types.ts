@@ -577,6 +577,25 @@ export type CHAPTER_PAGE_QUERYResult = {
     slug: Slug;
   } | null;
 } | null;
+// Variable: NAVIGATION_QUERY
+// Query: {  "genres": *[_type == "genre"] | order(title asc){    _id,    title,    slug,    "fandoms": *[      _type == "fandom" &&      genre._ref == ^._id    ] | order(title asc){      _id,      title,      slug,      "stories": *[        _type == "story" &&        fandom._ref == ^._id      ] | order(title asc){        _id,        title,        slug      }    }  }}
+export type NAVIGATION_QUERYResult = {
+  genres: Array<{
+    _id: string;
+    title: string;
+    slug: Slug;
+    fandoms: Array<{
+      _id: string;
+      title: string;
+      slug: Slug;
+      stories: Array<{
+        _id: string;
+        title: string;
+        slug: Slug;
+      }>;
+    }>;
+  }>;
+};
 
 // Query TypeMap
 import "@sanity/client";
@@ -593,5 +612,6 @@ declare module "@sanity/client" {
     "*[_type == \"chapter\" && slug.current == $slug][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTER_BY_SLUG_QUERYResult;
     "*[_type == \"chapter\" && chapter_number == $chapterNumber && story_title == $storyTitle][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTER_BY_NUMBER_QUERYResult;
     "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    \"story\": story->{\n      title,\n      slug\n    },\n    body,\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug }\n  }\n": CHAPTER_PAGE_QUERYResult;
+    "\n{\n  \"genres\": *[_type == \"genre\"] | order(title asc){\n    _id,\n    title,\n    slug,\n    \"fandoms\": *[\n      _type == \"fandom\" &&\n      genre._ref == ^._id\n    ] | order(title asc){\n      _id,\n      title,\n      slug,\n      \"stories\": *[\n        _type == \"story\" &&\n        fandom._ref == ^._id\n      ] | order(title asc){\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n}\n": NAVIGATION_QUERYResult;
   }
 }
