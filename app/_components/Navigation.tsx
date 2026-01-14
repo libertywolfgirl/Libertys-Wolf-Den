@@ -37,6 +37,7 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
         href="/fanfiction"
         label="Fanfiction"
         active={pathname === "/fanfiction"}
+        mb="xs"
       />
       {nav.map((genre) => {
         const genrePath = `/fanfiction/${genre.slug.current}`;
@@ -50,6 +51,7 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
             component={Link}
             href={genrePath}
             active={pathname.startsWith(genrePath)}
+            mb="xs"
           >
             {genre.fandoms.map((fandom) => {
               const fandomPath = `${genrePath}/${fandom.slug.current}`;
@@ -63,6 +65,7 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
                   component={Link}
                   href={fandomPath}
                   active={pathname.startsWith(fandomPath)}
+                  mb="xs"
                 >
                   {fandom.stories.map((story) => {
                     const storyPath = `${fandomPath}/${story.slug.current}`;
@@ -79,6 +82,7 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
                         component={Link}
                         href={storyPath}
                         active={pathname === storyPath}
+                        mb="xs"
                       />
                     );
                   })}

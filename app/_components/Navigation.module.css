@@ -8,15 +8,15 @@
 .root[data-active] {
   font-weight: 800;
   background-color: light-dark(
-    var(--mantine-color-cyan-5),
-    var(--mantine-color-cyan-6)
+    var(--mantine-color-cyan-1),
+    var(--mantine-color-cyan-8)
   );
 }
 
 .root:hover[data-active] {
   background-color: light-dark(
-    var(--mantine-color-cyan-7),
-    var(--mantine-color-cyan-8)
+    var(--mantine-color-cyan-3),
+    var(--mantine-color-cyan-6)
   );
 }
 
