@@ -245,3 +245,35 @@ export const NAVIGATION_QUERY = defineQuery(`
   }
 }
 `);
+
+// generateStaticParams queries
+
+export const GENRE_PARAMS_QUERY = defineQuery(`
+  *[_type == "genre"]{
+    "genre": slug.current
+  }
+`);
+
+export const FANDOM_PARAMS_QUERY = defineQuery(`
+  *[_type == "fandom"]{
+    "genre": genre->slug.current,
+    "fandom": slug.current
+  }
+`);
+
+export const STORY_PARAMS_QUERY = defineQuery(`
+  *[_type == "story"]{
+    "genre": genre->slug.current,
+    "fandom": fandom->slug.current,
+    "story": slug.current
+  }
+`);
+
+export const CHAPTER_PARAMS_QUERY = defineQuery(`
+  *[_type == "chapter"]{
+    "genre": story->genre->slug.current,
+    "fandom": story->fandom->slug.current,
+    "story": story->slug.current,
+    "chapter": slug.current
+  }
+`);

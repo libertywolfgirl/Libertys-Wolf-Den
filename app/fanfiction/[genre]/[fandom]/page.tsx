@@ -1,10 +1,27 @@
 import { Box, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../sanity/lib/live";
-import { STORIES_FOR_FANDOM_QUERY } from "../../../../sanity/lib/queries";
-import { STORIES_FOR_FANDOM_QUERYResult } from "../../../../sanity/types";
+import {
+  FANDOM_PARAMS_QUERY,
+  STORIES_FOR_FANDOM_QUERY,
+} from "../../../../sanity/lib/queries";
+import {
+  FANDOM_PARAMS_QUERYResult,
+  STORIES_FOR_FANDOM_QUERYResult,
+} from "../../../../sanity/types";
 import NotFound from "../../../not-found";
 import HeroSection from "../../../_components/HeroSection";
 import StoryGrid from "../../../_components/StoryGrid";
+import { staticFetch } from "../../../../sanity/lib/staticFetch";
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const data = await staticFetch<FANDOM_PARAMS_QUERYResult>({
+    query: FANDOM_PARAMS_QUERY,
+  });
+
+  return data;
+}
 
 const FandomPage = async ({
   params,

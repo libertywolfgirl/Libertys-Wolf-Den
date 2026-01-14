@@ -1,13 +1,28 @@
 import { Box, Flex, Title } from "@mantine/core";
 import HeroSection from "../../_components/HeroSection";
 import { sanityFetch } from "../../../sanity/lib/live";
-import { FANDOMS_WITH_STORIES_QUERY } from "../../../sanity/lib/queries";
+import {
+  FANDOMS_WITH_STORIES_QUERY,
+  GENRE_PARAMS_QUERY,
+} from "../../../sanity/lib/queries";
 import NotFound from "../../not-found";
-import { FANDOMS_WITH_STORIES_QUERYResult } from "../../../sanity/types";
+import {
+  FANDOMS_WITH_STORIES_QUERYResult,
+  GENRE_PARAMS_QUERYResult,
+} from "../../../sanity/types";
 import StoryGrid from "../../_components/StoryGrid";
 import BrowseAllButton from "../../_components/BrowseAllButton";
+import { staticFetch } from "../../../sanity/lib/staticFetch";
 
 export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const data = await staticFetch<GENRE_PARAMS_QUERYResult>({
+    query: GENRE_PARAMS_QUERY,
+  });
+
+  return data;
+}
 
 const GenrePage = async ({
   params,

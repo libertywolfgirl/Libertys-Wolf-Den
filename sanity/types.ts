@@ -596,6 +596,32 @@ export type NAVIGATION_QUERYResult = {
     }>;
   }>;
 };
+// Variable: GENRE_PARAMS_QUERY
+// Query: *[_type == "genre"]{    "genre": slug.current  }
+export type GENRE_PARAMS_QUERYResult = Array<{
+  genre: string;
+}>;
+// Variable: FANDOM_PARAMS_QUERY
+// Query: *[_type == "fandom"]{    "genre": genre->slug.current,    "fandom": slug.current  }
+export type FANDOM_PARAMS_QUERYResult = Array<{
+  genre: string;
+  fandom: string;
+}>;
+// Variable: STORY_PARAMS_QUERY
+// Query: *[_type == "story"]{    "genre": genre->slug.current,    "fandom": fandom->slug.current,    "story": slug.current  }
+export type STORY_PARAMS_QUERYResult = Array<{
+  genre: string;
+  fandom: string;
+  story: string;
+}>;
+// Variable: CHAPTER_PARAMS_QUERY
+// Query: *[_type == "chapter"]{    "genre": story->genre->slug.current,    "fandom": story->fandom->slug.current,    "story": story->slug.current,    "chapter": slug.current  }
+export type CHAPTER_PARAMS_QUERYResult = Array<{
+  genre: string | null;
+  fandom: string | null;
+  story: string | null;
+  chapter: string;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -613,5 +639,9 @@ declare module "@sanity/client" {
     "*[_type == \"chapter\" && chapter_number == $chapterNumber && story_title == $storyTitle][0]{\n  _id, chapter_title, slug, chapter_number, body\n}": CHAPTER_BY_NUMBER_QUERYResult;
     "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    \"story\": story->{\n      title,\n      slug\n    },\n    body,\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug }\n  }\n": CHAPTER_PAGE_QUERYResult;
     "\n{\n  \"genres\": *[_type == \"genre\"] | order(title asc){\n    _id,\n    title,\n    slug,\n    \"fandoms\": *[\n      _type == \"fandom\" &&\n      genre._ref == ^._id\n    ] | order(title asc){\n      _id,\n      title,\n      slug,\n      \"stories\": *[\n        _type == \"story\" &&\n        fandom._ref == ^._id\n      ] | order(title asc){\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n}\n": NAVIGATION_QUERYResult;
+    "\n  *[_type == \"genre\"]{\n    \"genre\": slug.current\n  }\n": GENRE_PARAMS_QUERYResult;
+    "\n  *[_type == \"fandom\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": slug.current\n  }\n": FANDOM_PARAMS_QUERYResult;
+    "\n  *[_type == \"story\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": fandom->slug.current,\n    \"story\": slug.current\n  }\n": STORY_PARAMS_QUERYResult;
+    "\n  *[_type == \"chapter\"]{\n    \"genre\": story->genre->slug.current,\n    \"fandom\": story->fandom->slug.current,\n    \"story\": story->slug.current,\n    \"chapter\": slug.current\n  }\n": CHAPTER_PARAMS_QUERYResult;
   }
 }
