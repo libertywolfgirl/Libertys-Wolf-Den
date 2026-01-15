@@ -50,6 +50,11 @@ export const storyType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "completed",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",

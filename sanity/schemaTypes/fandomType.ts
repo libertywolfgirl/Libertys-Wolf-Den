@@ -36,5 +36,10 @@ export const fandomType = defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: "summary",
+      type: "text",
+      rows: 5,
+    }),
   ],
 });

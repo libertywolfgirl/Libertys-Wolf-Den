@@ -23,3 +23,14 @@
 .label {
   color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
 }
+
+.labelLink {
+  display: block;
+  width: 100%;
+  color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
+  text-decoration: none;
+}
+
+.labelLink:hover {
+  text-decoration: none;
+}

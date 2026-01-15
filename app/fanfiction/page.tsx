@@ -19,11 +19,11 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" my="2rem">
+      <Box mx="auto" my="3rem">
         <Title order={2} ta="center" my="2rem">
           Genres
         </Title>
-        <Title order={6} fw={400} ta="center" mb="4rem">
+        <Title order={6} fw={400} ta="center">
           Discover stories across various genres, each with its own unique
           flavor and style.
         </Title>
@@ -33,7 +33,7 @@ const FanfictionPage = async () => {
             <Flex
               key={genre._id}
               direction="column"
-              mb="5rem"
+              mt="4rem"
               gap="2rem"
               align="center"
               justify="center"
@@ -44,7 +44,7 @@ const FanfictionPage = async () => {
               <StoryGrid stories={genre.stories} cols={genre.stories.length} />
               <BrowseAllButton
                 href={`/fanfiction/${genre.slug.current}`}
-                title={`${genre.title} Stories`}
+                title={`Stories Based on ${genre.title}`}
               />
             </Flex>
           ))}

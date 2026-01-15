@@ -1,12 +1,29 @@
 import { Box, Stack } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
-import { CHAPTER_PAGE_QUERY } from "../../../../../../sanity/lib/queries";
-import { CHAPTER_PAGE_QUERYResult } from "../../../../../../sanity/types";
+import {
+  CHAPTER_PAGE_QUERY,
+  CHAPTER_PARAMS_QUERY,
+} from "../../../../../../sanity/lib/queries";
+import {
+  CHAPTER_PAGE_QUERYResult,
+  CHAPTER_PARAMS_QUERYResult,
+} from "../../../../../../sanity/types";
 import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
 import ChapterPagination from "../../../../../_components/ChapterPagination";
 import { PortableText } from "@portabletext/react";
 import classes from "./page.module.css";
+import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const data = await staticFetch<CHAPTER_PARAMS_QUERYResult>({
+    query: CHAPTER_PARAMS_QUERY,
+  });
+
+  return data;
+}
 
 const ChapterPage = async ({
   params,
@@ -29,7 +46,7 @@ const ChapterPage = async ({
   const nextSlug = typedChapter.next?.slug.current || "";
 
   return (
-    <Box>
+    <Box pb="1rem">
       <HeroSection title={storyTitle} subtitle={typedChapter.chapter_title} />
       <Stack className={classes.bodyContent} p="2rem">
         <PortableText value={typedChapter.body} />

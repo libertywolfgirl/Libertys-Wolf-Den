@@ -1,13 +1,9 @@
 "use client";
 
 import { Table, Text, Title } from "@mantine/core";
-import { STORY_WITH_FIRST_CHAPTER_QUERYResult } from "../../sanity/types";
+import { STORY_PAGE_QUERYResult } from "../../sanity/types";
 
-const StoryInfo = ({
-  story,
-}: {
-  story: STORY_WITH_FIRST_CHAPTER_QUERYResult;
-}) => {
+const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
   const { title, summary, pairings, notes } = story || {};
 
   return (

@@ -18,7 +18,7 @@ export default async function HomePage() {
       align="center"
       justify="center"
       gap="1.5rem"
-      mb="4rem"
+      mb="2rem"
     >
       <HomePageHero />
       <Title order={2} ta="center" mt="1.5rem">

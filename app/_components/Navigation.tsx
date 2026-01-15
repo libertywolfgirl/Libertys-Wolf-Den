@@ -2,7 +2,7 @@
 
 import { Box, NavLink } from "@mantine/core";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import classes from "./Navigation.module.css";
 
 type StoryNav = {
@@ -27,6 +27,7 @@ type GenreNav = {
 
 const Navigation = ({ nav }: { nav: GenreNav[] }) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <Box>
@@ -44,45 +45,69 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
 
         return (
           <NavLink
-            classNames={{ root: classes.root, label: classes.label }}
+            component="div"
+            classNames={{ root: classes.root }}
             variant="filled"
             key={genre._id}
-            label={genre.title}
-            component={Link}
-            href={genrePath}
             active={pathname.startsWith(genrePath)}
             mb="xs"
+            label={
+              <span
+                className={classes.labelLink}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(genrePath);
+                }}
+              >
+                {genre.title}
+              </span>
+            }
           >
             {genre.fandoms.map((fandom) => {
               const fandomPath = `${genrePath}/${fandom.slug.current}`;
 
               return (
                 <NavLink
-                  classNames={{ root: classes.root, label: classes.label }}
-                  variant="filled"
+                  component="div"
+                  classNames={{ root: classes.root }}
                   key={fandom._id}
-                  label={fandom.title}
-                  component={Link}
-                  href={fandomPath}
                   active={pathname.startsWith(fandomPath)}
+                  variant="filled"
                   mb="xs"
+                  label={
+                    <span
+                      className={classes.labelLink}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(fandomPath);
+                      }}
+                    >
+                      {fandom.title}
+                    </span>
+                  }
                 >
                   {fandom.stories.map((story) => {
                     const storyPath = `${fandomPath}/${story.slug.current}`;
 
                     return (
                       <NavLink
-                        classNames={{
-                          root: classes.root,
-                          label: classes.label,
-                        }}
-                        variant="filled"
+                        component="div"
+                        classNames={{ root: classes.root }}
                         key={story._id}
-                        label={story.title}
-                        component={Link}
-                        href={storyPath}
                         active={pathname === storyPath}
+                        variant="filled"
                         mb="xs"
+                        label={
+                          <span
+                            className={classes.labelLink}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              router.push(storyPath);
+                            }}
+                          >
+                            {story.title}
+                          </span>
+                        }
                       />
                     );
                   })}
