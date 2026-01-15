@@ -44,27 +44,31 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
 
         return (
           <NavLink
-            classNames={{ root: classes.root, label: classes.label }}
+            classNames={{ root: classes.root }}
             variant="filled"
             key={genre._id}
-            label={genre.title}
-            component={Link}
-            href={genrePath}
             active={pathname.startsWith(genrePath)}
             mb="xs"
+            label={
+              <Link href={genrePath} className={classes.labelLink}>
+                {genre.title}
+              </Link>
+            }
           >
             {genre.fandoms.map((fandom) => {
               const fandomPath = `${genrePath}/${fandom.slug.current}`;
 
               return (
                 <NavLink
-                  classNames={{ root: classes.root, label: classes.label }}
-                  variant="filled"
+                  classNames={{ root: classes.root }}
                   key={fandom._id}
-                  label={fandom.title}
-                  component={Link}
-                  href={fandomPath}
+                  label={
+                    <Link href={fandomPath} className={classes.labelLink}>
+                      {fandom.title}
+                    </Link>
+                  }
                   active={pathname.startsWith(fandomPath)}
+                  variant="filled"
                   mb="xs"
                 >
                   {fandom.stories.map((story) => {
@@ -72,16 +76,15 @@ const Navigation = ({ nav }: { nav: GenreNav[] }) => {
 
                     return (
                       <NavLink
-                        classNames={{
-                          root: classes.root,
-                          label: classes.label,
-                        }}
-                        variant="filled"
+                        classNames={{ root: classes.root }}
                         key={story._id}
-                        label={story.title}
-                        component={Link}
-                        href={storyPath}
+                        label={
+                          <Link href={storyPath} className={classes.labelLink}>
+                            {story.title}
+                          </Link>
+                        }
                         active={pathname === storyPath}
+                        variant="filled"
                         mb="xs"
                       />
                     );

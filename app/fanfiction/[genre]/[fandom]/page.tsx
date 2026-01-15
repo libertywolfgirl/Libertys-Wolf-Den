@@ -63,7 +63,7 @@ const FandomPage = async ({
           />
         )}
         {fandomSummary && (
-          <Text py="2rem" maw={1600} mx="auto">
+          <Text py="2rem" maw={1500} mx="auto">
             {fandomSummary}
           </Text>
         )}
