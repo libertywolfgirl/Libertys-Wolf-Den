@@ -44,7 +44,7 @@ const FanfictionPage = async () => {
               <StoryGrid stories={genre.stories} cols={genre.stories.length} />
               <BrowseAllButton
                 href={`/fanfiction/${genre.slug.current}`}
-                title={`${genre.title} Stories`}
+                title={`Stories Based on ${genre.title}`}
               />
             </Flex>
           ))}

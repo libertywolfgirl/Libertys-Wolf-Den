@@ -39,6 +39,8 @@ const GenrePage = async ({
   const typedFandoms = fandoms as FANDOMS_WITH_STORIES_QUERYResult;
 
   const genreName = typedFandoms[0].stories[0].genre.title;
+  const lowerCasegenre = genreName.toLowerCase();
+  const singularGenre = lowerCasegenre.replace(/s$/, "");
 
   if (!typedFandoms || typedFandoms.length === 0) {
     return <NotFound />;
@@ -48,15 +50,15 @@ const GenrePage = async ({
     <Box>
       <HeroSection
         title={genreName}
-        subtitle={`Check out my ${genreName} fanfiction!`}
+        subtitle={`Check out my fanfiction based on ${lowerCasegenre}!`}
       />
       <Box mx="auto" my="3rem">
         <Title order={2} ta="center" my="2rem">
           Fandoms
         </Title>
         <Title order={6} fw={400} ta="center">
-          Explore stories from all of your favorite fandoms from the {genreName}{" "}
-          genre.
+          Explore stories from all of your favorite fandoms from the{" "}
+          {singularGenre} genre.
         </Title>
         {typedFandoms &&
           typedFandoms.length > 0 &&

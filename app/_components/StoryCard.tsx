@@ -16,6 +16,7 @@ type StoryCardStory = NonNullable<STORY_QUERYResult>;
 
 const StoryCard = ({ story }: { story: StoryCardStory }) => {
   const { title, slug, genre, fandom, completed, image, summary } = story;
+  const genreTitle = genre.title.replace(/s$/, "");
 
   return (
     <Box pos="relative">
@@ -34,7 +35,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
               href={`/fanfiction/${genre.slug.current}`}
               style={{ textDecoration: "none" }}
             >
-              <Text c="dimmed">{genre.title}</Text>
+              <Text c="dimmed">{genreTitle}</Text>
             </Link>
 
             <Link
