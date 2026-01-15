@@ -394,6 +394,13 @@
         },
         "optional": true
       },
+      "completed": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "image": {
         "type": "objectAttribute",
         "value": {

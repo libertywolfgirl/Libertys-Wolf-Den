@@ -13,6 +13,7 @@ export const GENRES_WITH_STORIES_QUERY = defineQuery(`
       _id,
       title,
       slug,
+      completed,
       summary,
       image,
       "genre": genre->{
@@ -40,6 +41,7 @@ export const FANDOMS_WITH_STORIES_QUERY = defineQuery(`
       _id,
       title,
       slug,
+      completed,
       summary,
       image,
       "genre": genre->{
@@ -60,6 +62,7 @@ export const STORIES_FOR_FANDOM_QUERY = defineQuery(`
     _id,
     title,
     slug,
+    completed,
     summary,
     image,
     "genre": genre->{
@@ -79,6 +82,7 @@ export const FEATURED_STORIES_QUERY =
     _id,
     title,
     slug,
+    completed,
     summary,
     image,
     "genre": genre->{
@@ -98,6 +102,7 @@ export const STORY_QUERY =
     _id,
     title,
     slug,
+    completed,
     summary,
     image,
     "genre": genre->{
@@ -111,38 +116,13 @@ export const STORY_QUERY =
   }
 `);
 
-// Fetch one story by its slug and then fetch its chapter where the chapter number is 0
-export const STORY_WITH_FIRST_CHAPTER_QUERY = defineQuery(`
-  *[_type == "story" && slug.current == $storySlug][0]{
-    _id,
-    title,
-    slug,
-    "fandom": fandom->{
-      title,
-      slug
-    },
-    summary,
-    pairings,
-    notes,
-    image,
-    "firstChapter": *[
-      _type == "chapter" &&
-      story._ref == ^._id &&
-      chapter_number == 0
-    ][0]{
-      chapter_title,
-      slug,
-      chapter_number,
-    }
-  }
-`);
-
 // Fetch one story by its slug and then fetch its chapter where the chapter number is 0 and then fetch all chapters
 export const STORY_PAGE_QUERY = defineQuery(`
   *[_type == "story" && slug.current == $storySlug][0]{
     _id,
     title,
     slug,
+    completed,
     "fandom": fandom->{
       title,
       slug
@@ -171,24 +151,6 @@ export const STORY_PAGE_QUERY = defineQuery(`
     }
   }
 `);
-
-// Fetch all chapters for a story
-export const CHAPTERS_FOR_STORY_QUERY =
-  defineQuery(`*[_type == "chapter" && story_title == $title]{
-  _id, chapter_title, slug, chapter_number, body
-}`);
-
-// Fetch one chapter by its slug
-export const CHAPTER_BY_SLUG_QUERY =
-  defineQuery(`*[_type == "chapter" && slug.current == $slug][0]{
-  _id, chapter_title, slug, chapter_number, body
-}`);
-
-// Fetch one chapter by its chapter number and story title
-export const CHAPTER_BY_NUMBER_QUERY =
-  defineQuery(`*[_type == "chapter" && chapter_number == $chapterNumber && story_title == $storyTitle][0]{
-  _id, chapter_title, slug, chapter_number, body
-}`);
 
 // Fetch current chapter, previous chapter, and next chapter
 export const CHAPTER_PAGE_QUERY = defineQuery(`
