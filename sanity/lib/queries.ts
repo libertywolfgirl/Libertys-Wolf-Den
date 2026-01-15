@@ -71,7 +71,9 @@ export const STORIES_FOR_FANDOM_QUERY = defineQuery(`
     },
     "fandom": fandom->{
       title,
-      slug
+      slug,
+      image,
+      summary
     }
   }
 `);

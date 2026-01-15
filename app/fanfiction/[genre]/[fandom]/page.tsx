@@ -1,4 +1,4 @@
-import { Box, Title } from "@mantine/core";
+import { Box, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../sanity/lib/live";
 import {
   FANDOM_PARAMS_QUERY,
@@ -12,6 +12,7 @@ import NotFound from "../../../not-found";
 import HeroSection from "../../../_components/HeroSection";
 import StoryGrid from "../../../_components/StoryGrid";
 import { staticFetch } from "../../../../sanity/lib/staticFetch";
+import ImageContainer from "../../../_components/ImageContainer";
 
 export const revalidate = 60;
 
@@ -38,6 +39,8 @@ const FandomPage = async ({
   const typedStories = stories as STORIES_FOR_FANDOM_QUERYResult;
 
   const fandomName = typedStories[0]?.fandom.title;
+  const fandomImage = typedStories[0]?.fandom.image;
+  const fandomSummary = typedStories[0]?.fandom.summary;
 
   const numCols = typedStories.length < 5 ? typedStories.length : 5;
 
@@ -52,6 +55,18 @@ const FandomPage = async ({
         subtitle={`Browse all of my ${fandomName} fanfiction!`}
       />
       <Box mx="auto" my="2rem">
+        {fandomImage && (
+          <ImageContainer
+            image={fandomImage}
+            title={fandomName}
+            padding="1rem"
+          />
+        )}
+        {fandomSummary && (
+          <Text py="2rem" maw={1600} mx="auto">
+            {fandomSummary}
+          </Text>
+        )}
         <Title order={2} ta="center" my="2rem">
           Stories
         </Title>
