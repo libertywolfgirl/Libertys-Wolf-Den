@@ -50,7 +50,7 @@ const GenrePage = async ({
         title={genreName}
         subtitle={`Check out my ${genreName} fanfiction!`}
       />
-      <Box mx="auto" my="2rem">
+      <Box mx="auto" my="3rem">
         <Title order={2} ta="center" my="2rem">
           Fandoms
         </Title>
@@ -64,7 +64,7 @@ const GenrePage = async ({
             <Flex
               key={fandom._id}
               direction="column"
-              mt="5rem"
+              mt="4rem"
               gap="2rem"
               align="center"
               justify="center"

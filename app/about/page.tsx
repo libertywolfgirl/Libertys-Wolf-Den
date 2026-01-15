@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <Box>
       <HeroSection title="About the Author" subtitle="Liberty aka pedepaulie" />
-      <Group p="4rem" gap="6rem" align="center" justify="center">
+      <Group p="3rem" gap="6rem" align="center" justify="center">
         <Image
           src="/wolf-profile.jpg"
           alt="wolf image"

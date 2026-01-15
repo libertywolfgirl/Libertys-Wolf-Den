@@ -54,7 +54,7 @@ const FandomPage = async ({
         title={fandomName}
         subtitle={`Browse all of my ${fandomName} fanfiction!`}
       />
-      <Box mx="auto" my="2rem">
+      <Box mx="auto" my="3rem">
         {fandomImage && (
           <ImageContainer
             image={fandomImage}

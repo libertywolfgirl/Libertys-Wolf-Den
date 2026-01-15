@@ -46,7 +46,7 @@ const StoryPage = async ({
   const chapters: ChapterOption[] = typedStory.chapters || [];
 
   return (
-    <Box pb="2rem">
+    <Box pb="3rem">
       <HeroSection
         title={typedStory.title}
         subtitle={`Read this story from the ${typedStory.fandom.title} fandom!`}

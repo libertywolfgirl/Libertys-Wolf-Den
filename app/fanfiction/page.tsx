@@ -19,7 +19,7 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" my="2rem">
+      <Box mx="auto" my="3rem">
         <Title order={2} ta="center" my="2rem">
           Genres
         </Title>
@@ -33,7 +33,7 @@ const FanfictionPage = async () => {
             <Flex
               key={genre._id}
               direction="column"
-              mt="5rem"
+              mt="4rem"
               gap="2rem"
               align="center"
               justify="center"

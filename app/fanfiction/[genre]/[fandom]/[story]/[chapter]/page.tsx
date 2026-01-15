@@ -46,7 +46,7 @@ const ChapterPage = async ({
   const nextSlug = typedChapter.next?.slug.current || "";
 
   return (
-    <Box>
+    <Box pb="1rem">
       <HeroSection title={storyTitle} subtitle={typedChapter.chapter_title} />
       <Stack className={classes.bodyContent} p="2rem">
         <PortableText value={typedChapter.body} />
