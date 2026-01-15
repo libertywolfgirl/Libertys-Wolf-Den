@@ -54,7 +54,7 @@ const GenrePage = async ({
         <Title order={2} ta="center" my="2rem">
           Fandoms
         </Title>
-        <Title order={6} fw={400} ta="center" mb="4rem">
+        <Title order={6} fw={400} ta="center">
           Explore stories from all of your favorite fandoms from the {genreName}{" "}
           genre.
         </Title>
@@ -64,7 +64,7 @@ const GenrePage = async ({
             <Flex
               key={fandom._id}
               direction="column"
-              mb="5rem"
+              mt="5rem"
               gap="2rem"
               align="center"
               justify="center"

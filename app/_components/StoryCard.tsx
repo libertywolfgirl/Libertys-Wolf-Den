@@ -24,7 +24,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
           Complete
         </Badge>
       )}
-      <Card mih={500} maw={300} shadow="sm" radius="md" withBorder>
+      <Card mih={500} maw={325} shadow="sm" radius="md" withBorder>
         {image && (
           <ImageContainer image={image} title={title} maximumHeight={200} />
         )}

@@ -23,7 +23,7 @@ const FanfictionPage = async () => {
         <Title order={2} ta="center" my="2rem">
           Genres
         </Title>
-        <Title order={6} fw={400} ta="center" mb="4rem">
+        <Title order={6} fw={400} ta="center">
           Discover stories across various genres, each with its own unique
           flavor and style.
         </Title>
@@ -33,7 +33,7 @@ const FanfictionPage = async () => {
             <Flex
               key={genre._id}
               direction="column"
-              mb="5rem"
+              mt="5rem"
               gap="2rem"
               align="center"
               justify="center"
