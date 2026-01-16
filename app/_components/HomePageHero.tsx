@@ -1,11 +1,18 @@
-import { BackgroundImage, Stack, Title, Text } from "@mantine/core";
+import { BackgroundImage, Flex, Stack, Title } from "@mantine/core";
+import Image from "next/image";
 
 const HomePageHero = () => {
   return (
-    <BackgroundImage
-      src="/wolf-pack.jpg"
-      style={{ backgroundPosition: "50% 40%" }}
-    >
+    <Flex pos="relative" w="100%" align="center" justify="center">
+      <Image
+        src="/wolf-pack.jpg"
+        alt="wolf pack background image"
+        fill
+        priority
+        fetchPriority="high"
+        objectFit="cover"
+        objectPosition="50% 40%"
+      />
       <Stack
         justify="center"
         align="center"
@@ -13,6 +20,8 @@ const HomePageHero = () => {
         px="1rem"
         gap="3rem"
         mih="22rem"
+        pos="relative"
+        style={{ zIndex: 1 }}
       >
         <Title order={1} ta="center" fw={800} c="blue.1">
           Liberty&apos;s Wolf Den
@@ -22,7 +31,7 @@ const HomePageHero = () => {
           types written by me. Enjoy your stay.
         </Title>
       </Stack>
-    </BackgroundImage>
+    </Flex>
   );
 };
 
