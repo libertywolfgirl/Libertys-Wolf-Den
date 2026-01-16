@@ -24,26 +24,52 @@
 
 @media (max-width: $mantine-breakpoint-xs) {
   .root[data-order="1"] {
-    font-size: 2.5rem;
+    font-size: 2.9rem;
   }
 
   .root[data-order="2"] {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
   .root[data-order="3"] {
-    font-size: 1.75rem;
+    font-size: 1.9rem;
   }
 
   .root[data-order="4"] {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
   }
 
   .root[data-order="5"] {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .root[data-order="6"] {
-    font-size: 1rem;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .root[data-order="1"] {
+    font-size: 2.8rem;
+  }
+
+  .root[data-order="2"] {
+    font-size: 2.3rem;
+  }
+
+  .root[data-order="3"] {
+    font-size: 1.8rem;
+  }
+
+  .root[data-order="4"] {
+    font-size: 1.55rem;
+  }
+
+  .root[data-order="5"] {
+    font-size: 1.3rem;
+  }
+
+  .root[data-order="6"] {
+    font-size: 1.05rem;
   }
 }

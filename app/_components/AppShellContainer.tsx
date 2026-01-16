@@ -18,7 +18,11 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
+      navbar={{
+        width: { sm: 200, lg: 300 },
+        breakpoint: "sm",
+        collapsed: { mobile: !opened },
+      }}
       padding="md"
       withBorder={false}
     >

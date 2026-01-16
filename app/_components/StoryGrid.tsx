@@ -14,7 +14,10 @@ const StoryGrid = ({
 }) => {
   return (
     <Flex align="center" justify="center">
-      <SimpleGrid cols={cols} spacing="xl">
+      <SimpleGrid
+        cols={{ base: 1, md: 2, lg: 3, xl: cols }}
+        spacing={{ base: "xl", lg: "lg", xl: "xl" }}
+      >
         {stories.map((story) => (
           <StoryCard key={story._id} story={story} />
         ))}
