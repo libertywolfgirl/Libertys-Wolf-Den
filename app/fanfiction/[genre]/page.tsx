@@ -38,22 +38,26 @@ const GenrePage = async ({
 
   const typedFandoms = fandoms as FANDOMS_WITH_STORIES_QUERYResult;
 
-  const genreName = typedFandoms[0].stories[0].genre.title;
-  const lowerCasegenre = genreName.toLowerCase();
-  const singularGenre = lowerCasegenre.replace(/s$/, "");
-
   if (!typedFandoms || typedFandoms.length === 0) {
     return <NotFound />;
   }
 
+  const genreName = typedFandoms[0].stories[0].genre.title;
+  const lowerCasegenre = genreName.toLowerCase();
+  const singularGenre = lowerCasegenre.replace(/s$/, "");
+
   return (
-    <Box>
+    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
       <HeroSection
         title={genreName}
         subtitle={`Check out my fanfiction based on ${lowerCasegenre}!`}
       />
-      <Box mx="auto" my="3rem">
-        <Title order={2} ta="center" my="2rem">
+      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+        <Title
+          order={2}
+          ta="center"
+          my={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+        >
           Fandoms
         </Title>
         <Title order={6} fw={400} ta="center">
@@ -66,8 +70,8 @@ const GenrePage = async ({
             <Flex
               key={fandom._id}
               direction="column"
-              mt="4rem"
-              gap="2rem"
+              mt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+              gap={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
               align="center"
               justify="center"
             >

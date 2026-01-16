@@ -5,6 +5,7 @@ import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
+import NotFound from "../not-found";
 
 const FanfictionPage = async () => {
   const { data: genres } = await sanityFetch({
@@ -13,14 +14,22 @@ const FanfictionPage = async () => {
 
   const typedGenres = genres as GENRES_WITH_STORIES_QUERYResult;
 
+  if (!typedGenres || typedGenres.length === 0) {
+    return <NotFound />;
+  }
+
   return (
-    <Box>
+    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
       <HeroSection
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" my="3rem">
-        <Title order={2} ta="center" my="2rem">
+      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+        <Title
+          order={2}
+          ta="center"
+          my={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+        >
           Genres
         </Title>
         <Title order={6} fw={400} ta="center">
@@ -33,8 +42,8 @@ const FanfictionPage = async () => {
             <Flex
               key={genre._id}
               direction="column"
-              mt="4rem"
-              gap="2rem"
+              mt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+              gap={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
               align="center"
               justify="center"
             >

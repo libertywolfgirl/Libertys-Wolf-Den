@@ -46,12 +46,12 @@ const StoryPage = async ({
   const chapters: ChapterOption[] = typedStory.chapters || [];
 
   return (
-    <Box pb="3rem">
+    <Box pb={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
       <HeroSection
         title={typedStory.title}
         subtitle={`Read this story from the ${typedStory.fandom.title} fandom!`}
       />
-      <Stack px="2rem" gap={0}>
+      <Stack px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }} gap={0}>
         {typedStory.image && (
           <ImageContainer
             image={typedStory.image}
@@ -62,14 +62,16 @@ const StoryPage = async ({
         <StoryInfo story={typedStory} />
         <Group justify="space-evenly">
           {firstChapter && (
-            <Group pt="1rem">
+            <Group pt="1rem" justify="center">
               <Title order={5}>Read the first part:</Title>
               <Link
                 href={`./${story}/${firstChapter.slug.current}`}
                 style={{ textDecoration: "none" }}
               >
                 <Button color="teal.7" radius="xl" size="lg">
-                  {typedStory.title} - {firstChapter.chapter_title}
+                  <Title order={6} c="white">
+                    {typedStory.title} - {firstChapter.chapter_title}
+                  </Title>
                 </Button>
               </Link>
             </Group>

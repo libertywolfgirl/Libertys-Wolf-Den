@@ -1,4 +1,4 @@
-import { Box, Group, Paper, Text, Title } from "@mantine/core";
+import { Box, Flex, Paper, Text, Title } from "@mantine/core";
 import HeroSection from "../_components/HeroSection";
 import Image from "next/image";
 
@@ -6,7 +6,20 @@ const AboutPage = () => {
   return (
     <Box>
       <HeroSection title="About the Author" subtitle="Liberty aka pedepaulie" />
-      <Group p="3rem" gap="6rem" align="center" justify="center">
+      <Flex
+        direction={{ base: "column", xl: "row" }}
+        p={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        gap={{
+          base: "1rem",
+          xs: "2rem",
+          sm: "3rem",
+          md: "4rem",
+          lg: "5rem",
+          xl: "6rem",
+        }}
+        align="center"
+        justify="center"
+      >
         <Image
           src="/wolf-profile.jpg"
           alt="wolf image"
@@ -14,7 +27,13 @@ const AboutPage = () => {
           width={1280}
           style={{ maxWidth: 700, width: "100%", height: "auto" }}
         />
-        <Paper shadow="sm" radius="md" withBorder p="2rem" maw={800}>
+        <Paper
+          shadow="sm"
+          radius="md"
+          withBorder
+          p={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+          maw={800}
+        >
           <Title order={2} ta="center" pb="1rem">
             The writer...
           </Title>
@@ -28,7 +47,7 @@ const AboutPage = () => {
             Quotev.
           </Text>
         </Paper>
-      </Group>
+      </Flex>
     </Box>
   );
 };
