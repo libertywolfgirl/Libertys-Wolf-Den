@@ -37,5 +37,12 @@
     "postcss-simple-vars": "^7.0.1",
     "typescript": "5.9.2"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "not dead"
+  ],
   "packageManager": "yarn@4.12.0"
 }
