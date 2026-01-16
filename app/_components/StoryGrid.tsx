@@ -17,6 +17,7 @@ const StoryGrid = ({
       <SimpleGrid
         cols={{ base: 1, md: 2, lg: 3, xl: cols }}
         spacing={{ base: "xl", lg: "lg", xl: "xl" }}
+        verticalSpacing={{ base: "lg", md: "xl" }}
       >
         {stories.map((story) => (
           <StoryCard key={story._id} story={story} />

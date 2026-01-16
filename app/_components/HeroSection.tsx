@@ -13,8 +13,15 @@ const HeroSection = ({
       direction="column"
       align="center"
       justify="center"
-      p="6rem"
-      gap="xl"
+      p={{
+        base: "1rem",
+        xs: "2rem",
+        sm: "3rem",
+        md: "4rem",
+        lg: "5rem",
+        xl: "6rem",
+      }}
+      gap={{ base: "xs", sm: "md", lg: "xl" }}
       className={classes.container}
     >
       <Title order={1} ta="center">
