@@ -15,8 +15,14 @@
   color: var(--mantine-color-blue-0);
 }
 
+@media (max-width: $mantine-breakpoint-md) {
+  .bodyContent p {
+    font-size: 1.05rem;
+  }
+}
+
 @media (max-width: $mantine-breakpoint-xs) {
   .bodyContent p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }

@@ -48,7 +48,10 @@ const ChapterPage = async ({
   return (
     <Box pb="1rem">
       <HeroSection title={storyTitle} subtitle={typedChapter.chapter_title} />
-      <Stack className={classes.bodyContent} p="2rem">
+      <Stack
+        className={classes.bodyContent}
+        p={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+      >
         <PortableText value={typedChapter.body} />
         <ChapterPagination previous={prevSlug} next={nextSlug} />
       </Stack>
