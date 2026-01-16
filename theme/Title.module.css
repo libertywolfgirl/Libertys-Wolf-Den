@@ -24,11 +24,11 @@
 
 @media (max-width: $mantine-breakpoint-xs) {
   .root[data-order="1"] {
-    font-size: 2.85rem;
+    font-size: 2.7rem;
   }
 
   .root[data-order="2"] {
-    font-size: 2.35rem;
+    font-size: 2.2rem;
   }
 
   .root[data-order="3"] {
@@ -50,11 +50,11 @@
 
 @media (max-width: $mantine-breakpoint-xs) {
   .root[data-order="1"] {
-    font-size: 2.7rem;
+    font-size: 2.4rem;
   }
 
   .root[data-order="2"] {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .root[data-order="3"] {
@@ -70,6 +70,6 @@
   }
 
   .root[data-order="6"] {
-    font-size: 0.96rem;
+    font-size: 0.95rem;
   }
 }
