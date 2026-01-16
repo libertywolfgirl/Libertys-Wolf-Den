@@ -5,6 +5,7 @@ import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
+import NotFound from "../not-found";
 
 const FanfictionPage = async () => {
   const { data: genres } = await sanityFetch({
@@ -12,6 +13,10 @@ const FanfictionPage = async () => {
   });
 
   const typedGenres = genres as GENRES_WITH_STORIES_QUERYResult;
+
+  if (!typedGenres || typedGenres.length === 0) {
+    return <NotFound />;
+  }
 
   return (
     <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
