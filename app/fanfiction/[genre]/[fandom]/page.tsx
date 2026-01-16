@@ -38,23 +38,23 @@ const FandomPage = async ({
 
   const typedStories = stories as STORIES_FOR_FANDOM_QUERYResult;
 
+  if (!typedStories || typedStories.length === 0) {
+    return <NotFound />;
+  }
+
   const fandomName = typedStories[0]?.fandom.title;
   const fandomImage = typedStories[0]?.fandom.image;
   const fandomSummary = typedStories[0]?.fandom.summary;
 
   const numCols = typedStories.length < 5 ? typedStories.length : 5;
 
-  if (!typedStories || typedStories.length === 0) {
-    return <NotFound />;
-  }
-
   return (
-    <Box>
+    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
       <HeroSection
         title={fandomName}
         subtitle={`Browse all of my ${fandomName} fanfiction!`}
       />
-      <Box mx="auto" my="3rem">
+      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
         {fandomImage && (
           <ImageContainer
             image={fandomImage}
@@ -63,11 +63,19 @@ const FandomPage = async ({
           />
         )}
         {fandomSummary && (
-          <Text py="2rem" maw={1500} mx="auto">
+          <Text
+            py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+            maw={1500}
+            mx="auto"
+          >
             {fandomSummary}
           </Text>
         )}
-        <Title order={2} ta="center" my="2rem">
+        <Title
+          order={2}
+          ta="center"
+          my={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+        >
           Stories
         </Title>
         <StoryGrid stories={typedStories} cols={numCols} />

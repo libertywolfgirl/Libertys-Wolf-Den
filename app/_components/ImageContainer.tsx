@@ -19,11 +19,12 @@ const ImageContainer = ({
       <Image
         src={urlFor(image).url()}
         alt={title}
-        width={400}
-        height={800}
+        width={1000}
+        height={1000}
         style={{
           width: "auto",
-          height: "100%",
+          height: "auto",
+          maxWidth: "75vw",
           maxHeight: maximumHeight || 800,
         }}
       />
