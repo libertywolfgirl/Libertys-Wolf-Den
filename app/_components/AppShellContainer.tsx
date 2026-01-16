@@ -45,7 +45,7 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
         </Flex>
       </AppShell.Header>
       <AppShell.Navbar p={{ sm: "sm", lg: "md" }}>
-        <Title order={6} pb="1rem">
+        <Title order={6} pb="1rem" fw={600}>
           Navigation
         </Title>
         {navigationData}

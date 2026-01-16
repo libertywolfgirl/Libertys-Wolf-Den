@@ -41,14 +41,14 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
               href={`/fanfiction/${genre.slug.current}`}
               style={{ textDecoration: "none" }}
             >
-              <Text c="dimmed">{genreTitle}</Text>
+              <Text>{genreTitle}</Text>
             </Link>
 
             <Link
               href={`/fanfiction/${genre.slug.current}/${fandom.slug.current}`}
               style={{ textDecoration: "none" }}
             >
-              <Text c="dimmed">{fandom.title}</Text>
+              <Text>{fandom.title}</Text>
             </Link>
           </Group>
 
@@ -59,7 +59,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
           href={`/fanfiction/${genre.slug.current}/${fandom.slug.current}/${slug.current}`}
           style={{ textDecoration: "none" }}
         >
-          <Button color="teal.6" fullWidth mt="xs" radius="md">
+          <Button color="teal.8" fullWidth mt="sm" radius="md" size="md">
             Read Now
           </Button>
         </Link>

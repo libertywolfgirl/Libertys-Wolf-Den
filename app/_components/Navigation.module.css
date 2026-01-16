@@ -22,12 +22,14 @@
 
 .label {
   color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
+  font-weight: 600;
 }
 
 .labelLink {
   display: block;
   width: 100%;
   color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
+  font-weight: 600;
   text-decoration: none;
 }
 
