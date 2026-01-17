@@ -5,17 +5,17 @@ import Image from "next/image";
 const AboutPage = () => {
   return (
     <Box>
-      <HeroSection title="About the Author" subtitle="Liberty aka pedepaulie" />
+      <HeroSection title="About the Author" subtitle="Liberty aka PedePaulie" />
       <Flex
         direction={{ base: "column", xl: "row" }}
         p={{ base: "1rem", sm: "2rem", lg: "3rem" }}
         gap={{
-          base: "1rem",
-          xs: "2rem",
-          sm: "3rem",
-          md: "4rem",
-          lg: "5rem",
-          xl: "6rem",
+          base: "0.5rem",
+          xs: "1rem",
+          sm: "2rem",
+          md: "3rem",
+          lg: "4rem",
+          xl: "5rem",
         }}
         align="center"
         justify="center"
@@ -41,9 +41,9 @@ const AboutPage = () => {
             Liberty is a writer of various fanfiction. She works as a frontend
             web developer in New England. She has been writing fanfiction since
             middle school, and her skills and interests have only grown. Aside
-            from writing, reading, and programming,s he enjoys hiking in the
+            from writing, reading, and programming, she enjoys hiking in the
             woods and mountain climbing. Her works can also be found under the
-            name pedepaulie on FanFiction.net, ArchiveOfOurOwn, Wattpad, and
+            name pedepaulie on FanFiction.net, Archive of Our Own, Wattpad, and
             Quotev.
           </Text>
         </Paper>
