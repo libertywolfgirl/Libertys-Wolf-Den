@@ -19,12 +19,16 @@ const FanfictionPage = async () => {
   }
 
   return (
-    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
+    <Box>
       <HeroSection
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+      <Box
+        mx="auto"
+        my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+      >
         <Title
           order={2}
           ta="center"

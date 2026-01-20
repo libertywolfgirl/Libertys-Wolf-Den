@@ -1,4 +1,4 @@
-import { BackgroundImage, Flex, Stack, Title } from "@mantine/core";
+import { BackgroundImage, Flex, Stack, Text, Title } from "@mantine/core";
 import Image from "next/image";
 
 const HomePageHero = () => {
@@ -26,10 +26,16 @@ const HomePageHero = () => {
         <Title order={1} ta="center" fw={800} c="blue.1">
           Liberty&apos;s Wolf Den
         </Title>
-        <Title order={6} maw="30rem" ta="center" fw={800} c="blue.0">
+        <Text
+          fz={{ base: "1rem", xs: "1.15rem", md: "1.3rem" }}
+          maw="30rem"
+          ta="center"
+          fw={800}
+          c="blue.0"
+        >
           Welcome to my den of stories. Feel free to browse fanfiction of all
           types written by me. Enjoy your stay.
-        </Title>
+        </Text>
       </Stack>
     </Flex>
   );

@@ -42,6 +42,8 @@ const FandomPage = async ({
     return <NotFound />;
   }
 
+  const { title, image, summary } = typedStories[0];
+
   const fandomName = typedStories[0]?.fandom.title;
   const fandomImage = typedStories[0]?.fandom.image;
   const fandomSummary = typedStories[0]?.fandom.summary;
@@ -49,26 +51,24 @@ const FandomPage = async ({
   const numCols = typedStories.length < 5 ? typedStories.length : 5;
 
   return (
-    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
+    <Box>
       <HeroSection
-        title={fandomName}
-        subtitle={`Browse all of my ${fandomName} fanfiction!`}
+        title={title}
+        subtitle={`Browse all of my ${title} fanfiction!`}
       />
-      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
-        {fandomImage && (
-          <ImageContainer
-            image={fandomImage}
-            title={fandomName}
-            padding="1rem"
-          />
-        )}
-        {fandomSummary && (
+      <Box
+        mx="auto"
+        my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+      >
+        {image && <ImageContainer image={image} title={title} padding="1rem" />}
+        {summary && (
           <Text
             py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
             maw={1500}
             mx="auto"
           >
-            {fandomSummary}
+            {summary}
           </Text>
         )}
         <Title

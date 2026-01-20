@@ -29,7 +29,6 @@ const ChapterDropdown = ({
         placeholder="Select chapter"
         onChange={(slug) => {
           if (!slug) return;
-          // Navigate to the selected chapter
           window.location.href = `./${storySlug}/${slug}`;
         }}
       />

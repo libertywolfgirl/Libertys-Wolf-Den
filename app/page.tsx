@@ -5,7 +5,7 @@ import StoryGrid from "./_components/StoryGrid";
 import HomePageHero from "./_components/HomePageHero";
 import BrowseAllButton from "./_components/BrowseAllButton";
 
-const options = { next: { revalidate: 30 } };
+export const revalidate = 60;
 
 export default async function HomePage() {
   const { data: featuredStories } = await sanityFetch({

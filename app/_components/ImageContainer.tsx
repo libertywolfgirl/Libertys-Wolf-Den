@@ -3,17 +3,14 @@ import { urlFor } from "../_utils/imageUrl";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Flex } from "@mantine/core";
 
-const ImageContainer = ({
-  image,
-  title,
-  maximumHeight,
-  padding,
-}: {
+type Props = {
   image: SanityImageSource;
   title: string;
   maximumHeight?: number;
   padding?: string;
-}) => {
+};
+
+const ImageContainer = ({ image, title, maximumHeight, padding }: Props) => {
   return (
     <Flex justify="center" align="center" p={padding || 0}>
       <Image
