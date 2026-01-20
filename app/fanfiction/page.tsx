@@ -8,7 +8,15 @@ import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
 
-const FanfictionPage = async () => {
+const FanfictionPage = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+  };
+}) => {
+  const query = searchParams?.query || "";
+
   const { data: genres } = await sanityFetch({
     query: GENRES_WITH_STORIES_QUERY,
   });

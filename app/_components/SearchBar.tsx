@@ -2,12 +2,13 @@
 
 import { TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
 const SearchBar = () => {
-  const router = useRouter();
+  const { replace } = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const [inputValue, setValue] = useState("");
 
@@ -17,11 +18,14 @@ const SearchBar = () => {
   };
 
   const handleSearch = () => {
+    const params = new URLSearchParams(searchParams);
+
     if (inputValue) {
-      return router.push(`${pathname}/?q=${inputValue}`);
+      params.set("query", inputValue);
     } else {
-      return router.push(`${pathname}/`);
+      params.delete("query");
     }
+    replace(`${pathname}?${params.toString()}`);
   };
 
   const handleKeyPress = (event: { key: any }) => {
