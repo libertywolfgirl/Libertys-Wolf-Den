@@ -6,6 +6,7 @@ import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
+import SearchBar from "../_components/SearchBar";
 
 const FanfictionPage = async () => {
   const { data: genres } = await sanityFetch({
@@ -24,6 +25,9 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
+      <Box pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+        <SearchBar />
+      </Box>
       <Box
         mx="auto"
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
