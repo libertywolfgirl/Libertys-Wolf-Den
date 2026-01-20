@@ -13,9 +13,7 @@ import NotFound from "../../../../not-found";
 import ImageContainer from "../../../../_components/ImageContainer";
 import StoryInfo from "../../../../_components/StoryInfo";
 import Link from "next/link";
-import ChapterDropdown, {
-  ChapterOption,
-} from "../../../../_components/ChapterDropdown";
+import ChapterDropdown from "../../../../_components/ChapterDropdown";
 import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 
 export async function generateStaticParams() {
@@ -42,22 +40,17 @@ const StoryPage = async ({
 
   if (!typedStory) return <NotFound />;
 
-  const firstChapter = typedStory.firstChapter;
-  const chapters: ChapterOption[] = typedStory.chapters || [];
+  const { title, fandom, image, firstChapter, chapters } = typedStory;
 
   return (
     <Box pb={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
       <HeroSection
-        title={typedStory.title}
-        subtitle={`Read this story from the ${typedStory.fandom.title} fandom!`}
+        title={title}
+        subtitle={`Read this story from the ${fandom.title} fandom!`}
       />
       <Stack px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }} gap={0}>
-        {typedStory.image && (
-          <ImageContainer
-            image={typedStory.image}
-            title={typedStory.title}
-            padding="1.5rem"
-          />
+        {image && (
+          <ImageContainer image={image} title={title} padding="1.5rem" />
         )}
         <StoryInfo story={typedStory} />
         <Group justify="space-evenly">
@@ -70,7 +63,7 @@ const StoryPage = async ({
               >
                 <Button color="teal.9" radius="xl" size="lg">
                   <Title order={6} c="white">
-                    {typedStory.title} - {firstChapter.chapter_title}
+                    {title} - {firstChapter.chapter_title}
                   </Title>
                 </Button>
               </Link>

@@ -47,12 +47,16 @@ const GenrePage = async ({
   const singularGenre = lowerCasegenre.replace(/s$/, "");
 
   return (
-    <Box px={{ base: 0, sm: "1rem", lg: "2rem" }}>
+    <Box>
       <HeroSection
         title={genreName}
         subtitle={`Check out my fanfiction based on ${lowerCasegenre}!`}
       />
-      <Box mx="auto" my={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+      <Box
+        mx="auto"
+        my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+      >
         <Title
           order={2}
           ta="center"
