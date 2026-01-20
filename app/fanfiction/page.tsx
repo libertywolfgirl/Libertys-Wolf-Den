@@ -8,13 +8,12 @@ import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
 
-const FanfictionPage = async ({
-  searchParams,
-}: {
-  searchParams?: {
+const FanfictionPage = async (props: {
+  searchParams?: Promise<{
     query?: string;
-  };
+  }>;
 }) => {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
 
   const { data: genres } = await sanityFetch({
