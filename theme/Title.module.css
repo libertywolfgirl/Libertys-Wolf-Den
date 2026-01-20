@@ -22,7 +22,7 @@
   font-size: 1.25rem;
 }
 
-@media (max-width: $mantine-breakpoint-xs) {
+@media (max-width: $mantine-breakpoint-md) {
   .root[data-order="1"] {
     font-size: 2.7rem;
   }

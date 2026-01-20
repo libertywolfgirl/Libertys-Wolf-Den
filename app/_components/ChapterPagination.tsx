@@ -6,7 +6,7 @@ const ChapterPagination = ({ previous = "", next = "" }) => {
     <Group justify={!previous ? "end" : "space-between"} pt="2rem">
       {previous && (
         <Link href={`./${previous}`} style={{ textDecoration: "none" }}>
-          <Button color="teal.8" radius="xl" size="md">
+          <Button color="teal.9" radius="xl" size="md">
             Previous
           </Button>
         </Link>
@@ -14,7 +14,7 @@ const ChapterPagination = ({ previous = "", next = "" }) => {
 
       {next && (
         <Link href={`./${next}`} style={{ textDecoration: "none" }}>
-          <Button color="teal.8" radius="xl" size="md">
+          <Button color="teal.9" radius="xl" size="md">
             Next
           </Button>
         </Link>

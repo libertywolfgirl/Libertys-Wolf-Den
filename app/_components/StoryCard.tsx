@@ -26,7 +26,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
         </Badge>
       )}
       <Card
-        mih={{ base: 400, md: 500 }}
+        mih={{ base: 425, md: 525 }}
         maw={325}
         shadow="sm"
         radius="md"
@@ -59,7 +59,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
           href={`/fanfiction/${genre.slug.current}/${fandom.slug.current}/${slug.current}`}
           style={{ textDecoration: "none" }}
         >
-          <Button color="teal.8" fullWidth mt="sm" radius="md" size="md">
+          <Button color="teal.9" fullWidth mt="2rem" radius="md" size="md">
             Read Now
           </Button>
         </Link>

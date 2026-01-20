@@ -52,7 +52,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           navbar: {
-            backgroundColor: `light-dark(${theme.colors.cyan[2]}, ${theme.colors.cyan[7]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[1]}, ${theme.colors.cyan[7]})`,
           },
         }),
       },
