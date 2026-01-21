@@ -24,12 +24,9 @@ export async function generateStaticParams() {
   return data;
 }
 
-const FandomPage = async ({
-  params,
-}: {
-  params: Promise<{ fandom: string }>;
-}) => {
-  const { fandom } = await params;
+const FandomPage = async (props: { params: Promise<{ fandom: string }> }) => {
+  const params = await props.params;
+  const { fandom } = params;
 
   const { data: stories } = await sanityFetch({
     query: STORIES_FOR_FANDOM_QUERY,
@@ -42,11 +39,9 @@ const FandomPage = async ({
     return <NotFound />;
   }
 
-  const { title, image, summary } = typedStories[0];
-
-  const fandomName = typedStories[0]?.fandom.title;
-  const fandomImage = typedStories[0]?.fandom.image;
-  const fandomSummary = typedStories[0]?.fandom.summary;
+  const {
+    fandom: { title, image, summary },
+  } = typedStories[0];
 
   const numCols = typedStories.length < 5 ? typedStories.length : 5;
 

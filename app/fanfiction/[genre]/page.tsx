@@ -24,12 +24,9 @@ export async function generateStaticParams() {
   return data;
 }
 
-const GenrePage = async ({
-  params,
-}: {
-  params: Promise<{ genre: string }>;
-}) => {
-  const { genre } = await params;
+const GenrePage = async (props: { params: Promise<{ genre: string }> }) => {
+  const params = await props.params;
+  const { genre } = params;
 
   const { data: fandoms } = await sanityFetch({
     query: FANDOMS_WITH_STORIES_QUERY,

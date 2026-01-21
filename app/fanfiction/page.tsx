@@ -6,8 +6,17 @@ import HeroSection from "../_components/HeroSection";
 import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
+import SearchBar from "../_components/SearchBar";
+import SearchResults from "../_components/SearchResults";
 
-const FanfictionPage = async () => {
+const FanfictionPage = async (props: {
+  searchParams?: Promise<{
+    query?: string;
+  }>;
+}) => {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || "";
+
   const { data: genres } = await sanityFetch({
     query: GENRES_WITH_STORIES_QUERY,
   });
@@ -24,6 +33,10 @@ const FanfictionPage = async () => {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
+      <Box pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+        <SearchBar />
+      </Box>
+      {query && <SearchResults query={query} />}
       <Box
         mx="auto"
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}

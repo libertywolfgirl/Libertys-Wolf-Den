@@ -25,12 +25,11 @@ export async function generateStaticParams() {
   return data;
 }
 
-const ChapterPage = async ({
-  params,
-}: {
+const ChapterPage = async (props: {
   params: Promise<{ story: string; chapter: string }>;
 }) => {
-  const { story, chapter } = await params;
+  const params = await props.params;
+  const { story, chapter } = params;
 
   const { data: chapters } = await sanityFetch({
     query: CHAPTER_PAGE_QUERY,
