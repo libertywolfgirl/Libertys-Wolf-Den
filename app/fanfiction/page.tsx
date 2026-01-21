@@ -7,6 +7,7 @@ import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
+import SearchResults from "../_components/SearchResults";
 
 const FanfictionPage = async (props: {
   searchParams?: Promise<{
@@ -35,6 +36,7 @@ const FanfictionPage = async (props: {
       <Box pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
         <SearchBar />
       </Box>
+      {query && <SearchResults query={query} />}
       <Box
         mx="auto"
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}

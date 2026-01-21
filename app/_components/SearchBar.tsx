@@ -6,7 +6,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
 const SearchBar = () => {
-  const { replace } = useRouter();
+  const router = useRouter();
+  const { replace } = router;
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -26,6 +27,7 @@ const SearchBar = () => {
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
+    router.refresh();
   };
 
   const handleKeyPress = (event: { key: any }) => {
@@ -34,7 +36,7 @@ const SearchBar = () => {
 
   return (
     <TextInput
-      placeholder="Search..."
+      placeholder="Search fanfiction..."
       value={inputValue ?? ""}
       onChange={handleChange}
       onKeyDown={handleKeyPress}

@@ -210,6 +210,33 @@ export const NAVIGATION_QUERY = defineQuery(`
 }
 `);
 
+// Search query
+export const SEARCH_QUERY = defineQuery(`
+  *[_type == "story"
+      && (
+      title match $queryString + '*' 
+      || pairings match $queryString + '*' 
+      || keywords match $queryString + '*' 
+      || genre->title match $queryString + '*'
+      || fandom->title match $queryString + '*')] 
+      | order(publishedAt desc){
+        _id,
+        title,
+        slug,
+        completed,
+        summary,
+        image,
+        "genre": genre->{
+          title,
+          slug
+        },
+        "fandom": fandom->{
+          title,
+          slug
+        }      
+      }
+`);
+
 // generateStaticParams queries
 
 export const GENRE_PARAMS_QUERY = defineQuery(`

@@ -508,6 +508,35 @@ export type NAVIGATION_QUERYResult = {
     }>;
   }>;
 };
+// Variable: SEARCH_QUERY
+// Query: *[_type == "story"      && (      title match $queryString + '*'       || pairings match $queryString + '*'       || keywords match $queryString + '*'       || genre->title match $queryString + '*'      || fandom->title match $queryString + '*')]       | order(publishedAt desc){        _id,        title,        slug,        completed,        summary,        image,        "genre": genre->{          title,          slug        },        "fandom": fandom->{          title,          slug        }            }
+export type SEARCH_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  completed: boolean | null;
+  summary: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  genre: {
+    title: string;
+    slug: Slug;
+  };
+  fandom: {
+    title: string;
+    slug: Slug;
+  };
+}>;
 // Variable: GENRE_PARAMS_QUERY
 // Query: *[_type == "genre"]{    "genre": slug.current  }
 export type GENRE_PARAMS_QUERYResult = Array<{
@@ -547,6 +576,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"story\" && slug.current == $storySlug][0]{\n    _id,\n    title,\n    slug,\n    completed,\n    \"fandom\": fandom->{\n      title,\n      slug\n    },\n    summary,\n    pairings,\n    notes,\n    image,\n    \"firstChapter\": *[\n      _type == \"chapter\" &&\n      story._ref == ^._id &&\n      chapter_number == 0\n    ][0]{\n      chapter_title,\n      slug,\n      chapter_number,\n    },\n    \"chapters\": *[\n      _type == \"chapter\" &&\n      story._ref == ^._id] | \n      order(chapter_number asc\n      ){\n        chapter_title,\n        slug,\n        chapter_number\n    }\n  }\n": STORY_PAGE_QUERYResult;
     "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    \"story\": story->{\n      title,\n      slug\n    },\n    body,\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug }\n  }\n": CHAPTER_PAGE_QUERYResult;
     "\n{\n  \"genres\": *[_type == \"genre\"] | order(title asc){\n    _id,\n    title,\n    slug,\n    \"fandoms\": *[\n      _type == \"fandom\" &&\n      genre._ref == ^._id\n    ] | order(title asc){\n      _id,\n      title,\n      slug,\n      \"stories\": *[\n        _type == \"story\" &&\n        fandom._ref == ^._id\n      ] | order(title asc){\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n}\n": NAVIGATION_QUERYResult;
+    "\n  *[_type == \"story\"\n      && (\n      title match $queryString + '*' \n      || pairings match $queryString + '*' \n      || keywords match $queryString + '*' \n      || genre->title match $queryString + '*'\n      || fandom->title match $queryString + '*')] \n      | order(publishedAt desc){\n        _id,\n        title,\n        slug,\n        completed,\n        summary,\n        image,\n        \"genre\": genre->{\n          title,\n          slug\n        },\n        \"fandom\": fandom->{\n          title,\n          slug\n        }      \n      }\n": SEARCH_QUERYResult;
     "\n  *[_type == \"genre\"]{\n    \"genre\": slug.current\n  }\n": GENRE_PARAMS_QUERYResult;
     "\n  *[_type == \"fandom\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": slug.current\n  }\n": FANDOM_PARAMS_QUERYResult;
     "\n  *[_type == \"story\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": fandom->slug.current,\n    \"story\": slug.current\n  }\n": STORY_PARAMS_QUERYResult;
