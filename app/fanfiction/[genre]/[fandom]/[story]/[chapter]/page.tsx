@@ -14,6 +14,7 @@ import ChapterPagination from "../../../../../_components/ChapterPagination";
 import { PortableText } from "@portabletext/react";
 import classes from "./page.module.css";
 import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
+import CommentForm from "../../../../../_components/CommentForm";
 
 export const revalidate = 60;
 
@@ -53,6 +54,7 @@ const ChapterPage = async (props: {
       >
         <PortableText value={typedChapter.body} />
         <ChapterPagination previous={prevSlug} next={nextSlug} />
+        <CommentForm id={typedChapter._id} />
       </Stack>
     </Box>
   );

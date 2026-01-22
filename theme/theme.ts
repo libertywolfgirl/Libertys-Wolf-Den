@@ -2,6 +2,7 @@
 
 import {
   AppShell,
+  Button,
   Card,
   createTheme,
   MantineTheme,
@@ -80,6 +81,15 @@ export const theme = createTheme({
         styles: (theme) => ({
           root: {
             backgroundColor: `light-dark(${theme.colors.teal[0]}, ${theme.colors.dark[9]})`,
+          },
+        }),
+      },
+    }),
+    Button: Button.extend({
+      defaultProps: {
+        styles: (theme) => ({
+          root: {
+            backgroundColor: theme.colors.teal[9],
           },
         }),
       },
