@@ -59,7 +59,7 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
           href={`/fanfiction/${genre.slug.current}/${fandom.slug.current}/${slug.current}`}
           style={{ textDecoration: "none" }}
         >
-          <Button color="teal.9" fullWidth mt="2rem" radius="md" size="md">
+          <Button fullWidth mt="2rem" radius="md" size="md">
             Read Now
           </Button>
         </Link>
