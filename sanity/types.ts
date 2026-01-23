@@ -13,6 +13,22 @@
  */
 
 // Source: schema.json
+export type Comment = {
+  _id: string;
+  _type: "comment";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  text: string;
+  chapter: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "chapter";
+  };
+};
+
 export type Chapter = {
   _id: string;
   _type: "chapter";
@@ -245,7 +261,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Chapter | Story | SanityImageCrop | SanityImageHotspot | Fandom | Slug | Genre | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Comment | Chapter | Story | SanityImageCrop | SanityImageHotspot | Fandom | Slug | Genre | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: GENRES_WITH_STORIES_QUERY

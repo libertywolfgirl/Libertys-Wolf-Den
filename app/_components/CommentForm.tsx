@@ -1,7 +1,9 @@
 "use client";
 
-import { Button, Group, Textarea, TextInput } from "@mantine/core";
+import { Button, Group, Textarea, TextInput, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { createComment } from "../../sanity/lib/mutations";
+import { Comment } from "../../sanity/types";
 
 const CommentForm = ({ id }: { id: string }) => {
   const form = useForm({
@@ -17,9 +19,23 @@ const CommentForm = ({ id }: { id: string }) => {
     },
   });
 
+  const commentData = {
+    name: form.values.name,
+    text: form.values.text,
+    chapter: { _type: "reference", _ref: id },
+  };
+
+  const createCommentWithData = async () => {
+    await createComment(commentData as Comment);
+  };
+
   return (
-    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+    <form action={createCommentWithData}>
+      <Title order={4} ta="center" mt="lg">
+        Post a Comment
+      </Title>
       <TextInput
+        mt="xs"
         withAsterisk
         label="Name"
         placeholder="enter a name"
@@ -29,6 +45,8 @@ const CommentForm = ({ id }: { id: string }) => {
       <Textarea
         mt="sm"
         withAsterisk
+        autosize
+        minRows={4}
         label="Comment"
         placeholder="enter your comment"
         key={form.key("text")}
