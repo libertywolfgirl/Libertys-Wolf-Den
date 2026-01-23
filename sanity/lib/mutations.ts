@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { serverClient } from "./client";
 import { Comment } from "../types";
 
-export async function createComment(commentData: Comment) {
+export const createComment = async (commentData: Comment) => {
   const newComment = {
     _type: "comment",
     name: commentData.name,
@@ -23,4 +23,4 @@ export async function createComment(commentData: Comment) {
     const message = error instanceof Error ? error.message : String(error);
     return { success: false, error: message };
   }
-}
+};
