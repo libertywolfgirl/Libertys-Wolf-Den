@@ -179,7 +179,17 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
       _type == "chapter" &&
       story._ref == ^.story._ref &&
       chapter_number == ^.chapter_number + 1
-    ][0]{ slug }
+    ][0]{ slug },
+
+    "comments": *[
+      _type == "comment" &&
+      chapter._ref == ^._id
+    ] | order(_createdAt desc){
+      _id,
+      name,
+      text,
+      _createdAt
+    }
   }
 `);
 

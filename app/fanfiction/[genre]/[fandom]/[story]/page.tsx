@@ -58,7 +58,7 @@ const StoryPage = async (props: { params: Promise<{ story: string }> }) => {
                 href={`./${story}/${firstChapter.slug.current}`}
                 style={{ textDecoration: "none" }}
               >
-                <Button color="teal.9" radius="xl" size="lg">
+                <Button radius="xl" size="lg">
                   <Title order={6} c="white">
                     {title} - {firstChapter.chapter_title}
                   </Title>

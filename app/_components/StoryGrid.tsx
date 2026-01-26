@@ -1,6 +1,6 @@
 import { Flex, SimpleGrid } from "@mantine/core";
 import StoryCard from "./StoryCard";
-import { GENRES_WITH_STORIES_QUERYResult, Story } from "../../sanity/types";
+import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 
 type StoryGridStory =
   GENRES_WITH_STORIES_QUERYResult[number]["stories"][number];
