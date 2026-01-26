@@ -1,11 +1,15 @@
 "use client";
 
-import { Button, Group, Textarea, TextInput, Title } from "@mantine/core";
+import { Button, Group, Text, Textarea, TextInput, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { createComment } from "../../sanity/lib/mutations";
 import { Comment } from "../../sanity/types";
+import { useState } from "react";
+import { set } from "sanity";
 
 const CommentForm = ({ id }: { id: string }) => {
+  const [showForm, setShowForm] = useState(true);
+
   const form = useForm({
     initialValues: {
       name: "",
@@ -27,9 +31,10 @@ const CommentForm = ({ id }: { id: string }) => {
 
   const createCommentWithData = async () => {
     await createComment(commentData as Comment);
+    setShowForm(false);
   };
 
-  return (
+  return showForm ? (
     <form action={createCommentWithData}>
       <Title order={5} ta="center" mb={{ base: "0.5rem", md: "1rem" }}>
         Post a Comment
@@ -58,6 +63,10 @@ const CommentForm = ({ id }: { id: string }) => {
         </Button>
       </Group>
     </form>
+  ) : (
+    <Text ta="center" mb="1rem">
+      Thank you for your comment!
+    </Text>
   );
 };
 
