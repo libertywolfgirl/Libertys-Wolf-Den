@@ -19,7 +19,7 @@ type Props = {
   children?: ReactNode;
 };
 
-export default function RootLayout({ children }: Props) {
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -40,4 +40,6 @@ export default function RootLayout({ children }: Props) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

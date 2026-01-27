@@ -16,13 +16,13 @@ import Link from "next/link";
 import ChapterDropdown from "../../../../_components/ChapterDropdown";
 import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const data = await staticFetch<STORY_PARAMS_QUERYResult>({
     query: STORY_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
 const StoryPage = async (props: { params: Promise<{ story: string }> }) => {
   const params = await props.params;

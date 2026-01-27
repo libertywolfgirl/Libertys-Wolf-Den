@@ -16,13 +16,13 @@ import ImageContainer from "../../../_components/ImageContainer";
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const data = await staticFetch<FANDOM_PARAMS_QUERYResult>({
     query: FANDOM_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
 const FandomPage = async (props: { params: Promise<{ fandom: string }> }) => {
   const params = await props.params;

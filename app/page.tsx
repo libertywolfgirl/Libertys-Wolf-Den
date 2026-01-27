@@ -7,7 +7,7 @@ import BrowseAllButton from "./_components/BrowseAllButton";
 
 export const revalidate = 60;
 
-export default async function HomePage() {
+const HomePage = async () => {
   const { data: featuredStories } = await sanityFetch({
     query: FEATURED_STORIES_QUERY,
   });
@@ -30,4 +30,6 @@ export default async function HomePage() {
       <BrowseAllButton href="/fanfiction" title="Fanfiction" />
     </Flex>
   );
-}
+};
+
+export default HomePage;

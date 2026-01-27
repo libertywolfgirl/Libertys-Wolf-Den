@@ -19,13 +19,13 @@ import Comments from "../../../../../_components/Comments";
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const data = await staticFetch<CHAPTER_PARAMS_QUERYResult>({
     query: CHAPTER_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
 const ChapterPage = async (props: {
   params: Promise<{ story: string; chapter: string }>;
