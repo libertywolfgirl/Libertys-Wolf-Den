@@ -16,8 +16,24 @@ import classes from "./page.module.css";
 import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
 import CommentForm from "../../../../../_components/CommentForm";
 import Comments from "../../../../../_components/Comments";
+import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
+
+type Props = {
+  params: {
+    story: string;
+    chapter: string;
+  };
+};
 
 export const revalidate = 60;
+
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { chapter } = params;
+  const title = removeDashesAndCapitalize(chapter);
+
+  return { title: `${title}` };
+};
 
 export const generateStaticParams = async () => {
   const data = await staticFetch<CHAPTER_PARAMS_QUERYResult>({
@@ -27,9 +43,7 @@ export const generateStaticParams = async () => {
   return data;
 };
 
-const ChapterPage = async (props: {
-  params: Promise<{ story: string; chapter: string }>;
-}) => {
+const ChapterPage = async (props: Props) => {
   const params = await props.params;
   const { story, chapter } = params;
 

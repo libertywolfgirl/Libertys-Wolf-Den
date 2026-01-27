@@ -13,8 +13,23 @@ import HeroSection from "../../../_components/HeroSection";
 import StoryGrid from "../../../_components/StoryGrid";
 import { staticFetch } from "../../../../sanity/lib/staticFetch";
 import ImageContainer from "../../../_components/ImageContainer";
+import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
+
+type Props = {
+  params: {
+    fandom: string;
+  };
+};
 
 export const revalidate = 60;
+
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { fandom } = params;
+  const title = removeDashesAndCapitalize(fandom);
+
+  return { title: `${title}` };
+};
 
 export const generateStaticParams = async () => {
   const data = await staticFetch<FANDOM_PARAMS_QUERYResult>({
@@ -24,7 +39,7 @@ export const generateStaticParams = async () => {
   return data;
 };
 
-const FandomPage = async (props: { params: Promise<{ fandom: string }> }) => {
+const FandomPage = async (props: Props) => {
   const params = await props.params;
   const { fandom } = params;
 
