@@ -278,3 +278,35 @@ export const CHAPTER_PARAMS_QUERY = defineQuery(`
     "chapter": slug.current
   }
 `);
+
+// Fetch all routes for sitemap
+export const ALL_ROUTES_QUERY = defineQuery(`
+{
+  "genres": *[_type == "genre"] | order(title asc){
+    _id,
+    _updatedAt,
+    "genre": slug.current
+  },
+  "fandoms": *[_type == "fandom"] | order(title asc){
+    _id,
+    _updatedAt,
+    "genre": genre->slug.current,
+    "fandom": slug.current
+  },
+  "stories": *[_type == "story"] | order(title asc){
+    _id,
+    _updatedAt,
+    "genre": genre->slug.current,
+    "fandom": fandom->slug.current,
+    "story": slug.current
+  },
+  "chapters": *[_type == "chapter"] | order(chapter_number asc){
+    _id,
+    _updatedAt,
+    "genre": story->genre->slug.current,
+    "fandom": story->fandom->slug.current,
+    "story": story->slug.current,
+    "chapter": slug.current
+  }
+}
+`);
