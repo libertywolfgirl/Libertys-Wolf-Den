@@ -19,10 +19,10 @@ import Comments from "../../../../../_components/Comments";
 import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
 
 type Props = {
-  params: {
+  params: Promise<{
     story: string;
     chapter: string;
-  };
+  }>;
 };
 
 export const revalidate = 60;

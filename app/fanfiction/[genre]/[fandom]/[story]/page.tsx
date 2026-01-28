@@ -18,9 +18,9 @@ import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCapitalize";
 
 type Props = {
-  params: {
+  params: Promise<{
     story: string;
-  };
+  }>;
 };
 
 export const generateMetadata = async (props: Props) => {

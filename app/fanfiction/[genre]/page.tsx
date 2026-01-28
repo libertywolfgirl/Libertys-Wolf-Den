@@ -16,9 +16,9 @@ import { staticFetch } from "../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitalize";
 
 type Props = {
-  params: {
+  params: Promise<{
     genre: string;
-  };
+  }>;
 };
 
 export const revalidate = 60;

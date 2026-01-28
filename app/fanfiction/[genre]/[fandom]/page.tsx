@@ -16,9 +16,9 @@ import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
 
 type Props = {
-  params: {
+  params: Promise<{
     fandom: string;
-  };
+  }>;
 };
 
 export const revalidate = 60;
