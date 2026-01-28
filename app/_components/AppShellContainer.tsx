@@ -1,6 +1,6 @@
 "use client";
 
-import { AppShell, Avatar, Burger, Flex, Title } from "@mantine/core";
+import { AppShell, Avatar, Burger, Flex, Group, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
 import ColorSchemeToggle from "../../theme/ColorSchemeToggle";
@@ -27,21 +27,29 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
       withBorder={false}
     >
       <AppShell.Header>
-        <Flex h="100%" px="md" gap={{ base: "xs", sm: "xl" }} align="center">
+        <Flex
+          h="100%"
+          px="lg"
+          gap={{ base: "xs", sm: "xl" }}
+          align="center"
+          justify="space-between"
+        >
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <Title order={5}>Liberty&apos;s Wolf Den</Title>
-          </Link>
-          <Flex pos="relative" w={50} h={50}>
-            <Image
-              src="/wolf-logo.jpg"
-              alt="wolf logo"
-              fill
-              objectFit="cover"
-              style={{ borderRadius: "50%" }}
-            />
-          </Flex>
-          <ColorSchemeToggle />
+          <Group gap="xl">
+            <Link href="/" style={{ textDecoration: "none" }}>
+              <Flex pos="relative" w={50} h={50}>
+                <Image
+                  src="/wolf-logo.jpg"
+                  alt="wolf logo"
+                  fill
+                  objectFit="cover"
+                  style={{ borderRadius: "50%" }}
+                />
+              </Flex>
+            </Link>
+            <ColorSchemeToggle />
+          </Group>
+          <Title order={5}>Liberty&apos;s Wolf Den</Title>
         </Flex>
       </AppShell.Header>
       <AppShell.Navbar p={{ sm: "sm", lg: "md" }}>
