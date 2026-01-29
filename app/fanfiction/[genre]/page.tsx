@@ -13,18 +13,33 @@ import {
 import StoryGrid from "../../_components/StoryGrid";
 import BrowseAllButton from "../../_components/BrowseAllButton";
 import { staticFetch } from "../../../sanity/lib/staticFetch";
+import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitalize";
+
+type Props = {
+  params: Promise<{
+    genre: string;
+  }>;
+};
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { genre } = params;
+  const title = removeDashesAndCapitalize(genre);
+
+  return { title: `Fanfiction - ${title}` };
+};
+
+export const generateStaticParams = async () => {
   const data = await staticFetch<GENRE_PARAMS_QUERYResult>({
     query: GENRE_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
-const GenrePage = async (props: { params: Promise<{ genre: string }> }) => {
+const GenrePage = async (props: Props) => {
   const params = await props.params;
   const { genre } = params;
 

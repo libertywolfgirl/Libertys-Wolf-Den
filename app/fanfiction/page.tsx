@@ -9,6 +9,12 @@ import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
 import SearchResults from "../_components/SearchResults";
 
+export const metadata = {
+  title: "Fanfiction",
+  description:
+    "List of fanfiction genre and sample stories with a search function",
+};
+
 const FanfictionPage = async (props: {
   searchParams?: Promise<{
     query?: string;
@@ -33,7 +39,11 @@ const FanfictionPage = async (props: {
         title="Fanfiction"
         subtitle="Explore my collection of fanfiction stories"
       />
-      <Box pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+      <Box
+        w={{ base: "100%", md: "80%" }}
+        mx="auto"
+        pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+      >
         <SearchBar />
       </Box>
       {query && <SearchResults query={query} />}

@@ -1,7 +1,7 @@
 import { Flex, Text, Title } from "@mantine/core";
 import Link from "next/link";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <Flex
       direction="column"
@@ -19,4 +19,6 @@ export default function NotFound() {
       </Link>
     </Flex>
   );
-}
+};
+
+export default NotFound;

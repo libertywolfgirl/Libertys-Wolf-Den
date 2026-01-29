@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@mantine/core";
+import { Box, Stack } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
 import {
   CHAPTER_PAGE_QUERY,
@@ -16,20 +16,34 @@ import classes from "./page.module.css";
 import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
 import CommentForm from "../../../../../_components/CommentForm";
 import Comments from "../../../../../_components/Comments";
+import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
+
+type Props = {
+  params: Promise<{
+    story: string;
+    chapter: string;
+  }>;
+};
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { chapter } = params;
+  const title = removeDashesAndCapitalize(chapter);
+
+  return { title: `${title}` };
+};
+
+export const generateStaticParams = async () => {
   const data = await staticFetch<CHAPTER_PARAMS_QUERYResult>({
     query: CHAPTER_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
-const ChapterPage = async (props: {
-  params: Promise<{ story: string; chapter: string }>;
-}) => {
+const ChapterPage = async (props: Props) => {
   const params = await props.params;
   const { story, chapter } = params;
 

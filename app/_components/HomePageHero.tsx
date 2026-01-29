@@ -1,4 +1,4 @@
-import { BackgroundImage, Flex, Stack, Text, Title } from "@mantine/core";
+import { Flex, Stack, Text, Title } from "@mantine/core";
 import Image from "next/image";
 
 const HomePageHero = () => {

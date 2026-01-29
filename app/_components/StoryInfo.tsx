@@ -1,10 +1,10 @@
 "use client";
 
-import { Table, Text, Title } from "@mantine/core";
+import { Group, Table, Text, Title } from "@mantine/core";
 import { STORY_PAGE_QUERYResult } from "../../sanity/types";
 
 const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
-  const { title, summary, pairings, notes } = story || {};
+  const { title, summary, pairings, notes, completed } = story || {};
 
   return (
     <Table variant="vertical" withTableBorder maw={1400} mx="auto" p="2rem">
@@ -46,7 +46,10 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
               <Title order={6}>Notes</Title>
             </Table.Th>
             <Table.Td p="1rem">
-              <Text>{notes}</Text>
+              <Group>
+                <Text>{notes}</Text>
+                <Text>{completed ? "Completed." : "In Progress."}</Text>
+              </Group>
             </Table.Td>
           </Table.Tr>
         )}

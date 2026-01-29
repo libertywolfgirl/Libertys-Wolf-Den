@@ -9,15 +9,15 @@ export const staticSanityClient = createClient({
   perspective: "published",
 });
 
-export async function staticFetch<T>({
+export const staticFetch = async <T>({
   query,
   params,
 }: {
   query: string;
   params?: Record<string, any>;
-}) {
+}) => {
   if (params === undefined) {
     return staticSanityClient.fetch<T>(query);
   }
   return staticSanityClient.fetch<T>(query, params as any);
-}
+};

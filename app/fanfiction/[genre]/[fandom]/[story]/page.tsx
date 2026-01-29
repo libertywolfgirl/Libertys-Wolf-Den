@@ -15,16 +15,31 @@ import StoryInfo from "../../../../_components/StoryInfo";
 import Link from "next/link";
 import ChapterDropdown from "../../../../_components/ChapterDropdown";
 import { staticFetch } from "../../../../../sanity/lib/staticFetch";
+import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCapitalize";
 
-export async function generateStaticParams() {
+type Props = {
+  params: Promise<{
+    story: string;
+  }>;
+};
+
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { story } = params;
+  const title = removeDashesAndCapitalize(story);
+
+  return { title: `${title}` };
+};
+
+export const generateStaticParams = async () => {
   const data = await staticFetch<STORY_PARAMS_QUERYResult>({
     query: STORY_PARAMS_QUERY,
   });
 
   return data;
-}
+};
 
-const StoryPage = async (props: { params: Promise<{ story: string }> }) => {
+const StoryPage = async (props: Props) => {
   const params = await props.params;
   const { story } = params;
 
