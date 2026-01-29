@@ -1,7 +1,7 @@
-import { Group, Button } from "@mantine/core";
+import { Group, Button, Text } from "@mantine/core";
 import Link from "next/link";
 
-const ChapterPagination = ({ previous = "", next = "" }) => {
+const ChapterPagination = ({ previous = "", next = "", completed = false }) => {
   return (
     <Group justify={!previous ? "end" : "space-between"} pt="2rem">
       {previous && (
@@ -19,6 +19,8 @@ const ChapterPagination = ({ previous = "", next = "" }) => {
           </Button>
         </Link>
       )}
+
+      {!next && completed && <Text>The end</Text>}
     </Group>
   );
 };
