@@ -1,4 +1,4 @@
-import { Box, Button, Group, Stack, Title } from "@mantine/core";
+import { Box, Button, Group, Stack, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../../sanity/lib/live";
 import {
   STORY_PAGE_QUERY,
@@ -66,7 +66,7 @@ const StoryPage = async (props: Props) => {
         )}
         <StoryInfo story={typedStory} />
         <Group justify="space-evenly">
-          {firstChapter && (
+          {firstChapter ? (
             <Group pt="1rem" justify="center">
               <Title order={5}>Read the first part:</Title>
               <Link
@@ -80,6 +80,10 @@ const StoryPage = async (props: Props) => {
                 </Button>
               </Link>
             </Group>
+          ) : (
+            <Text ta="center" pt="1rem">
+              First Chapter Coming Soon...
+            </Text>
           )}
           {chapters.length > 0 && (
             <ChapterDropdown storySlug={story} chapters={chapters} />
