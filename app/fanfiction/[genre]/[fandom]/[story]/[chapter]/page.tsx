@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@mantine/core";
+import { Box, Stack } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
 import {
   CHAPTER_PAGE_QUERY,

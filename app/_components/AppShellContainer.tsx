@@ -1,6 +1,6 @@
 "use client";
 
-import { AppShell, Avatar, Burger, Flex, Group, Title } from "@mantine/core";
+import { AppShell, Burger, Flex, Group, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
 import ColorSchemeToggle from "../../theme/ColorSchemeToggle";
@@ -49,7 +49,9 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
             </Link>
             <ColorSchemeToggle />
           </Group>
-          <Title order={5}>Liberty&apos;s Wolf Den</Title>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <Title order={5}>Liberty&apos;s Wolf Den</Title>
+          </Link>
         </Flex>
       </AppShell.Header>
       <AppShell.Navbar p={{ sm: "sm", lg: "md" }}>

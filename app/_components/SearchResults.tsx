@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Text, Title } from "@mantine/core";
+import { Stack, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../sanity/lib/live";
 import { SEARCH_QUERY } from "../../sanity/lib/queries";
 import { SEARCH_QUERYResult } from "../../sanity/types";

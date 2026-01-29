@@ -5,7 +5,6 @@ import { useForm } from "@mantine/form";
 import { createComment } from "../../sanity/lib/mutations";
 import { Comment } from "../../sanity/types";
 import { useState } from "react";
-import { set } from "sanity";
 
 const CommentForm = ({ id }: { id: string }) => {
   const [showForm, setShowForm] = useState(true);
