@@ -4,6 +4,7 @@ import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
 import StoryGrid from "./_components/StoryGrid";
 import HomePageHero from "./_components/HomePageHero";
 import BrowseAllButton from "./_components/BrowseAllButton";
+import WelcomeSection from "./_components/WelcomeSection";
 
 export const revalidate = 60;
 
@@ -21,6 +22,7 @@ const HomePage = async () => {
       mb="2rem"
     >
       <HomePageHero />
+      <WelcomeSection />
       <Title order={2} ta="center" mt="1.5rem">
         Featured Stories
       </Title>
