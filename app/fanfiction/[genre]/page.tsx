@@ -14,6 +14,7 @@ import StoryGrid from "../../_components/StoryGrid";
 import BrowseAllButton from "../../_components/BrowseAllButton";
 import { staticFetch } from "../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitalize";
+import AllFanfictionSection from "../../_components/AllFanfictionSection";
 
 type Props = {
   params: Promise<{
@@ -105,6 +106,9 @@ const GenrePage = async (props: Props) => {
             </Flex>
           ))}
       </Box>
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Box>
   );
 };

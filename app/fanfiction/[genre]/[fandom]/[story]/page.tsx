@@ -1,4 +1,4 @@
-import { Box, Button, Group, Stack, Text, Title } from "@mantine/core";
+import { Box, Button, Flex, Group, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../../sanity/lib/live";
 import {
   STORY_PAGE_QUERY,
@@ -16,6 +16,7 @@ import Link from "next/link";
 import ChapterDropdown from "../../../../_components/ChapterDropdown";
 import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCapitalize";
+import AllFanfictionSection from "../../../../_components/AllFanfictionSection";
 
 type Props = {
   params: Promise<{
@@ -55,12 +56,16 @@ const StoryPage = async (props: Props) => {
   const { title, fandom, image, firstChapter, chapters } = typedStory;
 
   return (
-    <Box pb={{ base: "1rem", sm: "2rem", lg: "3rem" }}>
+    <Box>
       <HeroSection
         title={title}
         subtitle={`Read this story from the ${fandom.title} fandom!`}
       />
-      <Stack px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }} gap={0}>
+      <Box
+        mx="auto"
+        my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+      >
         {image && (
           <ImageContainer image={image} title={title} padding="1.5rem" />
         )}
@@ -89,7 +94,10 @@ const StoryPage = async (props: Props) => {
             <ChapterDropdown storySlug={story} chapters={chapters} />
           )}
         </Group>
-      </Stack>
+      </Box>
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Box>
   );
 };

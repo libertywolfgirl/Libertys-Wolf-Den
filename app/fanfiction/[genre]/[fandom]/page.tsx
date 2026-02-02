@@ -1,4 +1,4 @@
-import { Box, Text, Title } from "@mantine/core";
+import { Box, Flex, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../sanity/lib/live";
 import {
   FANDOM_PARAMS_QUERY,
@@ -14,6 +14,7 @@ import StoryGrid from "../../../_components/StoryGrid";
 import { staticFetch } from "../../../../sanity/lib/staticFetch";
 import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
+import AllFanfictionSection from "../../../_components/AllFanfictionSection";
 
 type Props = {
   params: Promise<{
@@ -90,6 +91,9 @@ const FandomPage = async (props: Props) => {
         </Title>
         <StoryGrid stories={typedStories} cols={numCols} />
       </Box>
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Box>
   );
 };

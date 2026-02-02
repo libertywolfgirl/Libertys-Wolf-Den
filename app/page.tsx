@@ -1,10 +1,10 @@
-import { Flex, Title } from "@mantine/core";
+import { Flex, Stack, Title } from "@mantine/core";
 import { sanityFetch } from "../sanity/lib/live";
 import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
 import StoryGrid from "./_components/StoryGrid";
 import HomePageHero from "./_components/HomePageHero";
-import BrowseAllButton from "./_components/BrowseAllButton";
 import WelcomeSection from "./_components/WelcomeSection";
+import AllFanfictionSection from "./_components/AllFanfictionSection";
 
 export const revalidate = 60;
 
@@ -18,18 +18,19 @@ const HomePage = async () => {
       direction="column"
       align="center"
       justify="center"
-      gap="1.5rem"
-      mb="2rem"
+      gap={{ base: "1rem", sm: "2rem", lg: "3rem" }}
     >
       <HomePageHero />
       <WelcomeSection />
-      <Title order={2} ta="center" mt="1.5rem">
-        Featured Stories
-      </Title>
       {featuredStories && featuredStories.length > 0 && (
-        <StoryGrid stories={featuredStories} cols={3} />
+        <Stack>
+          <Title order={2} ta="center" pb={{ base: "0.5rem", md: "1rem" }}>
+            Featured Stories
+          </Title>
+          <StoryGrid stories={featuredStories} cols={3} />
+        </Stack>
       )}
-      <BrowseAllButton href="/fanfiction" title="Fanfiction" />
+      <AllFanfictionSection />
     </Flex>
   );
 };
