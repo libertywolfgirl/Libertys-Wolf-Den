@@ -7,7 +7,14 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
   const { title, summary, pairings, notes, completed } = story || {};
 
   return (
-    <Table variant="vertical" withTableBorder maw={1400} mx="auto" p="2rem">
+    <Table
+      variant="vertical"
+      withTableBorder
+      maw={1400}
+      mx="auto"
+      my="md"
+      p="2rem"
+    >
       <Table.Tbody>
         <Table.Tr>
           <Table.Th p="1rem">
