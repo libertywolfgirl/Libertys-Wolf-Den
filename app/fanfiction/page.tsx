@@ -1,4 +1,4 @@
-import { Box, Flex, Title } from "@mantine/core";
+import { Box, Flex, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../sanity/lib/live";
 import { GENRES_WITH_STORIES_QUERY } from "../../sanity/lib/queries";
 import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
@@ -8,6 +8,7 @@ import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
 import SearchResults from "../_components/SearchResults";
+import ChooseStory from "../_components/ChooseStory";
 
 export const metadata = {
   title: "Fanfiction",
@@ -44,12 +45,16 @@ const FanfictionPage = async (props: {
         mx="auto"
         pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}
       >
+        <Text fw={600} pb="xs">
+          Looking for something specific?
+        </Text>
         <SearchBar />
+        {query && <SearchResults query={query} />}
       </Box>
-      {query && <SearchResults query={query} />}
+      <ChooseStory />
       <Box
         mx="auto"
-        my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        my={{ base: "2rem", sm: "3rem", lg: "4rem" }}
         px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
       >
         <Title
