@@ -9,6 +9,7 @@ import NotFound from "../not-found";
 import SearchBar from "../_components/SearchBar";
 import SearchResults from "../_components/SearchResults";
 import ChooseStory from "../_components/ChooseStory";
+import DescriptionBubble from "../_components/DescriptionBubble";
 
 export const metadata = {
   title: "Fanfiction",
@@ -64,10 +65,10 @@ const FanfictionPage = async (props: {
         >
           Genres
         </Title>
-        <Title order={6} fw={400} ta="center">
-          Discover stories across various genres, each with its own unique
-          flavor and style.
-        </Title>
+        <DescriptionBubble
+          description="Discover stories across various genres, each with its own unique
+          flavor and style."
+        />
         {typedGenres &&
           typedGenres.length > 0 &&
           typedGenres.map((genre) => (
