@@ -10,7 +10,7 @@ const DescriptionBubble = ({ description }: { description: string }) => {
       style={{ borderRadius: 50 }}
       className={classes.container}
     >
-      <Title order={6} fw={500} ta="center">
+      <Title order={6} ta="center">
         {description}
       </Title>
     </Paper>
