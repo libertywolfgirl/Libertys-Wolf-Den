@@ -14,6 +14,8 @@ import StoryGrid from "../../_components/StoryGrid";
 import BrowseAllButton from "../../_components/BrowseAllButton";
 import { staticFetch } from "../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitalize";
+import AllFanfictionSection from "../../_components/AllFanfictionSection";
+import DescriptionBubble from "../../_components/DescriptionBubble";
 
 type Props = {
   params: Promise<{
@@ -76,10 +78,9 @@ const GenrePage = async (props: Props) => {
         >
           Fandoms
         </Title>
-        <Title order={6} fw={400} ta="center">
-          Explore stories from all of your favorite fandoms from the{" "}
-          {singularGenre} genre.
-        </Title>
+        <DescriptionBubble
+          description={`Explore stories from all of your favorite fandoms from the ${singularGenre} genre.`}
+        />
         {typedFandoms &&
           typedFandoms.length > 0 &&
           typedFandoms.map((fandom) => (
@@ -105,6 +106,9 @@ const GenrePage = async (props: Props) => {
             </Flex>
           ))}
       </Box>
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Box>
   );
 };

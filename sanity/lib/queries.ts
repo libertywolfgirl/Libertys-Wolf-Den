@@ -166,7 +166,8 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
     chapter_number,
     "story": story->{
       title,
-      slug
+      slug,
+      completed
     },
     body,
     "prev": *[
@@ -174,13 +175,11 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
       story._ref == ^.story._ref &&
       chapter_number == ^.chapter_number - 1
     ][0]{ slug },
-
     "next": *[
       _type == "chapter" &&
       story._ref == ^.story._ref &&
       chapter_number == ^.chapter_number + 1
     ][0]{ slug },
-
     "comments": *[
       _type == "comment" &&
       chapter._ref == ^._id

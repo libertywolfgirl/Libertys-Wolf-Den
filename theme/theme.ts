@@ -89,7 +89,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            backgroundColor: theme.colors.teal[9],
+            backgroundColor: theme.colors.teal[7],
           },
         }),
       },

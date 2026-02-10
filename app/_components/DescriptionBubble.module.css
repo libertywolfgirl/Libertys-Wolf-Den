@@ -1,0 +1,6 @@
+.container {
+  background-color: light-dark(
+    var(--mantine-color-teal-3),
+    var(--mantine-color-teal-8)
+  );
+}

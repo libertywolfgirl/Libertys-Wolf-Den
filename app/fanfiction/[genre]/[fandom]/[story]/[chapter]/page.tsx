@@ -63,6 +63,7 @@ const ChapterPage = async (props: Props) => {
     _id: id,
   } = typedChapter || {};
   const storyTitle = typedChapter.story?.title || "";
+  const completed = typedChapter.story?.completed || false;
   const prevSlug = typedChapter.prev?.slug.current || "";
   const nextSlug = typedChapter.next?.slug.current || "";
 
@@ -74,7 +75,11 @@ const ChapterPage = async (props: Props) => {
         p={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
       >
         <PortableText value={body} />
-        <ChapterPagination previous={prevSlug} next={nextSlug} />
+        <ChapterPagination
+          previous={prevSlug}
+          next={nextSlug}
+          completed={completed}
+        />
         <Comments comments={comments} />
         <CommentForm id={id} />
       </Stack>
