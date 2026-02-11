@@ -10,11 +10,15 @@ import {
 } from "../../../../sanity/types";
 import NotFound from "../../../not-found";
 import HeroSection from "../../../_components/HeroSection";
-import StoryGrid from "../../../_components/StoryGrid";
 import { staticFetch } from "../../../../sanity/lib/staticFetch";
 import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../_components/AllFanfictionSection";
+import dynamic from "next/dynamic";
+
+const StoryGrid = dynamic(() => import("../../../_components/StoryGrid"), {
+  loading: () => <p>Loading stories...</p>,
+});
 
 type Props = {
   params: Promise<{
