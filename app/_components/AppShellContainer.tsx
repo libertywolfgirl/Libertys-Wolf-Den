@@ -34,7 +34,13 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
           align="center"
           justify="space-between"
         >
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            size="sm"
+            aria-label="navigation menu"
+          />
           <Group gap="xl">
             <Link href="/" style={{ textDecoration: "none" }}>
               <Flex pos="relative" w={50} h={50}>
@@ -42,6 +48,7 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
                   src="/wolf-logo.jpg"
                   alt="wolf logo"
                   fill
+                  sizes="100px"
                   objectFit="cover"
                   style={{ borderRadius: "50%" }}
                 />

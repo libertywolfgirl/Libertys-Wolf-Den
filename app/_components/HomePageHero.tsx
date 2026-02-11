@@ -8,6 +8,7 @@ const HomePageHero = () => {
         src="/wolf-pack.jpg"
         alt="wolf pack background image"
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority
         fetchPriority="high"
         objectFit="cover"
