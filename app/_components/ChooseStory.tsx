@@ -1,4 +1,4 @@
-import { Flex, Text } from "@mantine/core";
+import { Box, Flex, Text } from "@mantine/core";
 import Image from "next/image";
 
 const ChooseStory = () => {
@@ -16,18 +16,22 @@ const ChooseStory = () => {
       >
         Are you ready to read?
       </Text>
-      <Image
-        src="/wolf-stare.jpg"
-        alt="wolf staring image"
-        height={1280}
-        width={1280}
-        style={{
-          maxWidth: 700,
-          width: "100%",
-          height: "auto",
-          padding: "1rem",
-        }}
-      />
+      <Box
+        pos="relative"
+        w="100%"
+        maw={720}
+        p="1rem"
+        style={{ aspectRatio: "1000 / 710" }}
+      >
+        <Image
+          src="/wolf-stare.jpg"
+          alt="wolf staring image"
+          priority
+          fill
+          style={{ objectFit: "contain" }}
+          sizes="(max-width: 720px) 100vw, 720px"
+        />
+      </Box>
       <Text
         ta="center"
         fz={{ base: "2rem", md: "3rem", xl: "4rem" }}

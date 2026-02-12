@@ -17,7 +17,7 @@ import AllFanfictionSection from "../../../_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
 
 const StoryGrid = dynamic(() => import("../../../_components/StoryGrid"), {
-  loading: () => <p>Loading stories...</p>,
+  loading: () => <p>Loading...</p>,
 });
 
 type Props = {

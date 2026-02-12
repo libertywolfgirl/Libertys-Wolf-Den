@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Group, Text, Title } from "@mantine/core";
+import { Box, Flex, Group, Text } from "@mantine/core";
 import { sanityFetch } from "../../../../../sanity/lib/live";
 import {
   STORY_PAGE_QUERY,
@@ -11,12 +11,26 @@ import {
 } from "../../../../../sanity/types";
 import NotFound from "../../../../not-found";
 import ImageContainer from "../../../../_components/ImageContainer";
-import StoryInfo from "../../../../_components/StoryInfo";
-import Link from "next/link";
-import ChapterDropdown from "../../../../_components/ChapterDropdown";
 import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../../_components/AllFanfictionSection";
+import dynamic from "next/dynamic";
+
+const StoryInfo = dynamic(() => import("../../../../_components/StoryInfo"), {
+  loading: () => <p>Loading...</p>,
+});
+const FirstChapter = dynamic(
+  () => import("../../../../_components/FirstChapter"),
+  {
+    loading: () => <p>Loading...</p>,
+  },
+);
+const ChapterDropdown = dynamic(
+  () => import("../../../../_components/ChapterDropdown"),
+  {
+    loading: () => <p>Loading...</p>,
+  },
+);
 
 type Props = {
   params: Promise<{
@@ -72,19 +86,11 @@ const StoryPage = async (props: Props) => {
         <StoryInfo story={typedStory} />
         <Group justify="space-evenly">
           {firstChapter ? (
-            <Group pt="1rem" justify="center">
-              <Title order={5}>Read the first part:</Title>
-              <Link
-                href={`./${story}/${firstChapter.slug.current}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Button radius="xl" size="lg">
-                  <Title order={6} c="white">
-                    {title} - {firstChapter.chapter_title}
-                  </Title>
-                </Button>
-              </Link>
-            </Group>
+            <FirstChapter
+              url={`./${story}/${firstChapter.slug.current}`}
+              title={title}
+              chapterTitle={firstChapter.chapter_title}
+            />
           ) : (
             <Text ta="center" pt="1rem">
               First Chapter Coming Soon...
