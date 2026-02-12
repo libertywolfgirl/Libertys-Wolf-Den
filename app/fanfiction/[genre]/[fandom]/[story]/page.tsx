@@ -81,7 +81,13 @@ const StoryPage = async (props: Props) => {
         px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
       >
         {image && (
-          <ImageContainer image={image} title={title} padding="1.5rem" />
+          <ImageContainer
+            image={image}
+            title={title}
+            padding="1.5rem"
+            maxHeight={500}
+            minHeight={300}
+          />
         )}
         <StoryInfo story={typedStory} />
         <Group justify="space-evenly">

@@ -27,6 +27,7 @@ const ChooseStory = () => {
           src="/wolf-stare.jpg"
           alt="wolf staring image"
           priority
+          fetchPriority="high"
           fill
           style={{ objectFit: "contain" }}
           sizes="(max-width: 720px) 100vw, 720px"

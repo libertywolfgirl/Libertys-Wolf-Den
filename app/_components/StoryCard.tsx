@@ -33,7 +33,12 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
         withBorder
       >
         {image && (
-          <ImageContainer image={image} title={title} maximumHeight={200} />
+          <ImageContainer
+            image={image}
+            title={title}
+            maxHeight={250}
+            minHeight={200}
+          />
         )}
         <Stack h="100%" justify="space-evenly" gap="0.5rem">
           <Group justify="space-between" mt="xs">

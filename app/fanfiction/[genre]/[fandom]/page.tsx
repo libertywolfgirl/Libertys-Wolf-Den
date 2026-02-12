@@ -76,7 +76,14 @@ const FandomPage = async (props: Props) => {
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
         px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
       >
-        {image && <ImageContainer image={image} title={title} padding="1rem" />}
+        {image && (
+          <ImageContainer
+            image={image}
+            title={title}
+            maxWidth={1000}
+            padding="1rem"
+          />
+        )}
         {summary && (
           <Text
             py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
