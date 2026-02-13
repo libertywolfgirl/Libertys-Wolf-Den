@@ -24,7 +24,14 @@ const HeroSection = ({
       gap={{ base: "xs", sm: "md", lg: "xl" }}
       className={classes.container}
     >
-      <Title order={1} ta="center">
+      <Title
+        order={1}
+        ta="center"
+        style={{
+          contentVisibility: "visible",
+          contain: "layout paint",
+        }}
+      >
         {title}
       </Title>
       <Title order={5} ta="center">
