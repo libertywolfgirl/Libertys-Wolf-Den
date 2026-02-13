@@ -10,11 +10,15 @@ import {
 } from "../../../../sanity/types";
 import NotFound from "../../../not-found";
 import HeroSection from "../../../_components/HeroSection";
-import StoryGrid from "../../../_components/StoryGrid";
 import { staticFetch } from "../../../../sanity/lib/staticFetch";
 import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../_components/AllFanfictionSection";
+import dynamic from "next/dynamic";
+
+const StoryGrid = dynamic(() => import("../../../_components/StoryGrid"), {
+  loading: () => <p>Loading...</p>,
+});
 
 type Props = {
   params: Promise<{
@@ -72,7 +76,14 @@ const FandomPage = async (props: Props) => {
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
         px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
       >
-        {image && <ImageContainer image={image} title={title} padding="1rem" />}
+        {image && (
+          <ImageContainer
+            image={image}
+            title={title}
+            maxWidth={1000}
+            padding="1rem"
+          />
+        )}
         {summary && (
           <Text
             py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}

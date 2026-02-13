@@ -1,10 +1,18 @@
-"use client";
+import {
+  Group,
+  Table,
+  TableTbody,
+  TableTr,
+  TableTh,
+  TableTd,
+  Text,
+  Title,
+} from "@mantine/core";
 
-import { Group, Table, Text, Title } from "@mantine/core";
-import { STORY_PAGE_QUERYResult } from "../../sanity/types";
+import type { STORY_PAGE_QUERYResult } from "../../sanity/types";
 
 const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
-  const { title, summary, pairings, notes, completed } = story || {};
+  const { title, summary, pairings, notes, completed } = story ?? {};
 
   return (
     <Table
@@ -14,53 +22,51 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
       mx="auto"
       my="md"
       p="2rem"
+      w="100%"
+      style={{
+        tableLayout: "fixed",
+      }}
     >
-      <Table.Tbody>
-        <Table.Tr>
-          <Table.Th p="1rem">
+      <TableTbody>
+        <TableTr>
+          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
             <Title order={6}>Title</Title>
-          </Table.Th>
-          <Table.Td p="1rem">
+          </TableTh>
+          <TableTd p="1rem" mih={48}>
             <Text>{title}</Text>
-          </Table.Td>
-        </Table.Tr>
+          </TableTd>
+        </TableTr>
 
-        {summary && (
-          <Table.Tr>
-            <Table.Th p="1rem">
-              <Title order={6}>Summary</Title>
-            </Table.Th>
-            <Table.Td p="1rem">
-              <Text>{summary}</Text>
-            </Table.Td>
-          </Table.Tr>
-        )}
+        <TableTr>
+          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+            <Title order={6}>Summary</Title>
+          </TableTh>
+          <TableTd p="1rem" mih={56}>
+            <Text>{summary ?? "-"}</Text>
+          </TableTd>
+        </TableTr>
 
-        {pairings && (
-          <Table.Tr>
-            <Table.Th p="1rem">
-              <Title order={6}>Pairings</Title>
-            </Table.Th>
-            <Table.Td p="1rem">
-              <Text>{pairings}</Text>
-            </Table.Td>
-          </Table.Tr>
-        )}
+        <TableTr>
+          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+            <Title order={6}>Pairings</Title>
+          </TableTh>
+          <TableTd p="1rem" mih={40}>
+            <Text>{pairings ?? "-"}</Text>
+          </TableTd>
+        </TableTr>
 
-        {notes && (
-          <Table.Tr>
-            <Table.Th p="1rem">
-              <Title order={6}>Notes</Title>
-            </Table.Th>
-            <Table.Td p="1rem">
-              <Group>
-                <Text>{notes}</Text>
-                <Text>{completed ? "Completed." : "In Progress."}</Text>
-              </Group>
-            </Table.Td>
-          </Table.Tr>
-        )}
-      </Table.Tbody>
+        <TableTr>
+          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+            <Title order={6}>Notes</Title>
+          </TableTh>
+          <TableTd p="1rem" mih={44}>
+            <Group>
+              <Text>{notes ?? "-"}</Text>
+              <Text>{completed ? "Completed." : "In Progress."}</Text>
+            </Group>
+          </TableTd>
+        </TableTr>
+      </TableTbody>
     </Table>
   );
 };

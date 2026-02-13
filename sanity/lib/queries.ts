@@ -15,7 +15,17 @@ export const GENRES_WITH_STORIES_QUERY = defineQuery(`
       slug,
       completed,
       summary,
-      image,
+      image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
       "genre": genre->{
         title,
         slug
@@ -43,7 +53,17 @@ export const FANDOMS_WITH_STORIES_QUERY = defineQuery(`
       slug,
       completed,
       summary,
-      image,
+      image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
       "genre": genre->{
         title,
         slug
@@ -64,7 +84,17 @@ export const STORIES_FOR_FANDOM_QUERY = defineQuery(`
     slug,
     completed,
     summary,
-    image,
+    image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
     "genre": genre->{
       title,
       slug
@@ -72,7 +102,17 @@ export const STORIES_FOR_FANDOM_QUERY = defineQuery(`
     "fandom": fandom->{
       title,
       slug,
-      image,
+      image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
       summary
     }
   }
@@ -86,7 +126,17 @@ export const FEATURED_STORIES_QUERY =
     slug,
     completed,
     summary,
-    image,
+    image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
     "genre": genre->{
       title,
       slug
@@ -106,7 +156,17 @@ export const STORY_QUERY =
     slug,
     completed,
     summary,
-    image,
+    image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
     "genre": genre->{
       title,
       slug
@@ -132,7 +192,17 @@ export const STORY_PAGE_QUERY = defineQuery(`
     summary,
     pairings,
     notes,
-    image,
+    image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
     "firstChapter": *[
       _type == "chapter" &&
       story._ref == ^._id &&
@@ -234,7 +304,17 @@ export const SEARCH_QUERY = defineQuery(`
         slug,
         completed,
         summary,
-        image,
+        image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
         "genre": genre->{
           title,
           slug

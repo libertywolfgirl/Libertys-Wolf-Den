@@ -10,12 +10,16 @@ import {
   FANDOMS_WITH_STORIES_QUERYResult,
   GENRE_PARAMS_QUERYResult,
 } from "../../../sanity/types";
-import StoryGrid from "../../_components/StoryGrid";
 import BrowseAllButton from "../../_components/BrowseAllButton";
 import { staticFetch } from "../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../_components/AllFanfictionSection";
 import DescriptionBubble from "../../_components/DescriptionBubble";
+import dynamic from "next/dynamic";
+
+const StoryGrid = dynamic(() => import("../../_components/StoryGrid"), {
+  loading: () => <p>Loading...</p>,
+});
 
 type Props = {
   params: Promise<{

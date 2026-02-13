@@ -1,10 +1,14 @@
 import { Flex, Stack, Title } from "@mantine/core";
 import { sanityFetch } from "../sanity/lib/live";
 import { FEATURED_STORIES_QUERY } from "../sanity/lib/queries";
-import StoryGrid from "./_components/StoryGrid";
 import HomePageHero from "./_components/HomePageHero";
 import WelcomeSection from "./_components/WelcomeSection";
 import AllFanfictionSection from "./_components/AllFanfictionSection";
+import dynamic from "next/dynamic";
+
+const StoryGrid = dynamic(() => import("./_components/StoryGrid"), {
+  loading: () => <p>Loading...</p>,
+});
 
 export const revalidate = 60;
 

@@ -10,13 +10,27 @@ import {
 } from "../../../../../../sanity/types";
 import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
-import ChapterPagination from "../../../../../_components/ChapterPagination";
 import { PortableText } from "@portabletext/react";
 import classes from "./page.module.css";
 import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
-import CommentForm from "../../../../../_components/CommentForm";
-import Comments from "../../../../../_components/Comments";
 import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
+import dynamic from "next/dynamic";
+
+const ChapterPagination = dynamic(
+  () => import("../../../../../_components/ChapterPagination"),
+  {
+    loading: () => <p>Loading...</p>,
+  },
+);
+const Comments = dynamic(() => import("../../../../../_components/Comments"), {
+  loading: () => <p>Loading...</p>,
+});
+const CommentForm = dynamic(
+  () => import("../../../../../_components/CommentForm"),
+  {
+    loading: () => <p>Loading...</p>,
+  },
+);
 
 type Props = {
   params: Promise<{
@@ -71,17 +85,33 @@ const ChapterPage = async (props: Props) => {
     <Box pb="1rem">
       <HeroSection title={storyTitle} subtitle={chapterTitle} />
       <Stack
-        className={classes.bodyContent}
-        p={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+        py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+        px={{ base: "2rem", sm: "4rem", lg: "8rem" }}
       >
-        <PortableText value={body} />
+        <Box
+          className={classes.bodyContent}
+          component="article"
+          style={{
+            contentVisibility: "auto",
+            containIntrinsicSize: "1px 800px",
+          }}
+        >
+          <PortableText value={body} />
+        </Box>
         <ChapterPagination
           previous={prevSlug}
           next={nextSlug}
           completed={completed}
         />
-        <Comments comments={comments} />
-        <CommentForm id={id} />
+        <Box
+          style={{
+            contentVisibility: "auto",
+            containIntrinsicSize: "1px 600px",
+          }}
+        >
+          <Comments comments={comments} />
+          <CommentForm id={id} />
+        </Box>
       </Stack>
     </Box>
   );

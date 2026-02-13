@@ -3,13 +3,21 @@ import { sanityFetch } from "../../sanity/lib/live";
 import { GENRES_WITH_STORIES_QUERY } from "../../sanity/lib/queries";
 import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 import HeroSection from "../_components/HeroSection";
-import StoryGrid from "../_components/StoryGrid";
 import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
-import SearchBar from "../_components/SearchBar";
-import SearchResults from "../_components/SearchResults";
 import ChooseStory from "../_components/ChooseStory";
 import DescriptionBubble from "../_components/DescriptionBubble";
+import dynamic from "next/dynamic";
+
+const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
+  loading: () => <p>Loading...</p>,
+});
+const SearchBar = dynamic(() => import("../_components/SearchBar"), {
+  loading: () => <p>Loading...</p>,
+});
+const SearchResults = dynamic(() => import("../_components/SearchResults"), {
+  loading: () => <p>Loading...</p>,
+});
 
 export const metadata = {
   title: "Fanfiction",

@@ -1,6 +1,9 @@
 .bodyContent {
-  max-width: 100%;
+  max-width: 150ch;
   overflow-wrap: break-word;
+  line-height: 1.7;
+  margin: 0 0 1em;
+  font-size-adjust: 0.52;
 }
 
 .bodyContent * {
@@ -11,17 +14,29 @@
   font-size: 1.15rem;
 }
 
+.bodyContent p:first-of-type {
+  min-height: 5.1em;
+}
+
 .bodyContent span {
   color: var(--mantine-color-blue-0);
 }
 
 @media (max-width: $mantine-breakpoint-md) {
+  .bodyContent {
+    max-width: 100ch;
+  }
+
   .bodyContent p {
     font-size: 1.05rem;
   }
 }
 
 @media (max-width: $mantine-breakpoint-xs) {
+  .bodyContent {
+    max-width: 50ch;
+  }
+
   .bodyContent p {
     font-size: 0.95rem;
   }

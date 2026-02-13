@@ -1,29 +1,31 @@
-import { Flex, Paper, Text, Title } from "@mantine/core";
+import { Box, Flex, Paper, Text, Title } from "@mantine/core";
 import Image from "next/image";
 
 const AboutSection = () => {
   return (
     <Flex
       direction={{ base: "column", xl: "row" }}
-      p={{ base: "1rem", sm: "2rem", lg: "3rem" }}
-      gap={{
-        base: "1rem",
-        xs: "2rem",
-        sm: "3rem",
-        md: "4rem",
-        lg: "5rem",
-        xl: "6rem",
-      }}
+      py={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+      gap={{ base: "1rem", md: "2rem", xl: 0 }}
       align="center"
-      justify="center"
     >
-      <Image
-        src="/wolf-profile.jpg"
-        alt="wolf image"
-        height={1280}
-        width={1280}
-        style={{ maxWidth: 700, width: "100%", height: "auto" }}
-      />
+      <Box
+        pos="relative"
+        w="100%"
+        maw={1200}
+        miw={600}
+        style={{ aspectRatio: "16 / 9" }}
+      >
+        <Image
+          src="/wolf-profile.jpg"
+          alt="wolf image"
+          priority
+          fetchPriority="high"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: "contain" }}
+        />
+      </Box>
       <Paper
         shadow="sm"
         radius="md"
