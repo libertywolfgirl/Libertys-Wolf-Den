@@ -41,7 +41,7 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
             size="sm"
             aria-label="navigation menu"
           />
-          <Group gap="xl">
+          <Group gap="lg">
             <Link href="/" style={{ textDecoration: "none" }}>
               <Flex pos="relative" w={50} h={50}>
                 <Image

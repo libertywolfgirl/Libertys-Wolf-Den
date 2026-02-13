@@ -84,7 +84,10 @@ const ChapterPage = async (props: Props) => {
   return (
     <Box pb="1rem">
       <HeroSection title={storyTitle} subtitle={chapterTitle} />
-      <Stack p={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}>
+      <Stack
+        py={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+        px={{ base: "2rem", sm: "4rem", lg: "8rem" }}
+      >
         <Box
           className={classes.bodyContent}
           component="article"
