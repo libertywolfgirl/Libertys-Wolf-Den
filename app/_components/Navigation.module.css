@@ -1,19 +1,26 @@
+.root {
+  color: light-dark(var(--mantine-color-teal-7), var(--mantine-color-teal-2));
+}
+
 .root:hover {
+  color: light-dark(var(--mantine-color-teal-9), var(--mantine-color-teal-1));
   background-color: light-dark(
-    var(--mantine-color-cyan-0),
+    var(--mantine-color-cyan-1),
     var(--mantine-color-cyan-9)
   );
 }
 
 .root[data-active] {
   font-weight: 800;
+  color: light-dark(var(--mantine-color-teal-8), var(--mantine-color-teal-0));
   background-color: light-dark(
-    var(--mantine-color-cyan-1),
+    var(--mantine-color-cyan-0),
     var(--mantine-color-cyan-8)
   );
 }
 
 .root:hover[data-active] {
+  color: light-dark(var(--mantine-color-teal-6), var(--mantine-color-teal-3));
   background-color: light-dark(
     var(--mantine-color-cyan-3),
     var(--mantine-color-cyan-6)
