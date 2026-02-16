@@ -6,7 +6,7 @@ const AboutSection = () => {
     <Flex
       direction={{ base: "column", xl: "row" }}
       py={{ base: "1rem", sm: "2rem", lg: "3rem" }}
-      gap={{ base: "1rem", md: "2rem", xl: 0 }}
+      gap={{ base: "2rem", md: "3rem", xl: 0 }}
       align="center"
     >
       <Box
@@ -40,7 +40,7 @@ const AboutSection = () => {
           Liberty is a writer of various fanfiction. She works as a frontend web
           developer in New England. She has been writing fanfiction since middle
           school, and her skills and interests have only grown. Aside from
-          writing, reading, and programming,s he enjoys hiking in the woods and
+          writing, reading, and programming, she enjoys hiking in the woods and
           mountain climbing. Her works can also be found under the name
           pedepaulie on FanFiction.net, ArchiveOfOurOwn, Wattpad, and Quotev.
         </Text>

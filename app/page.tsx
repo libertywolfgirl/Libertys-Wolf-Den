@@ -34,7 +34,9 @@ const HomePage = async () => {
           <StoryGrid stories={featuredStories} cols={3} />
         </Stack>
       )}
-      <AllFanfictionSection />
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Flex>
   );
 };
