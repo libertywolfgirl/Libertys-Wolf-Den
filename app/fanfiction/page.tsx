@@ -8,15 +8,16 @@ import NotFound from "../not-found";
 import ChooseStory from "../_components/ChooseStory";
 import DescriptionBubble from "../_components/DescriptionBubble";
 import dynamic from "next/dynamic";
+import Loading from "../loading";
 
 const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const SearchBar = dynamic(() => import("../_components/SearchBar"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const SearchResults = dynamic(() => import("../_components/SearchResults"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 export const metadata = {

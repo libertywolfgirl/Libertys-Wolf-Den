@@ -16,9 +16,10 @@ import { removeDashesAndCapitalize } from "../../_utils/removeDashesAndCapitaliz
 import AllFanfictionSection from "../../_components/AllFanfictionSection";
 import DescriptionBubble from "../../_components/DescriptionBubble";
 import dynamic from "next/dynamic";
+import Loading from "../../loading";
 
 const StoryGrid = dynamic(() => import("../../_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 type Props = {

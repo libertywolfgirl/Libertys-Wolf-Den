@@ -15,20 +15,21 @@ import { staticFetch } from "../../../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../../_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
+import Loading from "../../../../loading";
 
 const StoryInfo = dynamic(() => import("../../../../_components/StoryInfo"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const FirstChapter = dynamic(
   () => import("../../../../_components/FirstChapter"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
   },
 );
 const ChapterDropdown = dynamic(
   () => import("../../../../_components/ChapterDropdown"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
   },
 );
 

@@ -15,9 +15,10 @@ import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
+import Loading from "../../../loading";
 
 const StoryGrid = dynamic(() => import("../../../_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 type Props = {

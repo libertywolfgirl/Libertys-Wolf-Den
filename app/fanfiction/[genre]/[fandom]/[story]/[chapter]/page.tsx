@@ -15,20 +15,21 @@ import classes from "./page.module.css";
 import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
 import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
 import dynamic from "next/dynamic";
+import Loading from "../../../../../loading";
 
 const ChapterPagination = dynamic(
   () => import("../../../../../_components/ChapterPagination"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
   },
 );
 const Comments = dynamic(() => import("../../../../../_components/Comments"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const CommentForm = dynamic(
   () => import("../../../../../_components/CommentForm"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
   },
 );
 
