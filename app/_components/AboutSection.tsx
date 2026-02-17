@@ -13,8 +13,8 @@ const AboutSection = () => {
         pos="relative"
         w="100%"
         maw={1200}
-        miw={600}
-        style={{ aspectRatio: "16 / 9" }}
+        miw={300}
+        style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
       >
         <Image
           src="/wolf-profile.jpg"
