@@ -53,13 +53,19 @@ const FanfictionPage = async (props: {
       <Box
         w={{ base: "100%", md: "80%" }}
         mx="auto"
-        pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
       >
-        <Text fw={600} pb="xs">
+        <Text fw={600} fz="1.5rem" pb="md">
           Looking for something specific?
         </Text>
         <SearchBar />
         {query && <SearchResults query={query} />}
+      </Box>
+      <Box
+        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+        pb={{ base: 0, sm: "0.5rem", lg: "1rem" }}
+      >
+        <DescriptionBubble description="Fanfiction is a great way to relax and enjoy alternative versions of your favorite stories." />
       </Box>
       <ChooseStory />
       <Box

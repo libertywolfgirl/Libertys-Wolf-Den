@@ -6,37 +6,41 @@ const ChooseStory = () => {
     <Flex
       direction={{ base: "column", lg: "row" }}
       align="center"
-      justify="space-evenly"
+      justify={{ base: "center", lg: "space-evenly" }}
       mt={{ base: "2rem", sm: "3.25rem", lg: "4.5rem" }}
     >
       <Text
         ta="center"
         fz={{ base: "2rem", md: "3rem", xl: "4rem" }}
         maw={{ base: "100%", lg: "25%" }}
+        pb="1rem"
       >
         Are you ready to read?
       </Text>
       <Box
         pos="relative"
         w="100%"
-        maw={720}
+        maw={{ base: 350, sm: 535, lg: 720 }}
+        mah={{ base: "25vh", sm: "50vh" }}
         p="1rem"
-        style={{ aspectRatio: "1000 / 710" }}
+        style={{ aspectRatio: "720 / 511" }}
       >
         <Image
           src="/wolf-stare.jpg"
           alt="wolf staring image"
-          priority
-          fetchPriority="high"
           fill
+          loading="lazy"
+          decoding="async"
+          quality={65}
+          sizes="(max-width: 480px) 320px, (max-width: 768px) 500px, 720px"
           style={{ objectFit: "contain" }}
-          sizes="(max-width: 720px) 100vw, 720px"
         />
       </Box>
       <Text
         ta="center"
         fz={{ base: "2rem", md: "3rem", xl: "4rem" }}
         maw={{ base: "100%", lg: "25%" }}
+        pt="1rem"
       >
         Choose your story!
       </Text>

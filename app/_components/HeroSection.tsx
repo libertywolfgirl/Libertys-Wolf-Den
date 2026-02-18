@@ -13,6 +13,7 @@ const HeroSection = ({
       direction="column"
       align="center"
       justify="center"
+      mih="40vh"
       p={{
         base: "1rem",
         xs: "2rem",
