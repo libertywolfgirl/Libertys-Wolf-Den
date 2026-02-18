@@ -73,6 +73,7 @@ const ImageContainer = ({
         height={displayHeight}
         priority
         fetchPriority="high"
+        quality={50}
         sizes="(max-width: 768px) 90vw, 800px"
       />
     </Flex>
