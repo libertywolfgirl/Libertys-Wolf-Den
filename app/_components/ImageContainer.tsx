@@ -63,6 +63,7 @@ const ImageContainer = ({
       p={padding || 0}
       maw={maxWidth || "100%"}
       mah={maxHeight || "none"}
+      mih={minHeight || "auto"}
       m="0 auto"
     >
       <Image
@@ -73,13 +74,6 @@ const ImageContainer = ({
         priority
         fetchPriority="high"
         sizes="(max-width: 768px) 90vw, 800px"
-        style={{
-          width: "auto",
-          height: "auto",
-          maxWidth: "100%",
-          maxHeight: maxHeight || "none",
-          minHeight: minHeight || "auto",
-        }}
       />
     </Flex>
   );
