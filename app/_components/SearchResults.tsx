@@ -27,7 +27,7 @@ const SearchResults = async ({ query }: { query: string }) => {
       <Title order={2} pb="1rem">
         Search Results...
       </Title>
-      <StoryGrid stories={typedSearchResults} cols={numCols} />
+      <StoryGrid stories={typedSearchResults} cols={numCols} heading={3} />
     </Stack>
   );
 };

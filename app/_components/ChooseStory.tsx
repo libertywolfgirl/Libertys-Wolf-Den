@@ -31,7 +31,7 @@ const ChooseStory = () => {
           fill
           loading="lazy"
           decoding="async"
-          quality={65}
+          quality={60}
           sizes="(max-width: 480px) 320px, (max-width: 768px) 500px, 720px"
           style={{ objectFit: "contain" }}
         />

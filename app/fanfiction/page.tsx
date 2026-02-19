@@ -98,7 +98,11 @@ const FanfictionPage = async (props: {
               <Title order={3} ta="center">
                 {genre.title}
               </Title>
-              <StoryGrid stories={genre.stories} cols={genre.stories.length} />
+              <StoryGrid
+                stories={genre.stories}
+                cols={genre.stories.length}
+                heading={4}
+              />
               <BrowseAllButton
                 href={`/fanfiction/${genre.slug.current}`}
                 title={`Stories Based on ${genre.title}`}

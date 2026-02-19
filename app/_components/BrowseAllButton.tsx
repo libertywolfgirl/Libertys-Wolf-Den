@@ -1,13 +1,14 @@
-import { Button, Title } from "@mantine/core";
+import { Button, Text, Title } from "@mantine/core";
 import Link from "next/link";
+import classes from "./BrowseAll.module.css";
 
 const BrowseAllButton = ({ href, title }: { href: string; title: string }) => {
   return (
     <Link href={href} style={{ textDecoration: "none" }}>
       <Button radius="xl" size="lg">
-        <Title order={6} c="white">
+        <Text fw={600} c="white" className={classes.heading}>
           Browse All {title}
-        </Title>
+        </Text>
       </Button>
     </Link>
   );

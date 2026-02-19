@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <Flex
       direction={{ base: "column", xl: "row" }}
-      py={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+      py={{ base: "2rem", sm: "3rem", lg: "4rem" }}
       gap={{ base: "2rem", md: "3rem", xl: 0 }}
       align="center"
     >
@@ -21,6 +21,7 @@ const AboutSection = () => {
           alt="wolf image"
           priority
           fetchPriority="high"
+          quality={60}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{ objectFit: "contain" }}

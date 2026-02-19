@@ -4,3 +4,19 @@
     var(--mantine-color-teal-9)
   );
 }
+
+.heading {
+  font-size: 1.5rem !important;
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .heading {
+    font-size: 1.35rem !important;
+  }
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .heading {
+    font-size: 1.2rem !important;
+  }
+}

@@ -15,10 +15,10 @@ const HomePageHero = () => {
         fill
         priority
         fetchPriority="high"
-        quality={70}
+        quality={60}
         sizes="100vw"
         placeholder="blur"
-        blurDataURL="/wolf-pack-blur.jpg"
+        blurDataURL="/wolf-pack.jpg"
         style={{
           objectFit: "cover",
           objectPosition: "50% 40%",

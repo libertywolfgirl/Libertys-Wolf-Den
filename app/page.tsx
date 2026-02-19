@@ -32,7 +32,7 @@ const HomePage = async () => {
           <Title order={2} ta="center" pb={{ base: "0.5rem", md: "1rem" }}>
             Featured Stories
           </Title>
-          <StoryGrid stories={featuredStories} cols={3} />
+          <StoryGrid stories={featuredStories} cols={3} heading={3} />
         </Stack>
       )}
       <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>

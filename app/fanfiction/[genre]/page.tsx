@@ -103,6 +103,7 @@ const GenrePage = async (props: Props) => {
               <StoryGrid
                 stories={fandom.stories}
                 cols={fandom.stories.length}
+                heading={4}
               />
               <BrowseAllButton
                 href={`/fanfiction/${genre}/${fandom.slug.current}`}
