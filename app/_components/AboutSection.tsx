@@ -17,14 +17,14 @@ const AboutSection = () => {
         style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
       >
         <Image
-          src="/wolf-profile.jpg"
+          src="/wolf-profile.webp"
           alt="wolf image"
           priority
           fetchPriority="high"
-          quality={60}
+          quality={50}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          style={{ objectFit: "contain" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+          objectFit="contain"
         />
       </Box>
       <Paper

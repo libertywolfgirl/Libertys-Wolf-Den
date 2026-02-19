@@ -10,19 +10,15 @@ const HomePageHero = () => {
       style={{ overflow: "hidden" }}
     >
       <Image
-        src="/wolf-pack.jpg"
+        src="/wolf-pack.webp"
         alt="wolf pack background image"
         fill
         priority
         fetchPriority="high"
-        quality={60}
+        quality={50}
         sizes="100vw"
-        placeholder="blur"
-        blurDataURL="/wolf-pack.jpg"
-        style={{
-          objectFit: "cover",
-          objectPosition: "50% 40%",
-        }}
+        objectFit="cover"
+        objectPosition="50% 40%"
       />
       <Flex
         pos="absolute"

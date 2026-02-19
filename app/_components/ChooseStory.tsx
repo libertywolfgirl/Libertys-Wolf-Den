@@ -26,14 +26,14 @@ const ChooseStory = () => {
         style={{ aspectRatio: "720 / 511" }}
       >
         <Image
-          src="/wolf-stare.jpg"
+          src="/wolf-stare.webp"
           alt="wolf staring image"
           fill
           loading="lazy"
           decoding="async"
-          quality={60}
-          sizes="(max-width: 480px) 320px, (max-width: 768px) 500px, 720px"
-          style={{ objectFit: "contain" }}
+          quality={50}
+          sizes="(max-width: 480px) 350px, (max-width: 768px) 535px, 720px"
+          objectFit="contain"
         />
       </Box>
       <Text

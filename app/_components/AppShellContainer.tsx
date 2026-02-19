@@ -45,10 +45,10 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
             <Link href="/" style={{ textDecoration: "none" }}>
               <Flex pos="relative" w={50} h={50}>
                 <Image
-                  src="/wolf-logo.jpg"
+                  src="/wolf-logo.webp"
                   alt="wolf logo"
                   fill
-                  quality={60}
+                  quality={50}
                   sizes="100px"
                   objectFit="cover"
                   style={{ borderRadius: "50%" }}
