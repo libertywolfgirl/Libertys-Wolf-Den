@@ -48,7 +48,6 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
                   src="/wolf-logo.webp"
                   alt="wolf logo"
                   fill
-                  quality={50}
                   sizes="100px"
                   objectFit="cover"
                   style={{ borderRadius: "50%" }}

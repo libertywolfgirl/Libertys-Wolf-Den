@@ -15,7 +15,6 @@ const HomePageHero = () => {
         fill
         priority
         fetchPriority="high"
-        quality={50}
         sizes="100vw"
         objectFit="cover"
         objectPosition="50% 40%"
