@@ -61,8 +61,11 @@ const ImageContainer = ({
       justify="center"
       align="center"
       p={padding || 0}
+      w="100%"
+      h="100%"
       maw={maxWidth || "100%"}
       mah={maxHeight || "none"}
+      mih={minHeight || "auto"}
       m="0 auto"
     >
       <Image
@@ -72,6 +75,7 @@ const ImageContainer = ({
         height={displayHeight}
         priority
         fetchPriority="high"
+        quality={50}
         sizes="(max-width: 768px) 90vw, 800px"
         style={{
           width: "auto",

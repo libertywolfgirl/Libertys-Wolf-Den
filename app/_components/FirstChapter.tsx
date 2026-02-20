@@ -1,5 +1,6 @@
 import { Button, Group, Title } from "@mantine/core";
 import Link from "next/link";
+import classes from "./FirstChapter.module.css";
 
 type Props = {
   url: string;
@@ -10,10 +11,12 @@ type Props = {
 const FirstChapter = ({ url, title, chapterTitle }: Props) => {
   return (
     <Group pt="1rem" justify="center">
-      <Title order={5}>Read the first part:</Title>
+      <Title order={4} className={classes.heading}>
+        Read the first part:
+      </Title>
       <Link href={url} style={{ textDecoration: "none" }}>
         <Button radius="xl" size="lg">
-          <Title order={6} c="white">
+          <Title order={5} c="white" className={classes.subtitle}>
             {title} - {chapterTitle}
           </Title>
         </Button>

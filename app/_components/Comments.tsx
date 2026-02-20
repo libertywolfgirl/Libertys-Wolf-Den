@@ -10,7 +10,7 @@ type CommentType = {
 const Comments = ({ comments }: { comments: CommentType[] }) => {
   return (
     <Stack my={{ base: "2rem", sm: "3rem", lg: "4rem" }} gap="2rem">
-      <Title order={4} ta="center" mb={{ base: 0, md: "0.5rem" }}>
+      <Title order={3} ta="center" mb={{ base: 0, md: "0.5rem" }}>
         Comments
       </Title>
       {comments && comments.length > 0 ? (

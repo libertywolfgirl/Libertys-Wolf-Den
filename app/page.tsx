@@ -5,9 +5,10 @@ import HomePageHero from "./_components/HomePageHero";
 import WelcomeSection from "./_components/WelcomeSection";
 import AllFanfictionSection from "./_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
+import Loading from "./loading";
 
 const StoryGrid = dynamic(() => import("./_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 export const revalidate = 60;
@@ -31,10 +32,12 @@ const HomePage = async () => {
           <Title order={2} ta="center" pb={{ base: "0.5rem", md: "1rem" }}>
             Featured Stories
           </Title>
-          <StoryGrid stories={featuredStories} cols={3} />
+          <StoryGrid stories={featuredStories} cols={3} heading={3} />
         </Stack>
       )}
-      <AllFanfictionSection />
+      <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
+        <AllFanfictionSection />
+      </Flex>
     </Flex>
   );
 };

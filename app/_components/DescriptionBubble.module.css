@@ -1,6 +1,22 @@
 .container {
   background-color: light-dark(
     var(--mantine-color-teal-3),
-    var(--mantine-color-teal-8)
+    var(--mantine-color-darkGreen-2)
   );
+}
+
+.description {
+  font-size: 1.5rem !important;
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .description {
+    font-size: 1.35rem !important;
+  }
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .description {
+    font-size: 1.2rem !important;
+  }
 }

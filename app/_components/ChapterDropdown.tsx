@@ -2,6 +2,7 @@
 
 import { Box, Select, Title } from "@mantine/core";
 import { Slug } from "sanity";
+import classes from "./ChapterDropdown.module.css";
 
 export type ChapterOption = {
   slug: Slug;
@@ -18,7 +19,7 @@ const ChapterDropdown = ({
 }) => {
   return (
     <Box pt="1rem">
-      <Title order={5} mb="xs">
+      <Title order={6} mb="xs" className={classes.heading}>
         Jump to a chapter:
       </Title>
       <Select

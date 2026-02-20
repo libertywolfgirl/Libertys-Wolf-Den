@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 
 import type { STORY_PAGE_QUERYResult } from "../../sanity/types";
+import classes from "./StoryInfo.module.css";
 
 const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
   const { title, summary, pairings, notes, completed } = story ?? {};
@@ -30,7 +31,9 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
       <TableTbody>
         <TableTr>
           <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
-            <Title order={6}>Title</Title>
+            <Title order={3} className={classes.heading}>
+              Title
+            </Title>
           </TableTh>
           <TableTd p="1rem" mih={48}>
             <Text>{title}</Text>
@@ -39,7 +42,9 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
 
         <TableTr>
           <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
-            <Title order={6}>Summary</Title>
+            <Title order={3} className={classes.heading}>
+              Summary
+            </Title>
           </TableTh>
           <TableTd p="1rem" mih={56}>
             <Text>{summary ?? "-"}</Text>
@@ -48,7 +53,9 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
 
         <TableTr>
           <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
-            <Title order={6}>Pairings</Title>
+            <Title order={3} className={classes.heading}>
+              Pairings
+            </Title>
           </TableTh>
           <TableTd p="1rem" mih={40}>
             <Text>{pairings ?? "-"}</Text>
@@ -57,7 +64,9 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
 
         <TableTr>
           <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
-            <Title order={6}>Notes</Title>
+            <Title order={3} className={classes.heading}>
+              Notes
+            </Title>
           </TableTh>
           <TableTd p="1rem" mih={44}>
             <Group>

@@ -24,10 +24,10 @@ const SearchResults = async ({ query }: { query: string }) => {
       justify="center"
       py={{ base: "1rem", sm: "2rem", lg: "3rem" }}
     >
-      <Title order={2} pb="1rem">
+      <Title order={2} py="xl">
         Search Results...
       </Title>
-      <StoryGrid stories={typedSearchResults} cols={numCols} />
+      <StoryGrid stories={typedSearchResults} cols={numCols} heading={3} />
     </Stack>
   );
 };

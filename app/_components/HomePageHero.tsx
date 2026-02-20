@@ -6,25 +6,19 @@ const HomePageHero = () => {
     <Box
       pos="relative"
       w="100%"
-      h="25rem"
-      style={{
-        aspectRatio: "16 / 9",
-      }}
+      h={{ base: 120, sm: 240, lg: 400 }}
+      style={{ overflow: "hidden" }}
     >
       <Image
-        src="/wolf-pack.jpg"
+        src="/wolf-pack.webp"
         alt="wolf pack background image"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
-        decoding="async"
-        style={{
-          objectFit: "cover",
-          objectPosition: "50% 40%",
-        }}
+        objectFit="cover"
+        objectPosition="50% 40%"
       />
-
       <Flex
         pos="absolute"
         inset={0}
@@ -36,7 +30,7 @@ const HomePageHero = () => {
           order={1}
           ta="center"
           fw={800}
-          c="blue.9"
+          c="#00FFFF"
           maw="90%"
           style={{
             contain: "layout paint",

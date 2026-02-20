@@ -3,7 +3,7 @@ import { IconBook } from "@tabler/icons-react";
 
 const WelcomeSection = () => {
   return (
-    <Paper radius={10} shadow="md" p="xl" my="lg">
+    <Paper radius={10} shadow="md" p="xl" my="xl">
       <Stack align="center">
         <Text
           fz={{ base: "1.3rem", xs: "1.45rem", md: "1.6rem" }}

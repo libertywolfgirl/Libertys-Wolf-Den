@@ -15,9 +15,10 @@ import ImageContainer from "../../../_components/ImageContainer";
 import { removeDashesAndCapitalize } from "../../../_utils/removeDashesAndCapitalize";
 import AllFanfictionSection from "../../../_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
+import Loading from "../../../loading";
 
 const StoryGrid = dynamic(() => import("../../../_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 type Props = {
@@ -96,11 +97,11 @@ const FandomPage = async (props: Props) => {
         <Title
           order={2}
           ta="center"
-          my={{ base: "1rem", sm: "1.5rem", lg: "2rem" }}
+          my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
         >
           Stories
         </Title>
-        <StoryGrid stories={typedStories} cols={numCols} />
+        <StoryGrid stories={typedStories} cols={numCols} heading={3} />
       </Box>
       <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
         <AllFanfictionSection />

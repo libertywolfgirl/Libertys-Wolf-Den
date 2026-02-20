@@ -8,15 +8,17 @@ import NotFound from "../not-found";
 import ChooseStory from "../_components/ChooseStory";
 import DescriptionBubble from "../_components/DescriptionBubble";
 import dynamic from "next/dynamic";
+import Loading from "../loading";
+import { Suspense } from "react";
 
 const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const SearchBar = dynamic(() => import("../_components/SearchBar"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 const SearchResults = dynamic(() => import("../_components/SearchResults"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loading />,
 });
 
 export const metadata = {
@@ -50,15 +52,25 @@ const FanfictionPage = async (props: {
         subtitle="Explore my collection of fanfiction stories"
       />
       <Box
+        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+        pb={{ base: 0, sm: "0.5rem", lg: "1rem" }}
+      >
+        <DescriptionBubble description="Fanfiction is a great way to relax and enjoy alternative versions of your favorite stories." />
+      </Box>
+      <Box
         w={{ base: "100%", md: "80%" }}
         mx="auto"
-        pt={{ base: "1rem", sm: "2rem", lg: "3rem" }}
+        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
       >
-        <Text fw={600} pb="xs">
+        <Text fw={600} fz="1.5rem" pb="md">
           Looking for something specific?
         </Text>
         <SearchBar />
-        {query && <SearchResults query={query} />}
+        {query && (
+          <Suspense fallback={<Loading />}>
+            <SearchResults query={query} />
+          </Suspense>
+        )}
       </Box>
       <ChooseStory />
       <Box
@@ -91,7 +103,11 @@ const FanfictionPage = async (props: {
               <Title order={3} ta="center">
                 {genre.title}
               </Title>
-              <StoryGrid stories={genre.stories} cols={genre.stories.length} />
+              <StoryGrid
+                stories={genre.stories}
+                cols={genre.stories.length}
+                heading={4}
+              />
               <BrowseAllButton
                 href={`/fanfiction/${genre.slug.current}`}
                 title={`Stories Based on ${genre.title}`}

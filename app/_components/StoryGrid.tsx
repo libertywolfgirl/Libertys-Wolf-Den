@@ -1,4 +1,4 @@
-import { Flex, SimpleGrid } from "@mantine/core";
+import { Flex, SimpleGrid, TitleOrder } from "@mantine/core";
 import StoryCard from "./StoryCard";
 import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
 
@@ -8,9 +8,11 @@ type StoryGridStory =
 const StoryGrid = ({
   stories,
   cols,
+  heading,
 }: {
   stories: StoryGridStory[];
   cols: number;
+  heading: TitleOrder | undefined;
 }) => {
   return (
     <Flex align="center" justify="center">
@@ -20,7 +22,7 @@ const StoryGrid = ({
         verticalSpacing={{ base: "lg", md: "xl" }}
       >
         {stories.map((story) => (
-          <StoryCard key={story._id} story={story} />
+          <StoryCard key={story._id} story={story} heading={heading} />
         ))}
       </SimpleGrid>
     </Flex>

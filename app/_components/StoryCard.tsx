@@ -7,21 +7,35 @@ import {
   Stack,
   Text,
   Title,
+  TitleOrder,
 } from "@mantine/core";
 import { STORY_QUERYResult } from "../../sanity/types";
 import Link from "next/link";
 import ImageContainer from "./ImageContainer";
+import classes from "./StoryCard.module.css";
 
 type StoryCardStory = NonNullable<STORY_QUERYResult>;
 
-const StoryCard = ({ story }: { story: StoryCardStory }) => {
+const StoryCard = ({
+  story,
+  heading,
+}: {
+  story: StoryCardStory;
+  heading: TitleOrder | undefined;
+}) => {
   const { title, slug, genre, fandom, completed, image, summary } = story;
   const genreTitle = genre.title.replace(/s$/, "");
 
   return (
     <Box pos="relative">
       {completed && (
-        <Badge pos="absolute" top={-12} left={12} style={{ zIndex: 10 }}>
+        <Badge
+          pos="absolute"
+          top={-12}
+          left={12}
+          bg="grape.9"
+          style={{ zIndex: 10 }}
+        >
           Complete
         </Badge>
       )}
@@ -57,7 +71,9 @@ const StoryCard = ({ story }: { story: StoryCardStory }) => {
             </Link>
           </Group>
 
-          <Title order={6}>{title}</Title>
+          <Title order={heading} className={classes.heading}>
+            {title}
+          </Title>
           {summary && <Text lineClamp={6}>{summary}</Text>}
         </Stack>
         <Link

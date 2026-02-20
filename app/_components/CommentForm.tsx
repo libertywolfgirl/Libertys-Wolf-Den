@@ -35,7 +35,7 @@ const CommentForm = ({ id }: { id: string }) => {
 
   return showForm ? (
     <form action={createCommentWithData}>
-      <Title order={5} ta="center" mb={{ base: "0.5rem", md: "1rem" }}>
+      <Title order={4} ta="center" mb={{ base: "0.5rem", md: "1rem" }}>
         Post a Comment
       </Title>
       <TextInput

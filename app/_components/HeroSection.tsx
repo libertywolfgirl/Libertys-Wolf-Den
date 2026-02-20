@@ -13,6 +13,7 @@ const HeroSection = ({
       direction="column"
       align="center"
       justify="center"
+      mih="40vh"
       p={{
         base: "1rem",
         xs: "2rem",
@@ -34,7 +35,7 @@ const HeroSection = ({
       >
         {title}
       </Title>
-      <Title order={5} ta="center">
+      <Title order={2} ta="center" className={classes.heading}>
         {subtitle}
       </Title>
     </Flex>

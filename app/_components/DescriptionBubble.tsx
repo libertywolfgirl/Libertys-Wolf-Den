@@ -6,11 +6,11 @@ const DescriptionBubble = ({ description }: { description: string }) => {
     <Paper
       w="fit-content"
       mx="auto"
-      p="xl"
-      style={{ borderRadius: 50 }}
+      p={{ base: "1.5rem", sm: "3rem" }}
+      style={{ borderRadius: 100 }}
       className={classes.container}
     >
-      <Title order={6} ta="center">
+      <Title order={2} ta="center" className={classes.description}>
         {description}
       </Title>
     </Paper>

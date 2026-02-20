@@ -1,22 +1,27 @@
-.container {
-  background-color: light-dark(
-    var(--mantine-color-teal-1),
-    var(--mantine-color-darkGreen-1)
-  );
-}
-
 .heading {
   font-size: 1.5rem !important;
+}
+
+.subtitle {
+  font-size: 1.25rem !important;
 }
 
 @media (max-width: $mantine-breakpoint-md) {
   .heading {
     font-size: 1.35rem !important;
   }
+
+  .subtitle {
+    font-size: 1.1rem !important;
+  }
 }
 
 @media (max-width: $mantine-breakpoint-xs) {
   .heading {
     font-size: 1.2rem !important;
+  }
+
+  .subtitle {
+    font-size: 0.95rem !important;
   }
 }

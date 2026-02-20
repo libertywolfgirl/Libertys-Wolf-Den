@@ -1,0 +1,15 @@
+.heading {
+  font-size: 1.25rem !important;
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .heading {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+  .heading {
+    font-size: 0.95rem !important;
+  }
+}
