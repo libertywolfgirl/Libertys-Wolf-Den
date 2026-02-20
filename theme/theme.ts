@@ -27,6 +27,18 @@ export const theme = createTheme({
       "#376e76",
       "#3c6b71",
       "#356e78",
+      "#306F78",
+    ],
+    darkGreen: [
+      "#17A67D",
+      "#0E8661",
+      "#09714C",
+      "#076447",
+      "#09533C",
+      "#096071",
+      "#0A6A7B",
+      "#3c6b71",
+      "#356e78",
       "#31727c",
     ],
   },
@@ -44,7 +56,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           header: {
-            backgroundColor: `light-dark(${theme.colors.cyan[4]}, ${theme.colors.cyan[8]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[4]}, ${theme.colors.darkGreen[6]})`,
           },
         }),
       },
@@ -53,7 +65,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           navbar: {
-            backgroundColor: `light-dark(${theme.colors.cyan[1]}, ${theme.colors.cyan[7]})`,
+            backgroundColor: `light-dark(${theme.colors.cyan[1]}, ${theme.colors.darkGreen[5]})`,
           },
         }),
       },
@@ -62,7 +74,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[2]})`,
+            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[1]})`,
           },
         }),
         classNames: titleClasses,
@@ -71,7 +83,7 @@ export const theme = createTheme({
     Text: {
       styles: (theme: MantineTheme) => ({
         root: {
-          color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[1]})`,
+          color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[0]})`,
         },
       }),
       classNames: textClasses,
@@ -89,7 +101,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            backgroundColor: theme.colors.teal[7],
+            backgroundColor: theme.colors.teal[9],
           },
         }),
       },
