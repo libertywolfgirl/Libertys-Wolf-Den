@@ -9,6 +9,7 @@ import ChooseStory from "../_components/ChooseStory";
 import DescriptionBubble from "../_components/DescriptionBubble";
 import dynamic from "next/dynamic";
 import Loading from "../loading";
+import { Suspense } from "react";
 
 const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
   loading: () => <Loading />,
@@ -51,6 +52,12 @@ const FanfictionPage = async (props: {
         subtitle="Explore my collection of fanfiction stories"
       />
       <Box
+        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+        pb={{ base: 0, sm: "0.5rem", lg: "1rem" }}
+      >
+        <DescriptionBubble description="Fanfiction is a great way to relax and enjoy alternative versions of your favorite stories." />
+      </Box>
+      <Box
         w={{ base: "100%", md: "80%" }}
         mx="auto"
         pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
@@ -59,13 +66,11 @@ const FanfictionPage = async (props: {
           Looking for something specific?
         </Text>
         <SearchBar />
-        {query && <SearchResults query={query} />}
-      </Box>
-      <Box
-        pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
-        pb={{ base: 0, sm: "0.5rem", lg: "1rem" }}
-      >
-        <DescriptionBubble description="Fanfiction is a great way to relax and enjoy alternative versions of your favorite stories." />
+        {query && (
+          <Suspense fallback={<Loading />}>
+            <SearchResults query={query} />
+          </Suspense>
+        )}
       </Box>
       <ChooseStory />
       <Box
