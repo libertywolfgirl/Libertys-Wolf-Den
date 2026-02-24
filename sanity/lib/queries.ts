@@ -264,7 +264,7 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
 
 // Fetch all characters for story
 export const CHARACTERS_QUERY = defineQuery(`
-  *[_type == "character" && story->slug.current == $storySlug][0]{
+  *[_type == "character" && story->slug.current == $storySlug]{
     _id,
     name,
     slug,
