@@ -40,7 +40,12 @@ export const CharactersPage = async (props: Props) => {
         my={{ base: "1rem", sm: "2rem", lg: "3rem" }}
         px={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
       >
-        <Title order={2} ta="center" mt="5rem" mb="2.5rem">
+        <Title
+          order={2}
+          ta="center"
+          mt={{ base: "3rem", sm: "4rem", lg: "5rem" }}
+          mb={{ base: "1rem", sm: "1.75rem", lg: "2.5rem" }}
+        >
           Characters
         </Title>
         <Group py="md">
@@ -48,7 +53,11 @@ export const CharactersPage = async (props: Props) => {
             <DescriptionBubble key={name} description={name} />
           ))}
         </Group>
-        <Title order={2} ta="center" mt="4rem">
+        <Title
+          order={2}
+          ta="center"
+          mt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
+        >
           Explore
         </Title>
         <CharacterCarousel characters={typedCharacters} />
