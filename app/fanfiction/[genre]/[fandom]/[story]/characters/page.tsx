@@ -1,4 +1,4 @@
-import { Box, Group, Title } from "@mantine/core";
+import { Box, Button, Group, Title, Text, Flex } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
 import { CHARACTERS_QUERY } from "../../../../../../sanity/lib/queries";
 import { CHARACTERS_QUERYResult } from "../../../../../../sanity/types";
@@ -6,16 +6,19 @@ import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
 import DescriptionBubble from "../../../../../_components/DescriptionBubble";
 import CharacterCarousel from "../../../../../_components/CharacterCarousel";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
     story: string;
+    fandom: string;
+    genre: string;
   }>;
 };
 
 const CharactersPage = async (props: Props) => {
   const params = await props.params;
-  const { story } = params;
+  const { story, fandom, genre } = params;
 
   const { data: characters } = await sanityFetch({
     query: CHARACTERS_QUERY,
@@ -61,6 +64,22 @@ const CharactersPage = async (props: Props) => {
           Explore
         </Title>
         <CharacterCarousel characters={typedCharacters} />
+        <Flex
+          align="Center"
+          justify="center"
+          mt={{ base: "3rem", sm: "4rem", lg: "5rem" }}
+        >
+          <Link
+            href={`/fanfiction/${genre}/${fandom}/${story}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Button radius="xl" size="xl">
+              <Title order={4} c="white">
+                Read {storyTitle} Now
+              </Title>
+            </Button>
+          </Link>
+        </Flex>
       </Box>
     </Box>
   );
