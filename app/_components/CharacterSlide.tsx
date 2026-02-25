@@ -22,13 +22,14 @@ const CharacterSlide = ({ character }: { character: CharacterType }) => {
           image={image}
           title={name}
           maxWidth={800}
-          padding="1rem"
+          maxHeight={600}
+          padding="0.5rem"
         />
       )}
-      <Text>{gender}</Text>
-      <Text>{age}</Text>
-      <Text>{species}</Text>
-      <Text maw={1000}>{description}</Text>
+      <Text fw={600}>{gender}</Text>
+      {age && <Text fw={600}>{age}</Text>}
+      {species && <Text fw={600}>{species}</Text>}
+      {description && <Text maw={1000}>{description}</Text>}
     </Flex>
   );
 };

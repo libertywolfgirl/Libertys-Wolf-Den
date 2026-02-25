@@ -75,7 +75,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[1]})`,
+            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[0]})`,
           },
         }),
         classNames: titleClasses,
@@ -84,7 +84,7 @@ export const theme = createTheme({
     Text: {
       styles: (theme: MantineTheme) => ({
         root: {
-          color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[0]})`,
+          color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[0]})`,
         },
       }),
       classNames: textClasses,

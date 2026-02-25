@@ -13,7 +13,7 @@ type Props = {
   }>;
 };
 
-export const CharactersPage = async (props: Props) => {
+const CharactersPage = async (props: Props) => {
   const params = await props.params;
   const { story } = params;
 

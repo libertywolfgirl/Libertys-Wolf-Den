@@ -15,7 +15,7 @@ const CharacterCarousel = ({
       pt={{ base: "1rem", sm: "1.75rem", lg: "2.5rem" }}
       mx="xs"
     >
-      <Paper>
+      <Paper w={{ base: "100%", md: "fit-content" }}>
         <Carousel
           withIndicators
           height="100%"
