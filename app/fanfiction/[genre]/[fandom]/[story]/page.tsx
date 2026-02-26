@@ -1,4 +1,4 @@
-import { Box, Flex, Group, Text } from "@mantine/core";
+import { Box, Button, Flex, Group, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../../../../sanity/lib/live";
 import {
   STORY_PAGE_QUERY,
@@ -16,6 +16,7 @@ import { removeDashesAndCapitalize } from "../../../../_utils/removeDashesAndCap
 import AllFanfictionSection from "../../../../_components/AllFanfictionSection";
 import dynamic from "next/dynamic";
 import Loading from "../../../../loading";
+import Link from "next/link";
 
 const StoryInfo = dynamic(() => import("../../../../_components/StoryInfo"), {
   loading: () => <Loading />,
@@ -36,6 +37,8 @@ const ChapterDropdown = dynamic(
 type Props = {
   params: Promise<{
     story: string;
+    fandom: string;
+    genre: string;
   }>;
 };
 
@@ -57,7 +60,7 @@ export const generateStaticParams = async () => {
 
 const StoryPage = async (props: Props) => {
   const params = await props.params;
-  const { story } = params;
+  const { story, fandom, genre } = params;
 
   const { data: storyData } = await sanityFetch({
     query: STORY_PAGE_QUERY,
@@ -68,13 +71,19 @@ const StoryPage = async (props: Props) => {
 
   if (!typedStory) return <NotFound />;
 
-  const { title, fandom, image, firstChapter, chapters } = typedStory;
+  const {
+    title,
+    fandom: { title: fandomTitle },
+    image,
+    firstChapter,
+    chapters,
+  } = typedStory;
 
   return (
     <Box>
       <HeroSection
         title={title}
-        subtitle={`Read this story from the ${fandom.title} fandom!`}
+        subtitle={`Read this story from the ${fandomTitle} fandom!`}
       />
       <Box
         mx="auto"
@@ -107,6 +116,22 @@ const StoryPage = async (props: Props) => {
             <ChapterDropdown storySlug={story} chapters={chapters} />
           )}
         </Group>
+        <Flex
+          align="Center"
+          justify="center"
+          mt={{ base: "3rem", sm: "4rem", lg: "5rem" }}
+        >
+          <Link
+            href={`/fanfiction/${genre}/${fandom}/${story}/characters`}
+            style={{ textDecoration: "none" }}
+          >
+            <Button radius="xl" size="xl">
+              <Title order={6} c="white">
+                Learn About the Characters
+              </Title>
+            </Button>
+          </Link>
+        </Flex>
       </Box>
       <Flex justify="center" mb={{ base: "0.5rem", md: "1rem" }}>
         <AllFanfictionSection />
