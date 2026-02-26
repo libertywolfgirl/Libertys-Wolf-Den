@@ -636,6 +636,14 @@ export type CHAPTER_PARAMS_QUERYResult = Array<{
   story: string | null;
   chapter: string;
 }>;
+// Variable: CHARACTERS_PARAMS_QUERY
+// Query: *[_type == "character"]{    "genre": story->genre->slug.current,    "fandom": story->fandom->slug.current,    "story": story->slug.current,    "character": "characters"  }
+export type CHARACTERS_PARAMS_QUERYResult = Array<{
+  genre: string | null;
+  fandom: string | null;
+  story: string | null;
+  character: "characters";
+}>;
 // Variable: ALL_ROUTES_QUERY
 // Query: {  "genres": *[_type == "genre"] | order(title asc){    _id,    _updatedAt,    "genre": slug.current  },  "fandoms": *[_type == "fandom"] | order(title asc){    _id,    _updatedAt,    "genre": genre->slug.current,    "fandom": slug.current  },  "stories": *[_type == "story"] | order(title asc){    _id,    _updatedAt,    "genre": genre->slug.current,    "fandom": fandom->slug.current,    "story": slug.current  },  "chapters": *[_type == "chapter"] | order(chapter_number asc){    _id,    _updatedAt,    "genre": story->genre->slug.current,    "fandom": story->fandom->slug.current,    "story": story->slug.current,    "chapter": slug.current  }}
 export type ALL_ROUTES_QUERYResult = {
@@ -685,6 +693,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"fandom\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": slug.current\n  }\n": FANDOM_PARAMS_QUERYResult;
     "\n  *[_type == \"story\"]{\n    \"genre\": genre->slug.current,\n    \"fandom\": fandom->slug.current,\n    \"story\": slug.current\n  }\n": STORY_PARAMS_QUERYResult;
     "\n  *[_type == \"chapter\"]{\n    \"genre\": story->genre->slug.current,\n    \"fandom\": story->fandom->slug.current,\n    \"story\": story->slug.current,\n    \"chapter\": slug.current\n  }\n": CHAPTER_PARAMS_QUERYResult;
+    "\n  *[_type == \"character\"]{\n    \"genre\": story->genre->slug.current,\n    \"fandom\": story->fandom->slug.current,\n    \"story\": story->slug.current,\n    \"character\": \"characters\"\n  }\n": CHARACTERS_PARAMS_QUERYResult;
     "\n{\n  \"genres\": *[_type == \"genre\"] | order(title asc){\n    _id,\n    _updatedAt,\n    \"genre\": slug.current\n  },\n  \"fandoms\": *[_type == \"fandom\"] | order(title asc){\n    _id,\n    _updatedAt,\n    \"genre\": genre->slug.current,\n    \"fandom\": slug.current\n  },\n  \"stories\": *[_type == \"story\"] | order(title asc){\n    _id,\n    _updatedAt,\n    \"genre\": genre->slug.current,\n    \"fandom\": fandom->slug.current,\n    \"story\": slug.current\n  },\n  \"chapters\": *[_type == \"chapter\"] | order(chapter_number asc){\n    _id,\n    _updatedAt,\n    \"genre\": story->genre->slug.current,\n    \"fandom\": story->fandom->slug.current,\n    \"story\": story->slug.current,\n    \"chapter\": slug.current\n  }\n}\n": ALL_ROUTES_QUERYResult;
   }
 }

@@ -386,6 +386,15 @@ export const CHAPTER_PARAMS_QUERY = defineQuery(`
   }
 `);
 
+export const CHARACTERS_PARAMS_QUERY = defineQuery(`
+  *[_type == "character"]{
+    "genre": story->genre->slug.current,
+    "fandom": story->fandom->slug.current,
+    "story": story->slug.current,
+    "character": "characters"
+  }
+`);
+
 // Fetch all routes for sitemap
 export const ALL_ROUTES_QUERY = defineQuery(`
 {

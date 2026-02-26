@@ -1,25 +1,19 @@
 import { Box, Button, Group, Title, Flex } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
-import { CHARACTERS_QUERY } from "../../../../../../sanity/lib/queries";
-import { CHARACTERS_QUERYResult } from "../../../../../../sanity/types";
+import {
+  CHARACTERS_PARAMS_QUERY,
+  CHARACTERS_QUERY,
+} from "../../../../../../sanity/lib/queries";
+import {
+  CHARACTERS_PARAMS_QUERYResult,
+  CHARACTERS_QUERYResult,
+} from "../../../../../../sanity/types";
 import HeroSection from "../../../../../_components/HeroSection";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-import Loading from "../../../../../loading";
-
-const DescriptionBubble = dynamic(
-  () => import("../../../../../_components/DescriptionBubble"),
-  {
-    loading: () => <Loading />,
-  },
-);
-
-const CharacterCarousel = dynamic(
-  () => import("../../../../../_components/CharacterCarousel"),
-  {
-    loading: () => <Loading />,
-  },
-);
+import { staticFetch } from "../../../../../../sanity/lib/staticFetch";
+import { removeDashesAndCapitalize } from "../../../../../_utils/removeDashesAndCapitalize";
+import DescriptionBubble from "../../../../../_components/DescriptionBubble";
+import CharacterCarousel from "../../../../../_components/CharacterCarousel";
 
 type Props = {
   params: Promise<{
@@ -27,6 +21,22 @@ type Props = {
     fandom: string;
     genre: string;
   }>;
+};
+
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+  const { story } = params;
+  const title = removeDashesAndCapitalize(story);
+
+  return { title: `${title} Characters` };
+};
+
+export const generateStaticParams = async () => {
+  const data = await staticFetch<CHARACTERS_PARAMS_QUERYResult>({
+    query: CHARACTERS_PARAMS_QUERY,
+  });
+
+  return data;
 };
 
 const CharactersPage = async (props: Props) => {
