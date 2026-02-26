@@ -17,11 +17,11 @@ const CharacterCarousel = ({
     >
       <Paper w={{ base: "100%", md: "fit-content" }}>
         <Carousel
-          withIndicators
           height="100%"
           w="100%"
           maw={1000}
-          p="sm"
+          p={{ base: "xs", md: "sm" }}
+          controlsOffset="sm"
           emblaOptions={{
             loop: true,
           }}

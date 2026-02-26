@@ -1,4 +1,4 @@
-import { Box, Button, Group, Title, Text, Flex } from "@mantine/core";
+import { Box, Button, Group, Title, Flex } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
 import { CHARACTERS_QUERY } from "../../../../../../sanity/lib/queries";
 import { CHARACTERS_QUERYResult } from "../../../../../../sanity/types";

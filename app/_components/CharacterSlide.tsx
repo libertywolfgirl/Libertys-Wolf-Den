@@ -12,8 +12,8 @@ const CharacterSlide = ({ character }: { character: CharacterType }) => {
       direction="column"
       align="center"
       justify="center"
-      gap="md"
-      p="md"
+      gap={{ base: "xs", md: "sm" }}
+      p={{ base: "xs", sm: "sm", lg: "md" }}
       h="100%"
     >
       <Title order={3}>{name}</Title>
