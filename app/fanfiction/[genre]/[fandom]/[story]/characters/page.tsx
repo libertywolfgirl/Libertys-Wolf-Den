@@ -3,9 +3,23 @@ import { sanityFetch } from "../../../../../../sanity/lib/live";
 import { CHARACTERS_QUERY } from "../../../../../../sanity/lib/queries";
 import { CHARACTERS_QUERYResult } from "../../../../../../sanity/types";
 import HeroSection from "../../../../../_components/HeroSection";
-import DescriptionBubble from "../../../../../_components/DescriptionBubble";
-import CharacterCarousel from "../../../../../_components/CharacterCarousel";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import Loading from "../../../../../loading";
+
+const DescriptionBubble = dynamic(
+  () => import("../../../../../_components/DescriptionBubble"),
+  {
+    loading: () => <Loading />,
+  },
+);
+
+const CharacterCarousel = dynamic(
+  () => import("../../../../../_components/CharacterCarousel"),
+  {
+    loading: () => <Loading />,
+  },
+);
 
 type Props = {
   params: Promise<{
