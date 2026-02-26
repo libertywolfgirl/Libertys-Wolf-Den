@@ -7,6 +7,7 @@ import {
   createTheme,
   MantineTheme,
   MantineThemeOverride,
+  Paper,
   Title,
 } from "@mantine/core";
 import titleClasses from "./Title.module.css";
@@ -74,7 +75,7 @@ export const theme = createTheme({
       defaultProps: {
         styles: (theme) => ({
           root: {
-            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[1]})`,
+            color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[0]})`,
           },
         }),
         classNames: titleClasses,
@@ -83,11 +84,20 @@ export const theme = createTheme({
     Text: {
       styles: (theme: MantineTheme) => ({
         root: {
-          color: `light-dark(${theme.colors.blue[8]}, ${theme.colors.blue[0]})`,
+          color: `light-dark(${theme.colors.blue[9]}, ${theme.colors.blue[0]})`,
         },
       }),
       classNames: textClasses,
     },
+    Paper: Paper.extend({
+      defaultProps: {
+        styles: (theme) => ({
+          root: {
+            backgroundColor: `light-dark(${theme.colors.teal[2]}, ${theme.colors.dark[7]})`,
+          },
+        }),
+      },
+    }),
     Card: Card.extend({
       defaultProps: {
         styles: (theme) => ({

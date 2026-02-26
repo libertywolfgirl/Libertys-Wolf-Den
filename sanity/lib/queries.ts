@@ -262,6 +262,34 @@ export const CHAPTER_PAGE_QUERY = defineQuery(`
   }
 `);
 
+// Fetch all characters for story
+export const CHARACTERS_QUERY = defineQuery(`
+  *[_type == "character" && story->slug.current == $storySlug]{
+    _id,
+    name,
+    slug,
+    gender,
+    age,
+    species,
+    description,
+    "story": story->{
+      title,
+      slug
+    },
+    image{
+      "asset": asset->{
+        "_ref": _id,
+        metadata{
+          dimensions{
+            width,
+            height
+          }
+        }
+      }
+    },
+  }
+`);
+
 // Fetch navigation tree
 export const NAVIGATION_QUERY = defineQuery(`
 {
@@ -355,6 +383,15 @@ export const CHAPTER_PARAMS_QUERY = defineQuery(`
     "fandom": story->fandom->slug.current,
     "story": story->slug.current,
     "chapter": slug.current
+  }
+`);
+
+export const CHARACTERS_PARAMS_QUERY = defineQuery(`
+  *[_type == "character"]{
+    "genre": story->genre->slug.current,
+    "fandom": story->fandom->slug.current,
+    "story": story->slug.current,
+    "character": "characters"
   }
 `);
 
