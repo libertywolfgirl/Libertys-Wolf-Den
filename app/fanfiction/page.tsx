@@ -7,19 +7,11 @@ import BrowseAllButton from "../_components/BrowseAllButton";
 import NotFound from "../not-found";
 import ChooseStory from "../_components/ChooseStory";
 import DescriptionBubble from "../_components/DescriptionBubble";
-import dynamic from "next/dynamic";
 import Loading from "../loading";
 import { Suspense } from "react";
-
-const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
-  loading: () => <Loading />,
-});
-const SearchBar = dynamic(() => import("../_components/SearchBar"), {
-  loading: () => <Loading />,
-});
-const SearchResults = dynamic(() => import("../_components/SearchResults"), {
-  loading: () => <Loading />,
-});
+import SearchBar from "../_components/SearchBar";
+import SearchResults from "../_components/SearchResults";
+import StoryGrid from "../_components/StoryGrid";
 
 export const metadata = {
   title: "Fanfiction",
