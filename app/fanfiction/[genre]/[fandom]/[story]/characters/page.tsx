@@ -2,7 +2,6 @@ import { Box, Button, Group, Title, Flex } from "@mantine/core";
 import { sanityFetch } from "../../../../../../sanity/lib/live";
 import { CHARACTERS_QUERY } from "../../../../../../sanity/lib/queries";
 import { CHARACTERS_QUERYResult } from "../../../../../../sanity/types";
-import NotFound from "../../../../../not-found";
 import HeroSection from "../../../../../_components/HeroSection";
 import DescriptionBubble from "../../../../../_components/DescriptionBubble";
 import CharacterCarousel from "../../../../../_components/CharacterCarousel";
@@ -27,7 +26,12 @@ const CharactersPage = async (props: Props) => {
 
   const typedCharacters = characters as CHARACTERS_QUERYResult;
 
-  if (!typedCharacters) return <NotFound />;
+  if (typedCharacters.length === 0)
+    return (
+      <Title order={1} ta="center" pt="1rem">
+        Characters Coming Soon...
+      </Title>
+    );
 
   const storyTitle = typedCharacters[0]?.story?.title || "";
   const characterNames = typedCharacters.map((char) => char.name);
