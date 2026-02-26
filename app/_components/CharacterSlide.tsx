@@ -13,7 +13,7 @@ const CharacterSlide = ({ character }: { character: CharacterType }) => {
       align="center"
       justify="center"
       gap="md"
-      p="xl"
+      p="md"
       h="100%"
     >
       <Title order={3}>{name}</Title>
@@ -21,15 +21,14 @@ const CharacterSlide = ({ character }: { character: CharacterType }) => {
         <ImageContainer
           image={image}
           title={name}
-          maxWidth={800}
-          maxHeight={600}
-          padding="0.5rem"
+          maxWidth={600}
+          maxHeight={400}
         />
       )}
       <Text fw={600}>{gender}</Text>
       {age && <Text fw={600}>{age}</Text>}
       {species && <Text fw={600}>{species}</Text>}
-      {description && <Text maw={1000}>{description}</Text>}
+      {description && <Text maw={800}>{description}</Text>}
     </Flex>
   );
 };

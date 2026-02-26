@@ -20,8 +20,8 @@ const CharacterCarousel = ({
           withIndicators
           height="100%"
           w="100%"
-          maw={1200}
-          p="xl"
+          maw={1000}
+          p="sm"
           emblaOptions={{
             loop: true,
           }}
