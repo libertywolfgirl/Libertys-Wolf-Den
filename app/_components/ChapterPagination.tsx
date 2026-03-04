@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const ChapterPagination = ({ previous = "", next = "", completed = false }) => {
   return (
-    <Group justify={!previous ? "end" : "space-between"} pt="2rem">
+    <Group justify={!previous ? "end" : "space-between"}>
       {previous && (
         <Link href={`./${previous}`} style={{ textDecoration: "none" }}>
           <Button radius="xl" size="md">
