@@ -101,7 +101,7 @@ const CharactersPage = async (props: Props) => {
             href={`/fanfiction/${genre}/${fandom}/${story}`}
             style={{ textDecoration: "none" }}
           >
-            <Button radius="xl" size="xl">
+            <Button radius="xl" size="xl" h={{ base: "5rem", xs: "3.5rem" }}>
               <Title order={4} c="white">
                 Read {storyTitle} Now
               </Title>
