@@ -1,54 +1,74 @@
-.root {
+.root,
+.labelLink,
+.label {
   color: light-dark(
-    var(--mantine-color-darkGreen-0),
+    var(--mantine-color-darkGreen-3),
     var(--mantine-color-teal-2)
-  );
+  ) !important;
+}
+
+.labelLink,
+.label {
+  display: block;
+  width: 100%;
+  color: light-dark(
+    var(--mantine-color-blue-9),
+    var(--mantine-color-blue-0)
+  ) !important;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .root:hover {
-  color: light-dark(
-    var(--mantine-color-darkGreen-2),
-    var(--mantine-color-teal-1)
-  );
   background-color: light-dark(
-    var(--mantine-color-cyan-1),
-    var(--mantine-color-darkGreen-5)
-  );
+    var(--mantine-color-cyan-2),
+    var(--mantine-color-darkGreen-6)
+  ) !important;
+}
+
+.labelLink:hover,
+.label:hover {
+  text-decoration: none;
+}
+
+.root:hover,
+.labelLink:hover,
+.label:hover {
+  color: light-dark(
+    var(--mantine-color-darkGreen-5),
+    var(--mantine-color-teal-1)
+  ) !important;
 }
 
 .root[data-active] {
   font-weight: 800;
-  color: light-dark(
-    var(--mantine-color-darkGreen-1),
-    var(--mantine-color-teal-0)
-  );
   background-color: light-dark(
     var(--mantine-color-cyan-0),
     var(--mantine-color-cyan-9)
-  );
+  ) !important;
+}
+
+.root[data-active],
+.labelLink[data-active],
+.label[data-active] {
+  color: light-dark(
+    var(--mantine-color-darkGreen-4),
+    var(--mantine-color-teal-0)
+  ) !important;
 }
 
 .root:hover[data-active] {
-  color: light-dark(var(--mantine-color-teal-9), var(--mantine-color-teal-3));
   background-color: light-dark(
     var(--mantine-color-cyan-3),
     var(--mantine-color-cyan-6)
-  );
+  ) !important;
 }
 
-.label {
-  color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
-  font-weight: 600;
-}
-
-.labelLink {
-  display: block;
-  width: 100%;
-  color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-0));
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.labelLink:hover {
-  text-decoration: none;
+.root:hover[data-active],
+.labelLink:hover[data-active],
+.label:hover[data-active] {
+  color: light-dark(
+    var(--mantine-color-teal-9),
+    var(--mantine-color-teal-3)
+  ) !important;
 }
