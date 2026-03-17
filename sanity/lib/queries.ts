@@ -148,6 +148,36 @@ export const FEATURED_STORIES_QUERY =
   }
 `);
 
+// Fetch stories that are flagged as completed
+export const COMPLETED_STORIES_QUERY =
+  defineQuery(`*[_type == "story" && completed == true]{
+    _id,
+    title,
+    slug,
+    completed,
+    summary,
+    image{
+        "asset": asset->{
+          "_ref": _id,
+          metadata{
+            dimensions{
+              width,
+              height
+            }
+          }
+        }
+      },
+    "genre": genre->{
+      title,
+      slug
+    },
+    "fandom": fandom->{
+      title,
+      slug
+    }
+  }
+`);
+
 // Fetch one story by its slug
 export const STORY_QUERY =
   defineQuery(`*[_type == "story" && slug.current == $storySlug][0]{
