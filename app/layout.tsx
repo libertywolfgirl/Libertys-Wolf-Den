@@ -1,5 +1,5 @@
-import "@mantine/core/styles.css";
-import "@mantine/carousel/styles.layer.css";
+import "@mantine/core/styles.layer.css";
+import "@mantine/carousel/styles.css";
 import React, { ReactNode } from "react";
 import {
   MantineProvider,
@@ -25,14 +25,14 @@ const RootLayout = ({ children }: Props) => {
     <html lang="en" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" sizes="any" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>
+        <MantineProvider defaultColorScheme="dark" theme={theme}>
           <AppShellContainer navigationData={<NavigationData />}>
             {children}
             <SanityLive />

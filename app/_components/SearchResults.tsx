@@ -20,11 +20,9 @@ const SearchResults = async ({
         query: SEARCH_QUERY,
         params: { queryString: query },
       };
-  console.log(fetchQuery);
-  const { data: searchResults } = await sanityFetch(fetchQuery);
-  console.log(searchResults);
-  const typedSearchResults = searchResults as SEARCH_QUERYResult;
 
+  const { data: searchResults } = await sanityFetch(fetchQuery);
+  const typedSearchResults = searchResults as SEARCH_QUERYResult;
   const filteredSearchResults = completed
     ? typedSearchResults.filter((result) => result.completed)
     : typedSearchResults;

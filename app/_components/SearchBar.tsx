@@ -35,7 +35,7 @@ const SearchBar = () => {
     }
     replace(`${pathname}?${params.toString()}`);
     router.refresh();
-  }, [debouncedInputValue, checked]);
+  }, [debouncedInputValue, checked, pathname, replace, router, searchParams]);
 
   return (
     <Stack align="center" w="100%">
