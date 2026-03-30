@@ -26,6 +26,9 @@ const nextConfig = {
       },
     ];
   },
+  experimental: {
+    inlineCss: true,
+  },
   images: {
     remotePatterns: [
       {

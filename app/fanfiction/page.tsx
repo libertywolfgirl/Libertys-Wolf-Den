@@ -13,6 +13,8 @@ import SearchBar from "../_components/SearchBar";
 import SearchResults from "../_components/SearchResults";
 import StoryGrid from "../_components/StoryGrid";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Fanfiction",
   description:
