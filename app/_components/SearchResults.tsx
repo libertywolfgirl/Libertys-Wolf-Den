@@ -1,21 +1,43 @@
 import { Stack, Text, Title } from "@mantine/core";
 import { sanityFetch } from "../../sanity/lib/live";
-import { SEARCH_QUERY } from "../../sanity/lib/queries";
+import {
+  COMPLETED_STORIES_QUERY,
+  SEARCH_QUERY,
+} from "../../sanity/lib/queries";
 import { SEARCH_QUERYResult } from "../../sanity/types";
 import StoryGrid from "./StoryGrid";
 
-const SearchResults = async ({ query }: { query: string }) => {
-  const { data: searchResults } = await sanityFetch({
-    query: SEARCH_QUERY,
-    params: { queryString: query },
-  });
-
+const SearchResults = async ({
+  query,
+  completed,
+}: {
+  query: string;
+  completed: boolean;
+}) => {
+  const fetchQuery = !query
+    ? { query: COMPLETED_STORIES_QUERY }
+    : {
+        query: SEARCH_QUERY,
+        params: { queryString: query },
+      };
+  console.log(fetchQuery);
+  const { data: searchResults } = await sanityFetch(fetchQuery);
+  console.log(searchResults);
   const typedSearchResults = searchResults as SEARCH_QUERYResult;
 
-  const numCols = typedSearchResults.length < 5 ? typedSearchResults.length : 5;
+  const filteredSearchResults = completed
+    ? typedSearchResults.filter((result) => result.completed)
+    : typedSearchResults;
 
-  if (!typedSearchResults || typedSearchResults.length === 0) {
-    return <Text pt="1rem">No search results found</Text>;
+  const numCols =
+    filteredSearchResults.length < 5 ? filteredSearchResults.length : 5;
+
+  if (!filteredSearchResults || filteredSearchResults.length === 0) {
+    return (
+      <Text ta="center" pt="1rem">
+        No search results found
+      </Text>
+    );
   }
 
   return (
@@ -27,7 +49,7 @@ const SearchResults = async ({ query }: { query: string }) => {
       <Title order={2} py="xl">
         Search Results...
       </Title>
-      <StoryGrid stories={typedSearchResults} cols={numCols} heading={3} />
+      <StoryGrid stories={filteredSearchResults} cols={numCols} heading={3} />
     </Stack>
   );
 };

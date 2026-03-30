@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Title } from "@mantine/core";
+import { Box, Flex, Title } from "@mantine/core";
 import { sanityFetch } from "../../sanity/lib/live";
 import { GENRES_WITH_STORIES_QUERY } from "../../sanity/lib/queries";
 import { GENRES_WITH_STORIES_QUERYResult } from "../../sanity/types";
@@ -22,10 +22,12 @@ export const metadata = {
 const FanfictionPage = async (props: {
   searchParams?: Promise<{
     query?: string;
+    completed?: string;
   }>;
 }) => {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
+  const completed = searchParams?.completed ? true : false;
 
   const { data: genres } = await sanityFetch({
     query: GENRES_WITH_STORIES_QUERY,
@@ -50,17 +52,14 @@ const FanfictionPage = async (props: {
         <DescriptionBubble description="Fanfiction is a great way to relax and enjoy alternative versions of your favorite stories." />
       </Box>
       <Box
-        w={{ base: "100%", md: "80%" }}
+        w={{ base: "100%", md: "90%" }}
         mx="auto"
         pt={{ base: "2rem", sm: "3rem", lg: "4rem" }}
       >
-        <Text fw={600} fz="1.5rem" pb="md">
-          Looking for something specific?
-        </Text>
         <SearchBar />
-        {query && (
+        {(query || completed) && (
           <Suspense fallback={<Loading />}>
-            <SearchResults query={query} />
+            <SearchResults query={query} completed={completed} />
           </Suspense>
         )}
       </Box>

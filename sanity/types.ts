@@ -430,6 +430,34 @@ export type FEATURED_STORIES_QUERYResult = Array<{
     slug: Slug;
   };
 }>;
+// Variable: COMPLETED_STORIES_QUERY
+// Query: *[_type == "story" && completed == true]{    _id,    title,    slug,    completed,    summary,    image{        "asset": asset->{          "_ref": _id,          metadata{            dimensions{              width,              height            }          }        }      },    "genre": genre->{      title,      slug    },    "fandom": fandom->{      title,      slug    }  }
+export type COMPLETED_STORIES_QUERYResult = Array<{
+  _id: string;
+  title: string;
+  slug: Slug;
+  completed: boolean | null;
+  summary: string | null;
+  image: {
+    asset: {
+      _ref: string;
+      metadata: {
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+  genre: {
+    title: string;
+    slug: Slug;
+  };
+  fandom: {
+    title: string;
+    slug: Slug;
+  };
+}>;
 // Variable: STORY_QUERY
 // Query: *[_type == "story" && slug.current == $storySlug][0]{    _id,    title,    slug,    completed,    summary,    image{        "asset": asset->{          "_ref": _id,          metadata{            dimensions{              width,              height            }          }        }      },    "genre": genre->{      title,      slug    },    "fandom": fandom->{      title,      slug    }  }
 export type STORY_QUERYResult = {
@@ -683,6 +711,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"fandom\" && genre->slug.current == $genreSlug]{\n    _id,\n    slug,\n    title,\n    \"stories\": *[\n      _type == \"story\" &&\n      fandom._ref == ^._id\n    ][0...3]{\n      _id,\n      title,\n      slug,\n      completed,\n      summary,\n      image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n      \"genre\": genre->{\n        title,\n        slug\n      },\n      \"fandom\": fandom->{\n        title,\n        slug\n      }\n    }\n  }\n": FANDOMS_WITH_STORIES_QUERYResult;
     "\n  *[_type == \"story\" && fandom->slug.current == $fandomSlug]{\n    _id,\n    title,\n    slug,\n    completed,\n    summary,\n    image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n    \"genre\": genre->{\n      title,\n      slug\n    },\n    \"fandom\": fandom->{\n      title,\n      slug,\n      image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n      summary\n    }\n  }\n": STORIES_FOR_FANDOM_QUERYResult;
     "*[_type == \"story\" && featured == true]{\n    _id,\n    title,\n    slug,\n    completed,\n    summary,\n    image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n    \"genre\": genre->{\n      title,\n      slug\n    },\n    \"fandom\": fandom->{\n      title,\n      slug\n    }\n  }\n": FEATURED_STORIES_QUERYResult;
+    "*[_type == \"story\" && completed == true]{\n    _id,\n    title,\n    slug,\n    completed,\n    summary,\n    image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n    \"genre\": genre->{\n      title,\n      slug\n    },\n    \"fandom\": fandom->{\n      title,\n      slug\n    }\n  }\n": COMPLETED_STORIES_QUERYResult;
     "*[_type == \"story\" && slug.current == $storySlug][0]{\n    _id,\n    title,\n    slug,\n    completed,\n    summary,\n    image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n    \"genre\": genre->{\n      title,\n      slug\n    },\n    \"fandom\": fandom->{\n      title,\n      slug\n    }\n  }\n": STORY_QUERYResult;
     "\n  *[_type == \"story\" && slug.current == $storySlug][0]{\n    _id,\n    title,\n    slug,\n    completed,\n    \"fandom\": fandom->{\n      title,\n      slug\n    },\n    summary,\n    pairings,\n    notes,\n    image{\n        \"asset\": asset->{\n          \"_ref\": _id,\n          metadata{\n            dimensions{\n              width,\n              height\n            }\n          }\n        }\n      },\n    \"firstChapter\": *[\n      _type == \"chapter\" &&\n      story._ref == ^._id &&\n      chapter_number == 0\n    ][0]{\n      chapter_title,\n      slug,\n      chapter_number,\n    },\n    \"chapters\": *[\n      _type == \"chapter\" &&\n      story._ref == ^._id] | \n      order(chapter_number asc\n      ){\n        chapter_title,\n        slug,\n        chapter_number\n    }\n  }\n": STORY_PAGE_QUERYResult;
     "\n  *[_type == \"chapter\" &&\n    story->slug.current == $storySlug &&\n    slug.current == $chapterSlug\n  ][0]{\n    _id,\n    chapter_title,\n    slug,\n    chapter_number,\n    \"story\": story->{\n      title,\n      slug,\n      completed\n    },\n    body,\n    \"prev\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number - 1\n    ][0]{ slug },\n    \"next\": *[\n      _type == \"chapter\" &&\n      story._ref == ^.story._ref &&\n      chapter_number == ^.chapter_number + 1\n    ][0]{ slug },\n    \"comments\": *[\n      _type == \"comment\" &&\n      chapter._ref == ^._id\n    ] | order(_createdAt desc){\n      _id,\n      name,\n      text,\n      _createdAt\n    }\n  }\n": CHAPTER_PAGE_QUERYResult;
