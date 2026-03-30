@@ -1,6 +1,4 @@
-.root,
-.labelLink,
-.label {
+.root {
   color: light-dark(
     var(--mantine-color-darkGreen-3),
     var(--mantine-color-teal-2)

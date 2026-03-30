@@ -30,7 +30,7 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
     >
       <TableTbody>
         <TableTr>
-          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+          <TableTh className={classes.column}>
             <Title order={3} className={classes.heading}>
               Title
             </Title>
@@ -41,7 +41,7 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
         </TableTr>
 
         <TableTr>
-          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+          <TableTh className={classes.column}>
             <Title order={3} className={classes.heading}>
               Summary
             </Title>
@@ -52,7 +52,7 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
         </TableTr>
 
         <TableTr>
-          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+          <TableTh className={classes.column}>
             <Title order={3} className={classes.heading}>
               Pairings
             </Title>
@@ -63,7 +63,7 @@ const StoryInfo = ({ story }: { story: STORY_PAGE_QUERYResult }) => {
         </TableTr>
 
         <TableTr>
-          <TableTh p="1rem" w={{ base: 100, md: 150, xl: 200 }}>
+          <TableTh className={classes.column}>
             <Title order={3} className={classes.heading}>
               Notes
             </Title>

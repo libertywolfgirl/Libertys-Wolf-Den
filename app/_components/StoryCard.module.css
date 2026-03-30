@@ -1,3 +1,11 @@
+.badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 0.75rem;
+  background-color: var(--mantine-color-grape-9);
+  z-index: 10;
+}
+
 .heading {
   font-size: 1.25rem !important;
 }

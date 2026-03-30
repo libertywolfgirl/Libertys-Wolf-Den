@@ -16,7 +16,7 @@ const FirstChapter = ({ url, title, chapterTitle }: Props) => {
       </Title>
       <Link href={url} style={{ textDecoration: "none" }}>
         <Button radius="xl" size="lg">
-          <Title order={5} c="white" className={classes.subtitle}>
+          <Title order={5} className={classes.subtitle}>
             {title} - {chapterTitle}
           </Title>
         </Button>
