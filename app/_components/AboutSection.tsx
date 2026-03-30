@@ -21,7 +21,7 @@ const AboutSection = () => {
           alt="wolf image"
           priority
           fetchPriority="high"
-          quality={60}
+          quality={50}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
           objectFit="contain"
