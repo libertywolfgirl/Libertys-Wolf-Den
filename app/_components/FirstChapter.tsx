@@ -15,10 +15,8 @@ const FirstChapter = ({ url, title, chapterTitle }: Props) => {
         Read the first part:
       </Title>
       <Link href={url} style={{ textDecoration: "none" }}>
-        <Button radius="xl" size="lg">
-          <Title order={5} className={classes.subtitle}>
-            {title} - {chapterTitle}
-          </Title>
+        <Button radius="xl" size="lg" className={classes.subtitle}>
+          {title} - {chapterTitle}
         </Button>
       </Link>
     </Group>
