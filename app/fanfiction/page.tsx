@@ -10,8 +10,15 @@ import DescriptionBubble from "../_components/DescriptionBubble";
 import Loading from "../loading";
 import { Suspense } from "react";
 import SearchBar from "../_components/SearchBar";
-import SearchResults from "../_components/SearchResults";
-import StoryGrid from "../_components/StoryGrid";
+import dynamic from "next/dynamic";
+
+const SearchResults = dynamic(() => import("../_components/SearchResults"), {
+  loading: () => <Loading />,
+});
+
+const StoryGrid = dynamic(() => import("../_components/StoryGrid"), {
+  loading: () => <Loading />,
+});
 
 export const revalidate = 60;
 
