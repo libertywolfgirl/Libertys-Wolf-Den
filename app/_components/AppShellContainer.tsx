@@ -49,8 +49,7 @@ const AppShellContainer = ({ children, navigationData }: Props) => {
                   alt="wolf logo"
                   fill
                   sizes="100px"
-                  objectFit="cover"
-                  style={{ borderRadius: "50%" }}
+                  style={{ borderRadius: "50%", objectFit: "cover" }}
                 />
               </Flex>
             </Link>

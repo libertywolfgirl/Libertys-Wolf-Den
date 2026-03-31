@@ -12,7 +12,7 @@ const AboutSection = () => {
       <Box
         pos="relative"
         w="100%"
-        maw={1200}
+        maw={960}
         miw={300}
         style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
       >
@@ -23,8 +23,8 @@ const AboutSection = () => {
           fetchPriority="high"
           quality={50}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-          objectFit="contain"
+          sizes="(max-width: 960px) 100vw, 960px"
+          style={{ objectFit: "contain" }}
         />
       </Box>
       <Paper
