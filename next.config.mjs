@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
+    inlineCss: true,
   },
   async headers() {
     return [
@@ -26,9 +27,7 @@ const nextConfig = {
       },
     ];
   },
-  experimental: {
-    inlineCss: true,
-  },
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {

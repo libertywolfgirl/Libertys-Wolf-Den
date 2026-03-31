@@ -8,7 +8,6 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-
 import type { STORY_PAGE_QUERYResult } from "../../sanity/types";
 import classes from "./StoryInfo.module.css";
 
