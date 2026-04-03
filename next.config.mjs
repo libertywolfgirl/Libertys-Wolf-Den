@@ -29,6 +29,7 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   images: {
+    deviceSizes: [480, 576, 750, 768, 992, 1200, 1408, 1920],
     remotePatterns: [
       {
         protocol: "https",

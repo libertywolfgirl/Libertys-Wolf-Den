@@ -16,7 +16,7 @@ const HomePageHero = () => {
         priority
         fetchPriority="high"
         quality={60}
-        sizes="100vw"
+        sizes="(max-width: 480px) 376px, (max-width: 768px) 97vw, 85vw"
         style={{ objectFit: "cover", objectPosition: "50% 40%" }}
       />
       <Flex

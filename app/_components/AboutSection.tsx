@@ -23,7 +23,7 @@ const AboutSection = () => {
           fetchPriority="high"
           quality={50}
           fill
-          sizes="(max-width: 960px) 100vw, 960px"
+          sizes="(max-width: 480px) 205px, (max-width: 768px) 350px, 540px"
           style={{ objectFit: "contain" }}
         />
       </Box>
@@ -32,6 +32,8 @@ const AboutSection = () => {
         radius="md"
         withBorder
         p={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+        mr={{ base: 0, xl: "2rem" }}
+        w="75%"
         maw={800}
       >
         <Title order={2} ta="center" pb="1rem">
