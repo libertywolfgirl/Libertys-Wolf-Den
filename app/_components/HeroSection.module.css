@@ -3,19 +3,46 @@
     var(--mantine-color-teal-1),
     var(--mantine-color-darkGreen-1)
   );
+  min-height: 40vh;
+  padding: 6rem;
 }
 
 .heading {
   font-size: 1.5rem !important;
+  text-align: center;
+}
+
+@media (max-width: $mantine-breakpoint-xl) {
+  .container {
+    padding: 5rem;
+  }
+}
+
+@media (max-width: $mantine-breakpoint-lg) {
+  .container {
+    padding: 4rem;
+  }
 }
 
 @media (max-width: $mantine-breakpoint-md) {
+  .container {
+    padding: 3rem;
+  }
   .heading {
     font-size: 1.35rem !important;
   }
 }
 
+@media (max-width: $mantine-breakpoint-sm) {
+  .container {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: $mantine-breakpoint-xs) {
+  .container {
+    padding: 1rem;
+  }
   .heading {
     font-size: 1.2rem !important;
   }

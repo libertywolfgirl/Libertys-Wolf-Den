@@ -436,7 +436,7 @@ export type COMPLETED_STORIES_QUERYResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  completed: boolean | null;
+  completed: true;
   summary: string | null;
   image: {
     asset: {

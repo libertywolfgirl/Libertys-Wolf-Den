@@ -12,7 +12,7 @@ const AboutSection = () => {
       <Box
         pos="relative"
         w="100%"
-        maw={1200}
+        maw={960}
         miw={300}
         style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
       >
@@ -21,10 +21,10 @@ const AboutSection = () => {
           alt="wolf image"
           priority
           fetchPriority="high"
-          quality={60}
+          quality={50}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-          objectFit="contain"
+          sizes="(max-width: 480px) 205px, (max-width: 768px) 350px, 540px"
+          style={{ objectFit: "contain" }}
         />
       </Box>
       <Paper
@@ -32,6 +32,8 @@ const AboutSection = () => {
         radius="md"
         withBorder
         p={{ base: "0.5rem", sm: "1rem", lg: "2rem" }}
+        mr={{ base: 0, xl: "2rem" }}
+        w="75%"
         maw={800}
       >
         <Title order={2} ta="center" pb="1rem">

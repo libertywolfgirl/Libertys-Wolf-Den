@@ -1,5 +1,7 @@
 .heading {
   font-size: 1.25rem !important;
+  color: white !important;
+  font-weight: 600;
 }
 
 @media (max-width: $mantine-breakpoint-md) {

@@ -28,17 +28,7 @@ const StoryCard = ({
 
   return (
     <Box pos="relative">
-      {completed && (
-        <Badge
-          pos="absolute"
-          top={-12}
-          left={12}
-          bg="grape.9"
-          style={{ zIndex: 10 }}
-        >
-          Complete
-        </Badge>
-      )}
+      {completed && <Badge className={classes.badge}>Complete</Badge>}
       <Card
         mih={{ base: 425, md: 525 }}
         maw={325}

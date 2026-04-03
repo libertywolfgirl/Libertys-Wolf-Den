@@ -15,9 +15,9 @@ const HomePageHero = () => {
         fill
         priority
         fetchPriority="high"
-        sizes="100vw"
-        objectFit="cover"
-        objectPosition="50% 40%"
+        quality={60}
+        sizes="(max-width: 480px) 376px, (max-width: 768px) 97vw, 85vw"
+        style={{ objectFit: "cover", objectPosition: "50% 40%" }}
       />
       <Flex
         pos="absolute"

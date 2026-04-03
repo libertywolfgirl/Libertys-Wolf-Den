@@ -5,7 +5,13 @@ import {
   SEARCH_QUERY,
 } from "../../sanity/lib/queries";
 import { SEARCH_QUERYResult } from "../../sanity/types";
-import StoryGrid from "./StoryGrid";
+import dynamic from "next/dynamic";
+import Loading from "../loading";
+import { Suspense } from "react";
+
+const StoryGrid = dynamic(() => import("./StoryGrid"), {
+  loading: () => <Loading />,
+});
 
 const SearchResults = async ({
   query,
@@ -20,11 +26,9 @@ const SearchResults = async ({
         query: SEARCH_QUERY,
         params: { queryString: query },
       };
-  console.log(fetchQuery);
-  const { data: searchResults } = await sanityFetch(fetchQuery);
-  console.log(searchResults);
-  const typedSearchResults = searchResults as SEARCH_QUERYResult;
 
+  const { data: searchResults } = await sanityFetch(fetchQuery);
+  const typedSearchResults = searchResults as SEARCH_QUERYResult;
   const filteredSearchResults = completed
     ? typedSearchResults.filter((result) => result.completed)
     : typedSearchResults;
@@ -49,7 +53,9 @@ const SearchResults = async ({
       <Title order={2} py="xl">
         Search Results...
       </Title>
-      <StoryGrid stories={filteredSearchResults} cols={numCols} heading={3} />
+      <Suspense fallback={<Loading />}>
+        <StoryGrid stories={filteredSearchResults} cols={numCols} heading={3} />
+      </Suspense>
     </Stack>
   );
 };

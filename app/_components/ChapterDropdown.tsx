@@ -19,7 +19,7 @@ const ChapterDropdown = ({
 }) => {
   return (
     <Box pt="1rem">
-      <Title order={6} mb="xs" className={classes.heading}>
+      <Title order={5} mb="xs" className={classes.heading}>
         Jump to a chapter:
       </Title>
       <Select

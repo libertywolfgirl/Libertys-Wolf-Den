@@ -29,13 +29,14 @@ const ChooseStory = () => {
           src="/wolf-stare.webp"
           alt="wolf staring image"
           fill
-          loading="lazy"
-          decoding="async"
-          quality={60}
-          sizes="(max-width: 480px) 350px, (max-width: 768px) 535px, 720px"
-          objectFit="contain"
+          priority
+          fetchPriority="high"
+          quality={50}
+          sizes="(max-width: 480px) 318px, (max-width: 768px) 535px, 720px"
+          style={{ objectFit: "contain" }}
         />
       </Box>
+
       <Text
         ta="center"
         fz={{ base: "2rem", md: "3rem", xl: "4rem" }}

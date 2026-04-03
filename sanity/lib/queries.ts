@@ -385,7 +385,6 @@ export const SEARCH_QUERY = defineQuery(`
 `);
 
 // generateStaticParams queries
-
 export const GENRE_PARAMS_QUERY = defineQuery(`
   *[_type == "genre"]{
     "genre": slug.current

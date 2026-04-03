@@ -76,7 +76,7 @@ const ImageContainer = ({
         priority
         fetchPriority="high"
         quality={50}
-        sizes="(max-width: 768px) 90vw, 800px"
+        sizes={`(max-width: 480px) 314px, (max-width: 768px) 60vw, ${displayWidth}px`}
         style={{
           width: "auto",
           height: "auto",

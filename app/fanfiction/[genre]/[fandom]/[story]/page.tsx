@@ -95,7 +95,7 @@ const StoryPage = async (props: Props) => {
             image={image}
             title={title}
             padding="1.5rem"
-            maxHeight={500}
+            maxHeight={375}
             minHeight={300}
           />
         )}

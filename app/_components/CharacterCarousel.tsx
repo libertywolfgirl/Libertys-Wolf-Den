@@ -1,6 +1,6 @@
 import { Carousel, CarouselSlide } from "@mantine/carousel";
 import { CHARACTERS_QUERYResult } from "../../sanity/types";
-import { Box, Flex, Paper } from "@mantine/core";
+import { Flex, Paper } from "@mantine/core";
 import CharacterSlide from "./CharacterSlide";
 
 const CharacterCarousel = ({
@@ -24,6 +24,12 @@ const CharacterCarousel = ({
           controlsOffset="sm"
           emblaOptions={{
             loop: true,
+          }}
+          nextControlProps={{
+            "aria-label": "Next slide",
+          }}
+          previousControlProps={{
+            "aria-label": "Previous slide",
           }}
         >
           {characters.map((char) => (

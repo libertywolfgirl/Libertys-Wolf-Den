@@ -1,8 +1,22 @@
+.column {
+  padding: 1rem;
+  width: 12.5rem;
+}
+
 .heading {
   font-size: 1.25rem !important;
 }
 
+@media (max-width: $mantine-breakpoint-xl) {
+  .column {
+    width: 9.375rem;
+  }
+}
+
 @media (max-width: $mantine-breakpoint-md) {
+  .column {
+    width: 6.25rem;
+  }
   .heading {
     font-size: 1.1rem !important;
   }
